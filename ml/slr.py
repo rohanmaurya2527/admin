@@ -18,7 +18,7 @@ model = LinearRegression()
 model.fit(x_train, y_train)
 
 # Predict revenue for temperature = 33
-predicted_revenue = model.predict([[33]])
+predicted_revenue = model.predict([[33]])#m=model.coef_, c=model.intercept_
 print("Predicted Revenue for Temperature 33°C:", predicted_revenue[0][0])
 
 # Plotting
