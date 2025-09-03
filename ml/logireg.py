@@ -31,4 +31,4 @@ plt.show()
 # Predict and evaluate
 y_pred = model.predict(xtest)
 print("Accuracy:", accuracy_score(ytest, y_pred))
-print("Confusion Matrix:\n", confusion_matrix(ytest, y_pred))
+print("Confusion Matrix:", confusion_matrix(ytest, y_pred))
