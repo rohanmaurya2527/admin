@@ -6,9 +6,14 @@ from sklearn.linear_model import LinearRegression
 # Load the dataset
 df = pd.read_csv("Rizwan/Datasets/Ice Cream.csv")
 """
-Using predefined data then following lines by skipping above lines
+#Using predefined data then following lines by skipping above lines
 from sklearn.datasets import load_diabetes
 data = load_diabetes()
+
+# Generate synthetic data
+X, y = make_regression(n_samples=100, n_features=1, noise=30, random_state=1)
+df = pd.DataFrame(X, columns=["Feature 1"])
+df["Target"] = y
 """
 # Features and target
 x = df[["Temperature"]]  # 2D array
