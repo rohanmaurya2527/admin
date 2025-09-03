@@ -1,0 +1,68 @@
+#Employee_details collection:
+db.employees.insertMany ([
+{ emp_id: 132456, emp_name: "Barry Stevens", emp_age: 28, job_role: "Store
+Manager", salary: 200000 },
+{ emp_id: 134542, emp_name: "Martin Garrix", emp_age: 26, job_role: "Store
+Associate", salary: 80000 },
+{ emp_id: 135456, emp_name: "Linda Harris", emp_age: 29, job_role: "Cashier",
+salary: 55000 },
+{ emp_id: 234543, emp_name: "Eric Hale", emp_age: 30, job_role: "Senior
+Cashier", salary: 75000 },
+{ emp_id: 234543, emp_name: "Lucy Hale", emp_age: 29, job_role: "Store
+Associate", salary: 72000 }
+])
+
+#Inventory collection:
+db.inventory.insertMany([
+{ _id: "LS00412", name: "XYZ Chocolate Bar - 100gm", price: 5.23, quantity:
+25000, category: "snack" },
+{ _id: "LS00413", name: "Kwality Non-fat - liter", price: 3.00, quantity: 10000,
+category: "dairy" },
+{ _id: "LS00414", name: "Eggs 12 pack", price: 5.90, quantity: 16000, category:
+"produce", health_tag: "organic" },
+{ _id: "LS00415", name: "Whole Chicken", price: 12.95, quantity: 12500, category:
+"meat" },
+{ _id: "LS00416", name: "Grapes (Packed)", price: 3.59, quantity: 9000, category:
+"produce", health_tag: "organic" },
+{ _id: "LS00417", name: "Blueberries (Packed)", price: 4.95, quantity: 12000,
+category: "produce", health_tag: "organic" },
+{ _id: "LS00418", name: "Lurpak Butter 500g", price: 9.75, quantity: 500, category:
+"dairy" }])
+
+#Sales Collection:
+db.sales.insertMany([
+{ bill_id: "S001", items_sold: ["LS00412", "LS00413"], discounts: 10.25,
+net_amount: 45.25, date_time: ISODate("2021-01-16T08:05:22Z") },
+{ bill_id: "S002", items_sold: ["LS00414", "LS00416"], discounts: 2.33,
+net_amount: 45.25, date_time: ISODate("2021-01-16T08:15:02Z") },
+{ bill_id: "S003", items_sold: ["LS00414", "LS00415"], discounts: 0.23,
+net_amount: 93.25, date_time: ISODate("2021-01-17T10:35:18Z") },
+{ bill_id: "S004", items_sold: ["LS00412", "LS00417"], discounts: 2.14,
+net_amount: 94.12, date_time: ISODate("2021-01-18T10:38:25Z") },
+{ bill_id: "S005", items_sold: ["LS00413", "LS00418"], discounts: 0.93,
+net_amount: 89.73, date_time: ISODate("2021-01-19T11:05:22Z") }
+])
+
+#promotions Collection
+db.promotions.insertMany([
+{ promo_id: "PROMO001", name: "New Year Promo", period: 7, daily_sales: [20,
+16, 32, 10, 21, 45, 56] },
+{ promo_id: "PROMO002", name: "Milk Promo", period: 3, daily_sales: [10, 20,
+19] },
+{ promo_id: "PROMO003", name: "New Year Promo", period: 7, daily_sales: [65,
+88, 109, 85, 108, 87, 278] }
+])
+
+#$eq operator:
+db.inventory.find({"_id":{$eq:"LS00415"}}).pretty()
+
+#$gt & $lt operator:
+db.inventory.find({"quantity":{$gt:10000 ,$lt:24000}}).pretty()
+
+#$ne operator:
+db.promotions.find({"name":{$ne:"Milk Promo"}}).pretty()
+
+
+
+
+
