@@ -44,7 +44,7 @@ for _ in range(epochs):
     loss_history.append(loss)
 
 # Final results
-print(f"Gradient Descent → Slope: {m:.4f}, Intercept: {b:.4f}, RMSE: {loss:.4f}")
+print(f"Gradient Descent -> Slope: {m:.4f}, Intercept: {b:.4f}, RMSE: {loss:.4f}")
 
 # Plot results
 plt.scatter(X, y, color='red', label='Data Points')
