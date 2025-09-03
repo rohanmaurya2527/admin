@@ -5,7 +5,11 @@ from sklearn.linear_model import LinearRegression
 
 # Load the dataset
 df = pd.read_csv("Rizwan/Datasets/Ice Cream.csv")
-
+"""
+Using predefined data then following lines by skipping above lines
+from sklearn.datasets import load_diabetes
+data = load_diabetes()
+"""
 # Features and target
 x = df[["Temperature"]]  # 2D array
 y = df[["Revenue"]]
