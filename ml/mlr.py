@@ -14,10 +14,18 @@ warnings.filterwarnings("ignore")
 X, y = make_regression(n_samples=100, n_features=2, noise=30, random_state=1)
 df = pd.DataFrame(X, columns=["Feature 1", "Feature 2"])
 df["Target"] = y
-""" 
-# 🗃 Load your dataset
-df = pd.read_csv("your_dataset.csv")
+"""
+1. Using predefined data then following lines by skipping above lines
+from sklearn.datasets import load_diabetes
+data = load_diabetes()
+df = pd.DataFrame(data.data, columns=data.feature_names)
+df["Target"] = data.target
 
+2. 🗃 Load your dataset
+df = pd.read_csv("your_dataset.csv")
+"""
+
+"""
 # 🎯 Define features and target
 X = df[["Feature1", "Feature2"]]  # Replace with real feature names
 y = df["Target"]  # Replace with real target column
