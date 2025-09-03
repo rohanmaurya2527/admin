@@ -70,7 +70,7 @@ db.items.aggregate([
  truncData:{$trunc:["$data"]},
  roundData:{$round:["$data"]}
  }}
-])....
+])
 
 #2. $cmp
 #shapes Collection
