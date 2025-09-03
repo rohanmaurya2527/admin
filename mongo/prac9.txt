@@ -1,0 +1,95 @@
+#Demonstrate MongoDB $round, $trunc & $cmp operator
+#items Collection
+db.items.insertMany([
+ {
+ _id: 1,
+ item_name: "Apple",
+ total_Price: null,
+ quantity: 40
+ },
+ {
+ _id: 2,
+ item_name: "Banana",
+ total_Price: 1000,
+ quantity: 72
+ },
+ {
+ _id: 3,
+ item_name: "Cherry",
+ total_Price: 215,
+ quantity: 25
+ },
+ {
+ _id: 4,
+ item_name: "Apple",
+ total_Price: null,
+ quantity: 25
+ },
+ {
+ _id: 5,
+ item_name: "Banana",
+ total_Price: 400,
+ quantity: 35
+ },
+ {
+ _id: 6,
+ item_name: "Banana",
+ total_Price: 510,
+ quantity: 100
+ },
+ {
+ _id: 7,
+ item_name: "Cherry",
+ total_Price: 500,
+ quantity: 41
+ },
+ {
+ _id: 8,
+ item_name: "Rasbhari",
+ total_Price: 80,
+ quantity: "Ten" // Note: This is a string, may cause issues
+ },
+ {
+ _id: 9,
+ item_name: "Banana",
+ total_Price: 205,
+ quantity: 10
+ },
+ {
+ _id: 10,
+ item_name: "Apple",
+ total_Price: 95,
+ quantity: null
+ }
+])
+
+#1. $round & $trunc
+db.items.aggregate([
+ {$project:{
+ name:1,
+ truncData:{$trunc:["$data"]},
+ roundData:{$round:["$data"]}
+ }}
+])....
+
+#2. $cmp
+#shapes Collection
+db.shapes.insertMany([
+ { "_id": 1, "name": "rectangle", "length": 11, "breath": 10 },
+ { "_id": 2, "name": "square", "length": 10, "breath": 10 },
+ { "_id": 3, "name": "rectangle", "length": 14, "breath": 16 },
+ { "_id": 4, "name": "square", "length": 6, "breath": 6 },
+ { "_id": 5, "name": "rectangle", "length": 11, "breath": 16 }
+])
+
+db.shapes.aggregate([
+ {$project:{
+ name:1,
+ length:1,
+ breath:1,
+ resultLenBre:{$cmp:["$length","$breath"]},
+ resultBreLen:{$cmp:["$breath","$length"]}
+ }}
+])
+
+
