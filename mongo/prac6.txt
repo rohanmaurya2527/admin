@@ -1,0 +1,119 @@
+#Students Collection:
+db.students.insertMany([
+ {
+ std_name: "Micky",
+ gender: "Female",
+ class: "X",
+ fees: 5000,
+ exam_fees: 500,
+ age: 16,
+ Total_marks: 405,
+ Result: "Pass"
+ },
+ {
+ std_name: "Moty",
+ gender: "Male",
+ fees: 4000,
+ exam_fees: 500,
+ class: "VII",
+ age: 15,
+ Total_marks: 705,
+ Result: "Pass"
+ },
+ {
+ std_name: "Thomas",
+ gender: "Male",
+ fees: 3000,
+ exam_fees: 500,
+ class: "V",
+ age: 12,
+ Total_marks: 450,
+ Result: "pass"
+ },
+ {
+ std_name: "Jin",
+ gender: "Female",
+ fees: 5000,
+ exam_fees: 500,
+ class: "X",
+ age: 16,
+ Total_marks: 750,
+ Result: "Pass"
+ },
+ {
+ std_name: "Mia",
+ gender: "Female",
+ fees: 6000,
+ exam_fees: 500,
+ class: "XI",
+ age: 17,
+ Total_marks: 450,
+ Result: "Pass"
+ },
+ {
+ std_name: "Mike",
+ gender: "Male",
+ fees: {
+ school_fees: 4000,
+ exam_fees: 500,
+ pending_fees: 950
+ },
+ class: "V",
+ age: 15,
+ Total_marks: 450,
+ Result: "Pass"
+ }
+])
+
+#Q.Use $abs, $ceil, $floor operators on student collection:
+#$abs:
+db.students.aggregate([
+ {
+ $match: { gender: "Female" }
+ },
+ {
+ $project: {
+ std_name: 1,
+ class: 1,
+ age: 1,
+ Result: 1,
+ total_fees: {
+ $abs: {
+ $add: ["$fees", "$exam_fees"]
+ }
+ }
+ }
+ }
+])
+
+#$floor:
+db.students.aggregate([
+ {
+ $match: { gender: "Female" }
+ },
+ {
+ $project: {
+ std_name: 1,
+ class: 1,
+ age: 1,
+ Result: 1,
+ floor_grade: { $floor: "$Total_marks" }
+ }
+ }
+])
+
+#$ceil:
+db.students.aggregate([
+ {
+ $match: { gender: "Female" }
+ },
+ {
+ $project: {
+ std_name: 1,
+ class: 1,
+ age: 1,
+ Result: 1,
+ ceiling_age: { $ceil: "$age" }
+ }
+ }
+])
