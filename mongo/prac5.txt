@@ -1,0 +1,96 @@
+#Employee_detail Collection
+db.employee_detail.insertMany([
+ {
+ _id: ObjectId("688c3a161aa6a81d0077acb1"),
+ emp_id: 132456,
+ emp_name: "Barry Stevens",
+ emp_age: 28,
+ job_role: "Store Manager",
+ salary: 200000
+ },
+ {
+ _id: ObjectId("688c3a161aa6a81d0077acb2"),
+ emp_id: 134542,
+ emp_name: "Martin Garrix",
+ emp_age: 26,
+ job_role: "Store Associate",
+ salary: 80000
+ },
+ {
+ _id: ObjectId("688c3a161aa6a81d0077acb3"),
+ emp_id: 135456,
+ emp_name: "Linda Harris",
+ emp_age: 29,
+ job_role: "Cashier",
+ salary: 55000
+ },
+ {
+ _id: ObjectId("688c3a161aa6a81d0077acb4"),
+ emp_id: 234544,
+ emp_name: "Eric Hale",
+ emp_age: 30,
+ job_role: "Senior Cashier",
+ salary: 75000
+ },
+ {
+ _id: ObjectId("688c3a161aa6a81d0077acb5"),
+ emp_id: 234545,
+ emp_name: "Lucy Hale",
+ emp_age: 29,
+ job_role: "Store Associate",
+ salary: 72000
+ },
+ {
+ _id: ObjectId("688c3a161aa6a81d0077acb6"),
+ emp_id: 136789,
+ emp_name: "James Roy",
+ emp_age: 35,
+ job_role: "Inventory Supervisor",
+ salary: 95000
+ },
+ {
+ _id: ObjectId("688c3a161aa6a81d0077acb7"),
+ emp_id: 136790,
+ emp_name: "Rachel Adams",
+ emp_age: 32,
+ job_role: "HR Executive",
+ salary: 87000
+ },
+ {
+ _id: ObjectId("688c3a161aa6a81d0077acb8"),
+ emp_id: 136791,
+ emp_name: "Tom Holland",
+ emp_age: 24,
+ job_role: "Cashier",
+ salary: 52000
+ },
+ {
+ _id: ObjectId("688c3a161aa6a81d0077acb9"),
+ emp_id: 136792,
+ emp_name: "Nina Dobrev",
+ emp_age: 27,
+ job_role: "Store Associate",
+ salary: 76000
+ },
+ {
+ _id: ObjectId("688c3a161aa6a81d0077acba"),
+ emp_id: 136793,
+ emp_name: "Alex Morgan",
+ emp_age: 31,
+ job_role: "Assistant Manager",
+ salary: 130000
+ }
+])
+
+#Q. Find doc that match either of conditions: ($or operator) Job role equal to “Cashier” or ”Store Manager”.
+db.employee_detail.find({$or:[{"job_role":"Senior Cashier"},
+{"job_role":"Store Manager"}]}).pretty()
+
+#Q. Find doc that match neither of conditions: ($nor operator) Job role equal to “Cashier” or “Store Manager”.
+db.employee_detail.find({$nor:[{"job_role":"SeniorCashier"},
+{"job_role":"Store Manager"}]}).pretty()
+
+#Q. Find doc that match none of the given conditions: ($not operator) Age should not be greater than or equal to 30
+db.employee_detail.find({"emp_age":{$not:{$gte:30}}}).pretty()
+
+
