@@ -2,7 +2,7 @@
 use FinalJournal
 
 #Create collection :
-Query: db.createCollection("myCollection")
+db.createCollection("myCollection")
 
 #InsertOne:
 db.myCollection.insertOne({ name: "Alice", age: 25 })
@@ -18,7 +18,7 @@ db.myCollection.insertMany([
 db.myCollection.find()
 
 #Find with filters :
-Query: db.myCollection.find({ age: { $gt: 28 } }) // age > 28
+db.myCollection.find({ age: { $gt: 28 } }) // age > 28
 
 #Find one :
 db.myCollection.findOne({ name: "Bob" })
@@ -45,4 +45,4 @@ db.myCollection.deleteMany({ age: { $gt: 30 } })
 db.myCollection.drop()
 
 #Drop Database :
-Query: db.dropDatabase()
+db.dropDatabase()
