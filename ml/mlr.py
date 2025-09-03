@@ -7,6 +7,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import make_regression
 from sklearn.metrics import mean_squared_error, r2_score
 import plotly.express as px
+import plotly.graph_objects as go
+import warnings
+warnings.filterwarnings("ignore")
 
 # 🧪 Generate synthetic data with 2 features
 X, y = make_regression(n_samples=100, n_features=2, noise=30, random_state=1)
@@ -14,7 +17,13 @@ X, y = make_regression(n_samples=100, n_features=2, noise=30, random_state=1)
 # 📊 Create DataFrame for easy handling
 df = pd.DataFrame(X, columns=["Feature 1", "Feature 2"])
 df["Target"] = y
-""" 🗃 Load your dataset
+
+# 🎯 Define features and target
+X = df[["Feature 1", "Feature 2"]]
+y = df["Target"]
+
+""" 
+#🗃 Load your dataset
 df = pd.read_csv("your_dataset.csv")
 
 # 🎯 Define features and target
@@ -49,5 +58,20 @@ plt.grid(True)
 plt.show()
 
 # 🌀 3D Visualization: Feature 1, Feature 2 vs Target
-fig = px.scatter_3d(df, x='Feature 1', y='Feature 2', z='Target', title="3D Scatter of Features vs Target")
+X_np = X.values  # Convert DataFrame to NumPy
+x_range = np.linspace(X_np[:, 0].min(), X_np[:, 0].max(), 50)
+y_range = np.linspace(X_np[:, 1].min(), X_np[:, 1].max(), 50)
+X_mesh, Y_mesh = np.meshgrid(x_range, y_range)
+Z_mesh = model.predict(np.c_[X_mesh.ravel(), Y_mesh.ravel()]).reshape(X_mesh.shape)
+
+# Plot data and regression surface
+fig = go.Figure([
+    go.Scatter3d(x=X_np[:, 0], y=X_np[:, 1], z=y, mode='markers', name='Data'),
+    go.Surface(x=X_mesh, y=Y_mesh, z=Z_mesh, opacity=0.7, name='Regression Plane')
+])
+fig.update_layout(title="3D Regression Surface", scene=dict(
+    xaxis_title='Feature 1',
+    yaxis_title='Feature 2',
+    zaxis_title='Target'
+))
 fig.show()
