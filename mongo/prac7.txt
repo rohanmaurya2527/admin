@@ -1,0 +1,120 @@
+#Demonstrate MongoDB $log, $mod, $divide, $multiply operator.
+#shapes Collection
+db.shapes.insertMany([
+ {
+ name: "rectangle",
+ area: 16
+ },
+ {
+ name: "rectangle",
+ area: 6
+ },
+ {
+ name: "circle",
+ area: 19,
+ unit: {
+ diameter: 6,
+ radius: 3
+ }
+ },
+ {
+ name: "rectangle",
+ area: 20
+ },
+ {
+ name: "square",
+ area: 20
+ },
+ {
+ name: "triangle",
+ area: null
+ }
+])
+
+#1. $log operator
+db.shapes.aggregate([
+ {$match:{name:"rectangle"}},
+ {$project:{
+ name:1,
+ area:1,
+ logArea:{$log:["$area",10]}
+ }}
+])
+
+
+items Collection
+db.items.insertMany([
+ {
+ _id: 1,
+ item_name: "Apple",
+ total_Price: null,
+ quantity: 40
+ },
+ {
+ _id: 2,
+ item_name: "Banana",
+ total_Price: 1000,
+ quantity: 72
+ },
+ {
+ _id: 3,
+ item_name: "Cherry",
+ total_Price: 215,
+ quantity: 25
+ },
+ {
+ _id: 4,
+ item_name: "Apple",
+ total_Price: null,
+ quantity: 25
+ },
+ {
+ _id: 5,
+ item_name: "Banana",
+ total_Price: 400,
+ quantity: 35
+ },
+ {
+ _id: 6,
+ item_name: "Banana",
+ total_Price: 510,
+ quantity: 100
+ },
+ {
+ _id: 7,
+ item_name: "Cherry",
+ total_Price: 500,
+ quantity: 41
+ },
+ {
+ _id: 8,
+ item_name: "Rasbhari",
+ total_Price: 80,
+ quantity: "Ten" // Note: This is a string, may cause issues
+ },
+ {
+ _id: 9,
+ item_name: "Banana",
+ total_Price: 205,
+ quantity: 10
+ },
+ {
+ _id: 10,
+ item_name: "Apple",
+ total_Price: 95,
+ quantity: null
+ }
+])
+
+#2.$mod, $divide, $multiply
+db.items.aggregate([
+ {$match:{item_name:"Banana"}},
+ {$project:{
+ item_name:1,
+ total_Price:1,
+ quantity:1,
+ modPrice:{$mod:["$total_Price","$quantity"]},
+ dividePrice:{$divide:["$total_Price","$quantity"]},
+ multiplyPrice:{$multiply:["$total_Price","$quantity"]}
+ }}
+])
