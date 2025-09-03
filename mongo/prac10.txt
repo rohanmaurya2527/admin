@@ -1,0 +1,57 @@
+#Demonstrate MongoDB $concat,$size,$rename operator
+#students Collection:
+db.students.insertMany([
+ {
+ "_id": 1,
+ "name": "Steve",
+ "surname": "Smith",
+ "fees": 80000,
+ "marks": [55, 60, 70, 45, 95, 68],
+ "department": "Tester"
+ },
+ {
+ "_id": 2,
+ "name": "Sandy",
+ "surname": "Beach",
+ "fees": 55000,
+ "marks": [85, 40, 90, 75, 85, 77],
+ "department": "Software developer"
+ },
+ {
+ "_id": 3,
+ "name": "John",
+ "surname": "Cena",
+ "fees": 85000,
+ "marks": [85, 70, 80, 95, 94, 81],
+ "department": "Software developer"
+ },
+ {
+ "_id": 4,
+ "name": "Wick",
+ "surname": "John",
+ "fees": 60000,
+ "marks": [91, 65, 71, 63, 98, 76],
+ "department": "Tester"
+ },
+ {
+ "_id": 5,
+ "name": "David",
+ "surname": "Silva",
+ "fees": 80000,
+ "marks": [97, 98, 95, 98],
+ "department": "Software developer"
+ }
+])
+
+#1. $concat & $size
+db.students.aggregate([
+ {$project:{
+ _id:1,
+ fullname:{$concat:["$name"," ","$surname"]},
+ markssize:{$size:"$marks"}
+ }}
+])
+
+#2. $rename
+db.students.updateMany({},{$rename:{"department":"dept"}})
+
