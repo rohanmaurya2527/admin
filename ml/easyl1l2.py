@@ -39,14 +39,14 @@ for i, alpha in enumerate(alphas):
 
     # Plot Lasso coefficients
     plt.subplot(2, len(alphas), i + 1)
-    plt.title(f"Lasso (L1), α={alpha}\nR² = {lasso_r2:.3f}", fontsize=12)
+    plt.title(f"Lasso (L1), α={alpha}, R² = {lasso_r2:.3f}", fontsize=12)
     plt.bar(range(len(lasso.coef_)), lasso.coef_, color='blue')
     plt.xlabel('Feature Index')
     plt.ylabel('Coefficient Value')
 
     # Plot Ridge coefficients
     plt.subplot(2, len(alphas), len(alphas) + i + 1)
-    plt.title(f"Ridge (L2), α={alpha}\nR² = {ridge_r2:.3f}", fontsize=12)
+    plt.title(f"Ridge (L2), α={alpha}, R² = {ridge_r2:.3f}", fontsize=12)
     plt.bar(range(len(ridge.coef_)), ridge.coef_, color='red')
     plt.xlabel('Feature Index')
     plt.ylabel('Coefficient Value')
