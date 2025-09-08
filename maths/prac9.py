@@ -6,7 +6,7 @@ y=np.array([7,14,15,18,19])
 n=np.size(x)
 x_mean=np.mean(x)
 y_mean=np.mean(y)
-X_mean,y_mean
+x_mean,y_mean
 
 Sxy=np.sum(x*y)-n*x_mean*y_mean
 Sxx=np.sum(x*x)-n*x_mean*x_mean
