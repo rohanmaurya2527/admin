@@ -1,0 +1,361 @@
+1. Feature Engineering 
+1.1 Data Imputation → dataimputation.py 
+What it is: 
+Data imputation is the process of handling missing data in a dataset by replacing it with 
+estimated values instead of removing entire rows or columns. In real-world datasets, missing 
+data is very common because of human error, data collection issues, or system failures. 
+Why we use it: 
+• ML algorithms usually cannot handle missing values directly. 
+• Dropping rows with missing values can lead to loss of valuable information. 
+• By imputing, we make sure the dataset remains consistent, complete, and usable for 
+training. 
+How we use it (Methods): 
+1. Mean/Median Imputation (for numerical data): 
+o Replace missing values with the column’s mean or median. 
+o Example: If Age column = [25, 30, NaN, 40], replace NaN with mean = 31.67 or 
+median = 30. 
+o Median is often better if data is skewed (because mean can be affected by 
+outliers). 
+2. Mode Imputation (for categorical data): 
+o Replace missing category with the most frequent one. 
+o Example: Gender = [Male, Female, NaN, Female] → NaN replaced with 
+"Female". 
+3. Forward Fill / Backward Fill: 
+o Use previous or next values in a time series dataset. 
+o Example: Stock price missing → use yesterday’s price (forward fill). 
+4. KNN Imputation: 
+o Uses nearest neighbors’ values to fill in the missing one. 
+o More advanced and preserves relationships better. 
+5. Regression Imputation: 
+o Predict missing value using regression trained on other features. 
+Viva example Q&A: 
+• Q: Why is median often better than mean? 
+o A: Because median is not affected by extreme outliers. 
+1.2 Handling Categorical Variables → datahandling.py 
+What it is: 
+Many datasets contain categorical data (e.g., Gender, Country, Color). ML models need 
+numbers, not text. Handling categorical variables means encoding them into numerical formats 
+without losing meaning. 
+Why we use it: 
+• Algorithms like Linear Regression, Logistic Regression, and SVM work only with 
+numbers. 
+• Even tree-based models (Decision Tree, Random Forest) perform better when categories 
+are properly encoded. 
+How we use it (Encoding Methods): 
+1. Label Encoding: 
+o Each category is assigned a number. 
+o Example: Gender = {Male:0, Female:1}. 
+o Problem: Implies an order where none exists (0 < 1). 
+2. One-Hot Encoding: 
+o Create dummy variables (binary columns). 
+o Example: Country = [India, USA, UK] → India=[1,0,0], USA=[0,1,0], 
+UK=[0,0,1]. 
+o Works well but increases dataset size (curse of dimensionality). 
+3. Ordinal Encoding: 
+o Useful when categories have natural order (e.g., Small=0, Medium=1, Large=2). 
+4. Target Encoding (advanced): 
+o Replace category with the mean of the target variable. 
+o Example: If survival rate of "Female" = 0.75, encode Female=0.75. 
+Viva example Q&A: 
+• Q: What is the disadvantage of Label Encoding? 
+o A: It creates a false sense of order, which can mislead algorithms. 
+1.3 Feature Scaling → featscaling.py 
+What it is: 
+Feature scaling is the process of bringing numerical features to a similar scale. Different 
+features in a dataset may have very different ranges, e.g., Age (20–60) vs. Salary (20,000
+200,000). Some ML models are sensitive to scale. 
+Why we use it: 
+• Prevents features with large ranges from dominating learning. 
+• Improves the performance and convergence speed of gradient descent. 
+• Necessary for distance-based algorithms (KNN, SVM, PCA). 
+How we use it (Techniques): 
+1. Min-Max Normalization (Rescaling): 
+o Brings data to range [0,1]. 
+o Formula: X′=X−XminXmax−XminX' = \frac{X - X_{min}}{X_{max} - 
+X_{min}}. 
+o Example: Age [20, 40, 60] → [0, 0.5, 1]. 
+2. Standardization (Z-score Scaling): 
+o Rescales data to mean=0 and standard deviation=1. 
+o Formula: X′=X−μσX' = \frac{X - \mu}{\sigma}. 
+o Example: If mean salary=50,000 and std=10,000, then salary=60,000 → Z=1. 
+3. Robust Scaling: 
+o Uses median and IQR, better for outliers. 
+4. Log Transformation: 
+o Useful when data is highly skewed. 
+Viva example Q&A: 
+• Q: Which models need feature scaling? 
+o A: Distance-based (KNN, SVM, PCA, clustering), gradient descent-based models 
+(Linear Regression, Logistic Regression, Neural Networks). 
+• Q: Which models don’t need it? 
+o A: Tree-based models (Decision Trees, Random Forest, XGBoost). 
+1.4 Feature Selection → featselect.py 
+What it is: 
+Feature selection is the process of choosing the most important features from the dataset and 
+removing irrelevant or redundant ones. 
+Why we use it: 
+• Reduces overfitting (less noise). 
+• Improves accuracy. 
+• Makes models simpler and faster. 
+How we use it (Techniques): 
+1. Filter Methods (Statistical): 
+o Correlation, Chi-square test, ANOVA. 
+o Example: Remove features highly correlated with each other. 
+2. Wrapper Methods: 
+o Use subsets of features and evaluate model performance. 
+o Techniques: Forward Selection, Backward Elimination, Recursive Feature 
+Elimination (RFE). 
+3. Embedded Methods: 
+o Feature selection happens inside the model. 
+o Example: Lasso Regression automatically shrinks some coefficients to 0. 
+Viva example Q&A: 
+• Q: Difference between Feature Extraction and Feature Selection? 
+o A: Selection picks the most important original features, while Extraction creates 
+new features (like PCA). 
+. 
+2. Linear Regression 
+2.1 Simple Linear Regression → slr.py 
+What it is: 
+• A supervised learning algorithm that models the relationship between one independent 
+variable (X) and one dependent variable (Y) by fitting a straight line. 
+• Equation: 
+Y=mX+cY = mX + c  
+where m = slope, c = intercept. 
+Why we use it: 
+• To predict a continuous outcome (e.g., predicting salary from years of experience). 
+• To find the strength and direction of the relationship between two variables. 
+How we use it: 
+1. Collect dataset (X = years of experience, Y = salary). 
+2. Plot scatter plot to visualize relation. 
+3. Fit regression line using least squares method (minimizes error). 
+4. Evaluate model with metrics like R², Mean Squared Error. 
+Viva Q&A: 
+• Q: What assumption does Linear Regression make? 
+o A: Relationship between X and Y is linear, errors are normally distributed, and 
+features are independent. 
+2.2 Multiple Linear Regression → mlr.py 
+What it is: 
+• An extension of simple linear regression where there are multiple independent 
+variables. 
+• Equation: 
+Y=b0+b1X1+b2X2+⋯+bnXnY = b_0 + b_1X_1 + b_2X_2 + \dots + b_nX_n  
+Why we use it: 
+• Real-world outcomes depend on multiple factors. 
+• Example: House price prediction based on area, location, number of rooms, age, etc. 
+How we use it: 
+1. Collect dataset with multiple predictors. 
+2. Fit regression model (using least squares). 
+3. Interpret coefficients (e.g., increase in X₁ increases Y by b₁ units). 
+4. Check multicollinearity (correlation among predictors). 
+Viva Q&A: 
+• Q: What is Multicollinearity? 
+o A: When independent variables are highly correlated, making coefficients 
+unreliable. 
+2.3 Polynomial Linear Regression → polyregslr.py & polyregmlr.py 
+What it is: 
+• A regression technique where we fit a polynomial curve instead of a straight line. 
+• Useful when data shows a non-linear relationship. 
+Why we use it: 
+• Linear Regression fails when the relation isn’t straight. 
+• Example: Salary growth vs. experience may rise fast initially, then slow down → needs a 
+curve. 
+How we use it: 
+1. Transform original features into polynomial features (X², X³, etc.). 
+2. Apply linear regression on the transformed dataset. 
+3. Model becomes: 
+Y=b0+b1X+b2X2+⋯+bnXnY = b_0 + b_1X + b_2X^2 + \dots + b_nX^n  
+Types: 
+• Polynomial + Simple LR (polyregslr.py) → One variable, but polynomial relationship. 
+• Polynomial + Multiple LR (polyregmlr.py) → Multiple variables, polynomial 
+relationship. 
+Viva Q&A: 
+• Q: Isn’t Polynomial Regression a non-linear model? 
+o A: It models non-linear relationships, but the equation is still linear in coefficients 
+→ so it’s a type of linear regression. 
+2.4 Gradient Descent → gd.py 
+What it is: 
+• An optimization algorithm to minimize the cost function (error) by updating parameters 
+(slope, intercept). 
+• Instead of solving equations directly, we iteratively move towards the best fit line. 
+Why we use it: 
+• When dataset is very large, normal equation method is computationally expensive. 
+• Gradient Descent scales better. 
+How we use it: 
+1. Initialize parameters (m, c) randomly. 
+2. Compute cost function (Mean Squared Error): 
+J(m,c)=12n∑(Ypred−Yactual)2J(m, c) = \frac{1}{2n}\sum (Y_{pred} - Y_{actual})^2  
+3. Update parameters: 
+m=m−α∂J∂m,c=c−α∂J∂cm = m - \alpha \frac{\partial J}{\partial m}, \quad c = c - 
+\alpha \frac{\partial J}{\partial c}  
+where α (alpha) = learning rate. 
+4. Repeat until convergence. 
+Types: 
+• Batch Gradient Descent → Uses whole dataset. 
+• Stochastic Gradient Descent (SGD) → Updates per sample (faster, noisier). 
+• Mini-Batch Gradient Descent → Updates per batch of samples (best in practice). 
+Viva Q&A: 
+• Q: What happens if learning rate is too high? 
+o A: The algorithm may overshoot and never converge. 
+• Q: What if it’s too low? 
+o A: It converges very slowly. 
+3. Regularization (Lasso & Ridge) 
+Would you like me to go ahead with Regularization in the same way? 
+Awesome 🚀 Let’s keep the flow! We’ve done Feature Engineering and Linear Regression, 
+now here comes Regularization — one of the most common viva topics because it connects 
+regression + overfitting control. 
+3. Regularization 
+3.1 L1 – Lasso Regression → l1l2.py / easyl1l2.py 
+What it is: 
+• Lasso (Least Absolute Shrinkage and Selection Operator) is a regression technique that 
+adds an L1 penalty to the cost function. 
+• Cost function: 
+J=MSE+λ∑∣wi∣J = \text{MSE} + \lambda \sum |w_i|  
+where λ = regularization strength, w = coefficients. 
+Why we use it: 
+• Helps prevent overfitting by shrinking coefficients. 
+• Performs feature selection because L1 can shrink some coefficients exactly to zero 
+(removes irrelevant features). 
+How we use it: 
+1. Train a regression model with L1 penalty. 
+2. Adjust λ → 
+o λ = 0 → becomes normal regression. 
+o Large λ → more coefficients shrink to zero. 
+3. Select λ using cross-validation. 
+Real-life example: 
+Predicting house prices with many features (location, size, age, nearby schools, etc.). Lasso will 
+automatically drop unimportant ones like “paint color.” 
+Viva Q&A: 
+• Q: Why does Lasso do feature selection? 
+o A: Because L1 penalty makes some coefficients shrink exactly to zero. 
+3.2 L2 – Ridge Regression → l1l2.py / easyl1l2.py 
+What it is: 
+• Ridge Regression adds an L2 penalty to the cost function. 
+• Cost function: 
+J=MSE+λ∑wi2J = \text{MSE} + \lambda \sum w_i^2  
+Why we use it: 
+• Prevents overfitting by reducing coefficient sizes. 
+• Unlike Lasso, Ridge never makes coefficients exactly zero → keeps all features but 
+makes them smaller. 
+How we use it: 
+1. Train regression with L2 penalty. 
+2. Adjust λ → higher λ makes coefficients shrink more. 
+3. Useful when many features contribute a little bit. 
+Real-life example: 
+Predicting exam scores based on many small factors (study hours, sleep, health, motivation, etc.) 
+— Ridge keeps all factors but balances them. 
+Viva Q&A: 
+• Q: Difference between Lasso and Ridge? 
+o A: Lasso does feature selection (some coefficients = 0). Ridge keeps all features 
+but shrinks them. 
+3.3 Elastic Net (extra, if asked) 
+• Combines L1 + L2 penalties. 
+• Useful when dataset has many correlated features. 
+• Cost function: 
+J=MSE+λ1∑∣wi∣+λ2∑wi2J = \text{MSE} + \lambda_1 \sum |w_i| + \lambda_2 \sum 
+w_i^2  
+: 
+4. Classification (Logistic Regression, Decision Tree, 
+Random Forest, Naïve Bayes, SVM) 
+Do you want me to continue directly with Classification now in the same detailed style? 
+Perfect 🔥 Let’s dive into the last big block — Classification. This is super important for viva 
+because examiners love comparing these algorithms. I’ll cover each in detail with definitions, 
+intuition, why we use it, how it works, and viva-ready Q&A. 
+4. Classification 
+4.1 Logistic Regression → logireg.py 
+What it is: 
+• A supervised learning algorithm used for classification (binary/multi-class). 
+• Despite the name, it’s not regression — it predicts probabilities using the sigmoid 
+(logistic) function. 
+• Equation: 
+P(Y=1∣X)=11+e−(b0+b1X1+b2X2+… )P(Y=1|X) = \frac{1}{1 + e^{-(b_0 + b_1X_1 + 
+b_2X_2 + \dots)}}  
+Why we use it: 
+• When the target variable is categorical (e.g., pass/fail, spam/not spam, disease/healthy). 
+• Probabilistic interpretation (output between 0 and 1). 
+How we use it: 
+1. Fit linear equation. 
+2. Pass through sigmoid → output probability. 
+3. Apply threshold (default 0.5). 
+o If probability ≥ 0.5 → Class 1. 
+o Else → Class 0. 
+Viva Q&A: 
+• Q: Why use sigmoid in logistic regression? 
+o A: It maps any real value into the range [0,1] so we can interpret it as probability. 
+• Q: Can logistic regression handle multi-class? 
+o A: Yes, using One-vs-Rest (OvR) or Softmax Regression. 
+4.2 Decision Tree → dt.py 
+What it is: 
+• A tree-like model where data is split into branches based on feature conditions. 
+• Nodes = questions, edges = answers, leaves = final decision. 
+Why we use it: 
+• Easy to interpret (like flowcharts). 
+• Handles numerical and categorical data. 
+• Works without scaling. 
+How we use it: 
+1. At each node, choose the best feature to split data using criteria: 
+o Gini Index (measure of impurity). 
+o Entropy & Information Gain. 
+2. Keep splitting until stopping condition (max depth, min samples). 
+3. Predict class at leaf node. 
+Example: 
+If “Age < 18?” → Yes → “Student discount”; No → “Full price.” 
+Viva Q&A: 
+• Q: What’s the difference between Gini and Entropy? 
+o A: Both measure impurity. Gini is faster; Entropy is based on information theory. 
+4.3 Random Forest → rf.py 
+What it is: 
+• An ensemble model that builds many Decision Trees and combines them. 
+• Each tree is trained on a random subset of data and features → introduces diversity. 
+Why we use it: 
+• Solves overfitting of Decision Trees. 
+• Provides high accuracy and stability. 
+How we use it: 
+1. Bootstrap sampling → train each tree on random sample. 
+2. At each split → choose random subset of features. 
+3. Combine results (majority voting for classification, average for regression). 
+Viva Q&A: 
+• Q: Why is Random Forest better than a single Decision Tree? 
+o A: It reduces variance and overfitting by averaging multiple trees. 
+• Q: Does Random Forest need scaling? 
+o A: No, tree-based models don’t need feature scaling. 
+4.4 Naïve Bayes → nb.py 
+What it is: 
+• A probabilistic classifier based on Bayes’ Theorem with the assumption that features 
+are independent (hence “naïve”). 
+• Formula: 
+P(Y∣X)=P(X∣Y)P(Y)P(X)P(Y|X) = \frac{P(X|Y) P(Y)}{P(X)}  
+Why we use it: 
+• Very fast and works well with text classification (spam filtering, sentiment analysis). 
+• Performs well even with small datasets. 
+How we use it: 
+1. Calculate prior probability of classes (e.g., spam vs. not spam). 
+2. Calculate likelihood of features given class. 
+3. Apply Bayes’ theorem → pick class with highest probability. 
+Types: 
+• Gaussian NB → numerical data. 
+• Multinomial NB → word counts in text. 
+• Bernoulli NB → binary features. 
+Viva Q&A: 
+• Q: Why is it called “Naïve”? 
+o A: Because it assumes all features are independent, which is rarely true in real 
+life. 
+• Q: Where is it most commonly used? 
+o A: Spam detection, text classification, document categorization. 
+4.5 Support Vector Machine → svm.py 
+What it is: 
+• A supervised learning algorithm that finds the best hyperplane to separate classes with 
+maximum margin. 
+• For non-linear data, it uses the kernel trick to project into higher dimensions. 
+Why we use it: 
+• Works well on high-dimensional data. 
+• Effective for clear margin of separation. 
+• Very powerful for both linear and non-linear classification. 
+How we use it: 
+1. Plot data in feature space. 
+2. Find the hyperplane that maximizes margin between classes. 
+3. If data isn’t linearly separable → use kernels (Polynomial, RBF). 
+Viva Q&A: 
+• Q: What is the kernel trick? 
+o A: It allows us to transform data into higher dimensions without explicitly 
+computing them, making non-linear classification possible. 
+• Q: What are support vectors? 
+o A: The closest data points to the decision boundary; they define the hyperplane. 
