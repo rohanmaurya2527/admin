@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load dataset and drop missing values
-df = pd.read_csv("Rizwan/Datasets/Car_Insurance_Claim.csv")[["CREDIT_SCORE", "OUTCOME"]].dropna()
+df = pd.read_csv("Datasets/Car_Insurance_Claim.csv")[["CREDIT_SCORE", "OUTCOME"]].dropna()
 
 # Features and target
 x,y = df[["CREDIT_SCORE"]],df["OUTCOME"]
