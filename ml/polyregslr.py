@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 
 # Load the dataset
-data = pd.read_excel("Rizwan/Datasets/PolyData.xlsx")
+data = pd.read_excel("Datasets/PolyData.xlsx")
 data.drop("Unnamed: 0", axis=1, inplace=True)
 
 # Split into input (X) and output (y)
