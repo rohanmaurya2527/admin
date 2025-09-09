@@ -16,15 +16,15 @@ df["Target"] = data.target
 
 # 3. Basic Exploration
 print("Shape:", df.shape)
-print("\nInfo:")
+print("Info:")
 df.info()
-print("\nDescription:\n", df.describe())
-print("\nMissing Values Count:\n", df.isnull().sum())
-print("\nMissing Values Percentage:\n", df.isnull().mean() * 100)
+print("Description:", df.describe())
+print("Missing Values Count:", df.isnull().sum())
+print("Missing Values Percentage:", df.isnull().mean() * 100)
 
 # 4. Define Columns for Imputation
 numeric_cols = df.select_dtypes(include=['float64', 'int64']).columns.tolist()
-print("\nNumeric Columns Available for Imputation:", numeric_cols)
+print("Numeric Columns Available for Imputation:", numeric_cols)
 
 # Example: pick any numeric column (replace with your column name)
 col = "age" if "age" in df.columns else numeric_cols[0]
