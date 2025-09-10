@@ -47,3 +47,108 @@ Summary Table:
 | Bar Chart    | Comparing categories             | Categories     | Numeric value       |
 
 End of file.
+
+Python Data Visualization Libraries - Overview
+
+1. Matplotlib
+--------------
+- What it is: The foundational Python plotting library.
+- Used to create static, 2D visualizations (basic to complex).
+- Low-level but very customizable.
+- It powers other libraries like Seaborn and Pandas plots.
+
+Best For:
+- Creating line charts, bar charts, scatter plots, histograms, etc.
+- Highly customized static charts (e.g., for academic papers or reports).
+
+Example Use:
+import matplotlib.pyplot as plt
+plt.plot([1, 2, 3], [4, 5, 6])
+plt.show()
+
+2. Seaborn
+-----------
+- What it is: A high-level interface built on top of Matplotlib.
+- Designed for statistical graphics and quick exploration.
+- Comes with beautiful default styles and color themes.
+
+Best For:
+- Statistical plots (e.g., box plots, violin plots, heatmaps, regression lines).
+- Fast and elegant visualizations for data analysis.
+
+Example Use:
+import seaborn as sns
+sns.boxplot(data=df, x='category', y='value')
+
+3. Plotly
+----------
+- What it is: A library for interactive, web-based visualizations.
+- Allows zooming, tooltips, hover effects, and clickable charts.
+- Can be used in Python, R, and JavaScript.
+
+Best For:
+- Dashboards, web apps, data storytelling.
+- Sharing charts online or embedding them.
+
+Example Use:
+import plotly.express as px
+fig = px.scatter(df, x="x_column", y="y_column", color="group")
+fig.show()
+
+4. Bokeh
+---------
+- What it is: A Python library for interactive plots in the browser.
+- Similar to Plotly, but more developer-friendly for custom web apps.
+- Can be integrated into HTML pages and dashboards (e.g., using Flask).
+
+Best For:
+- Creating live, interactive dashboards.
+- Streaming data and embedding plots into websites.
+
+Example Use:
+from bokeh.plotting import figure, show
+p = figure()
+p.line([1, 2, 3], [4, 6, 2])
+show(p)
+
+Comparison Summary:
+--------------------
+
+| Library     | Interactivity | Best For                        | Built On       | Output Type      |
+|-------------|---------------|----------------------------------|----------------|------------------|
+| Matplotlib  | No (Static)   | Custom 2D plots                  | Native         | Images (.png, etc)|
+| Seaborn     | No (Static)   | Statistical plots, fast analysis| Matplotlib     | Images            |
+| Plotly      | Yes           | Dashboards, rich visuals         | D3.js/WebGL    | HTML, web output  |
+| Bokeh       | Yes           | Web apps, streaming dashboards   | JavaScript     | HTML, web output  |
+
+End of file.
+
+Comparison Table:
+---------------------------
+
+| Feature             | Tableau                        | Power BI                        |
+|---------------------|--------------------------------|---------------------------------|
+| Ease of Use         | Medium (steeper learning)      | Easy (especially for Excel users)|
+| Visualizations      | Highly customizable            | Good, less customizable         |
+| Data Handling       | Excellent for large data       | Good, may need optimization     |
+| Integration         | Wide range                     | Best with Microsoft stack       |
+| Pricing             | Higher                         | More affordable                 |
+| Deployment          | Cloud, Desktop, Server         | Cloud, Desktop, Report Server   |
+| Extensibility       | Python, R, JS API              | Python, R, DAX, custom visuals  |
+| Sharing             | Strong enterprise options      | Easy for internal teams         |
+| Best For            | Advanced analytics, visuals    | Business users, Microsoft shops |
+
+End of file
+
+| Feature              | Zoho Analytics                     | Zoho Creator                         |
+|----------------------|------------------------------------|--------------------------------------|
+| Purpose              | Data analysis & reporting          | App development & automation         |
+| Focus                | Dashboards and insights            | Custom apps & workflow automation    |
+| Coding Needed        | No (formulas, drag-drop interface) | Low-code (Deluge)                    |
+| Data Handling        | Import & analyze existing data     | Collect, manage, and process data    |
+| Visualizations       | Charts, dashboards, pivot tables   | Basic reports, embedded charts       |
+| Integration          | CRM, Books, Google Analytics, etc. | APIs, Zoho apps, third-party tools   |
+| Output               | Reports, dashboards                | Full apps (web + mobile)             |
+
+End of File
+
