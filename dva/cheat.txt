@@ -1,0 +1,112 @@
+Detailed Viva Cheat Sheet – Data Analysis & Visualization 
+(M.Sc. Data Science & AI – RJS/PGDSAI102 & 102P) 
+Unit I – Introduction to Data Analysis 
+Q1. What is Data Analysis? 
+• Definition: Process of cleaning, transforming, and modeling data to discover useful 
+insights, support decision-making, and solve problems. 
+• Why important? Helps identify patterns, trends, and correlations. 
+• Example: Analyzing sales data to find which product sells most in festive season. 
+Q2. What is Exploratory Data Analysis (EDA)? 
+• Definition: Initial investigation of data using summary statistics and visual methods. 
+• Why? To detect missing values, outliers, distributions. 
+• Tools: Pandas, Matplotlib, Seaborn. 
+• Example: Plotting histogram of ages in a dataset to check skewness. 
+Q3. Data Analytics vs Data Analysis? 
+• Data Analysis = Inspecting datasets to extract insights. 
+• Data Analytics = Broader, includes predictive modeling, machine learning, dashboards. 
+• Example: Analysis = calculating average sales. Analytics = predicting next year’s sales 
+using ML. 
+Q4. What is ETL? 
+• Extract (pull data from sources like databases, CSV, APIs) 
+• Transform (clean, standardize, aggregate data) 
+• Load (store into data warehouse/lake for reporting). 
+• Example: Banking data pulled from branches, cleaned for duplicates, and stored in 
+central data warehouse. 
+Q5. What are Data Repositories? 
+• Data Lake: Stores raw, unstructured data. 
+• Data Warehouse: Stores structured, processed data for reporting. 
+• Data Mart: Subset of data warehouse focused on specific domain (e.g., sales, HR). 
+Unit II – Data Sources 
+Q6. Different Data File Formats? 
+• CSV/Excel: Tabular data. 
+• JSON/XML: Hierarchical data (web APIs). 
+• SQL Databases: Structured relational data. 
+• Binary formats: Faster access, e.g., Parquet, Avro. 
+Q7. What is Data Wrangling? 
+• Process of cleaning, reshaping, and merging raw data into usable format. 
+• Includes: handling missing values, renaming columns, normalizing formats. 
+• Example: Converting “Yes/No” into 1/0 for analysis. 
+Q8. Handling Missing Data – Methods? 
+• Deletion: Remove rows/columns with missing values. 
+• Imputation: Replace with mean/median/mode. 
+• Forward/Backward Fill: Copy previous or next value. 
+• Predictive: Use regression/ML models to estimate missing values. 
+Q9. What is Web Scraping? 
+• Extracting data from websites. 
+• Tools: BeautifulSoup, Scrapy, Selenium. 
+• Use Case: Scraping product prices from Amazon for comparison. 
+Q10. What are Hierarchical Indexes in Pandas? 
+• Multi-level indexing (row/column labels). 
+• Helps in working with higher-dimensional data. 
+• Example: Sales data indexed by [Region, Year]. 
+Unit III – Data Visualization 
+Q11. What is Data Visualization? 
+• Converting raw data into visual form (charts, graphs). 
+• Why? Humans understand visuals faster than numbers. 
+• Example: Instead of reading sales figures, a bar chart shows product-wise revenue 
+instantly. 
+Q12. Common Visualization Types? 
+• Bar Chart: Compare categories. 
+• Line Chart: Trends over time. 
+• Pie Chart: Proportions. 
+• Histogram: Distribution of continuous data. 
+• Scatter Plot: Relationship between two variables. 
+• Heatmap: Correlation matrix visualization. 
+Q13. What is a Dashboard? 
+• A collection of charts/KPIs in one view. 
+• Purpose: Monitoring business health, decision-making. 
+• Example: A sales dashboard showing revenue, profit margin, top products, and regional 
+performance. 
+Q14. Difference between Tableau and Power BI? 
+• Tableau: Strong at complex visualization, slightly costlier. 
+• Power BI: Tight integration with Microsoft tools, more affordable. 
+• Both: Used for creating dashboards, reports, and interactive analysis. 
+Q15. What are Filters and Slicers? 
+• Filter: Restricts data shown in visualizations. 
+• Slicer: User-friendly filter UI (buttons, dropdowns). 
+• Example: Filter sales report to show “only 2023” data. 
+Unit IV – Power BI 
+Q16. What is Power BI? 
+• A Business Intelligence tool by Microsoft. 
+• Use: Connects to multiple data sources, creates visualizations, builds dashboards. 
+Q17. Power BI Desktop vs Power BI Service? 
+• Desktop: Build and design reports locally. 
+• Service (Cloud): Share, publish, collaborate online. 
+Q18. What is Report Canvas? 
+• The workspace in Power BI where you place charts, visuals, and KPIs. 
+Q19. What is a Data Story? 
+• Presenting insights step by step using visuals. 
+• Makes data easy to understand for business stakeholders. 
+• Example: Show sales growth → compare regions → highlight best-performing products. 
+Q20. How to Publish a Power BI Report? 
+• Click Publish in Power BI Desktop → Upload to Power BI Service → Share with team or 
+embed in apps. 
+Practical-Oriented Questions 
+Q21. How to show visualization in Python? 
+• Matplotlib: plt.plot(x, y) 
+• Seaborn: sns.barplot(data=...) 
+• Plotly: Interactive charts (px.scatter(df, x="Age", y="Salary")) 
+Q22. How to show visualization in R? 
+• Using ggplot2: 
+ggplot(data, aes(x=Age, y=Salary)) + geom_point() 
+Q23. Data Aggregation in Tableau? 
+• Aggregating = summarizing. 
+• Example: SUM of Sales, AVG of Profit, COUNT of Customers. 
+• Allows comparing grouped data instead of individual rows. 
+Q24. Tableau vs Zoho Analytics? 
+• Tableau: Enterprise-grade, advanced custom visuals. 
+• Zoho: Easier, cheaper, mostly cloud-based BI tool. 
+Q25. What is a Gantt Chart? 
+• Chart for project timelines. 
+• X-axis = time, Y-axis = tasks. 
+• Example: Visualizing software project schedule with deadlines.
