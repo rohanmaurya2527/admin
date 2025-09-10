@@ -50,3 +50,23 @@ plt.hist(y,bins=10)
 plt.show()
 plt.pie([1,3,5,7,9],labels=['a','b','c','d','e'],autopct='%1.1f%%')
 plt.show()
+
+#Seaborn
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+# reading the database
+data = pd.read_csv("tips.csv")
+sns.scatterplot(x=df['total_bill'], y=df['tip'], hue=df['sex'])
+plt.show()
+sns.histplot(x=df['total_bill'],kde=True,hue=df['sex'])
+plt.show()
+sns.barplot(x=df['day'],y=df['tip'],ci=None)
+plt.show()
+x,y=df[['total_bill']],df[['tip']]
+lr=LinearRegression()
+lr.fit(x,y)
+sns.lineplot(x=df['total_bill'],y=df['tip'])
+plt.show()
+sns.pairplot(data=df,hue='sex')
+plt.show()
