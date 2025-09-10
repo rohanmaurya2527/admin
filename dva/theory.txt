@@ -1,0 +1,49 @@
+Chart Types Explained - Plain Text Guide
+
+1. Histogram
+-------------
+- What it shows: Distribution of a single continuous variable.
+- It groups data into bins (ranges) and shows how many values fall into each.
+- Use it to understand how data is spread.
+- Example: Age distribution of people.
+
+2. Pie Chart
+-------------
+- What it shows: Part-to-whole comparison.
+- Each slice shows the proportion of a category within a whole.
+- Best for showing percentages across 3–5 categories.
+- Example: Market share of brands (Apple 40%, Samsung 35%, Others 25%).
+
+3. Scatter Plot
+----------------
+- What it shows: Relationship between two numeric variables.
+- Each point represents an observation.
+- Use to detect patterns, trends, or outliers.
+- Example: Study hours vs exam scores.
+
+4. Line Plot
+-------------
+- What it shows: Change over time or ordered values.
+- Points are connected by lines to show trends.
+- Use for time-series data (e.g., sales over months).
+- Example: Website traffic from Jan to June.
+
+5. Bar Chart
+-------------
+- What it shows: Comparison of categories.
+- Uses vertical or horizontal bars.
+- Best for comparing totals or averages across groups.
+- Example: Sales by region (East, West, North, etc.).
+
+Summary Table:
+----------------
+
+| Chart Type   | Best For                         | X-Axis         | Y-Axis              |
+|--------------|----------------------------------|----------------|---------------------|
+| Histogram    | Data distribution                | Value bins     | Frequency count     |
+| Pie Chart    | Part-to-whole comparison         | Categories     | % share (visual)    |
+| Scatter Plot | Relationship between variables   | Numeric value  | Numeric value       |
+| Line Plot    | Trends over time                 | Time or order  | Numeric value       |
+| Bar Chart    | Comparing categories             | Categories     | Numeric value       |
+
+End of file.
