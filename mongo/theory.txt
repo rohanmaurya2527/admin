@@ -1,0 +1,172 @@
+ Database & Warehousing Viva Guide (Detailed but 
+Short) 
+UNIT – I: Database Concepts 
+Why Databases? 
+• What: A database is a structured collection of data. 
+• Why: To reduce redundancy, ensure integrity, easy access, multi-user support. 
+• How: Managed using DBMS (e.g., MySQL, MongoDB). 
+• Example: A school database stores student info systematically instead of scattered Excel 
+sheets. 
+Data vs Information 
+• Data: Raw, unorganized facts. (e.g., 101, 23, 78). 
+• Information: Processed, meaningful output. (e.g., Roll no. 101 scored 78 marks). 
+• Why: Databases help in converting raw data into useful information. 
+Why Database Design is Important? 
+• Ensures efficiency, scalability, avoids anomalies. 
+• Uses ER Diagrams, Normalization (1NF, 2NF, 3NF). 
+• Example: Splitting student info into separate students and courses tables. 
+MongoDB Overview 
+• What: NoSQL, document-oriented database (stores JSON-like BSON). 
+• Why: Flexible schema, handles unstructured/big data, high scalability. 
+• How: Collections instead of tables, documents instead of rows. 
+MongoDB Data Types 
+• String, Number, Boolean, Date, Array, ObjectId, Embedded Document. 
+• Example: 
+• { name:"Ravi", age:22, hobbies:["cricket","music"], 
+address:{city:"Mumbai"} } 
+MongoDB Data Modeling 
+• Embedded Model: Store related data in one document. 
+• Reference Model: Use separate documents with references. 
+• Why: To optimize read/write performance. 
+MongoDB Operators 
+• Comparison: $eq, $gt, $lt, $ne 
+• Logical: $and, $or, $not 
+• Arithmetic: $sum, $avg, $multiply 
+• Why: Used in queries and aggregations. 
+Aggregation Pipeline 
+• What: Framework to process documents in stages. 
+• Stages: $match (filter), $group (aggregate), $project (reshape), $sort. 
+• Example: 
+• db.sales.aggregate([{$group:{_id:"$item", total:{$sum:"$amount"}}}]) 
+UNIT – II: Database Commands 
+CRUD Operations 
+• Create: Insert data. 
+• db.students.insertOne({name:"Amit", age:21}) 
+• Read: Retrieve. db.students.find({age:21}) 
+• Update: Modify. db.students.updateOne({name:"Amit"}, {$set:{age:22}}) 
+• Delete: Remove. db.students.deleteOne({name:"Amit"}) 
+Database Management 
+• Create DB: use school 
+• Drop DB: db.dropDatabase() 
+• Create Collection: db.createCollection("students") 
+• Drop Collection: db.students.drop() 
+SQL vs MongoDB 
+• SQL: SELECT * FROM students WHERE age>20; 
+• MongoDB: db.students.find({age:{$gt:20}}) 
+• Mapping: 
+o SQL WHERE → Mongo filter 
+o SQL GROUP BY → Mongo aggregation 
+o SQL LIMIT → Mongo .limit() 
+MongoDB Text Search 
+• What: Search words inside text fields. 
+• How: 
+• db.books.createIndex({title:"text"}); 
+• db.books.find({$text:{$search:"machine learning"}}); 
+Connectivity with Languages 
+• Java MongoDB Driver, PyMongo (Python), PHP MongoDB extension. 
+• Why: To build applications with MongoDB backend. 
+UNIT – III: Data Warehousing & Business Analysis 
+Data Warehouse 
+• What: A large centralized database that stores historical data. 
+• Why: For decision support, trend analysis. 
+• How: Data is collected from multiple sources → cleaned → stored. 
+Components of Data Warehouse 
+1. Data Sources – OLTP databases, files. 
+2. ETL Tools – Extract, Transform, Load (e.g., Informatica). 
+3. Data Marts – Subject-oriented subsets (e.g., sales mart). 
+4. Metadata – Data about data. 
+5. OLAP Tools – For analysis. 
+OLAP (Online Analytical Processing) 
+• What: Multi-dimensional data analysis. 
+• Why: For managers/analysts to query large datasets. 
+• Operations: 
+o Roll-up: Summarize data. 
+o Drill-down: Go into details. 
+o Slice/Dice: Select specific dimensions. 
+o Pivot: Rotate data view. 
+UNIT – IV: Data Mining, Classification & Clustering 
+Data Mining 
+• What: Process of discovering patterns & knowledge from data. 
+• Steps: Data Cleaning → Transformation → Mining → Evaluation. 
+• Applications: Fraud detection, Market basket analysis, Medical diagnosis. 
+Association Rule Mining 
+• What: Finds item relationships in large datasets. 
+• Rule: {Milk → Bread} 
+• Measures: Support, Confidence, Lift. 
+• Algorithms: Apriori, FP-Growth. 
+Classification 
+• What: Predicts category labels for data. 
+• Why: For supervised learning tasks. 
+• Methods: 
+o Decision Tree – Splits data based on features. 
+o Naïve Bayes – Based on probability. 
+o SVM – Separates classes using hyperplane. 
+o Neural Networks – Complex, deep learning models. 
+Prediction 
+• What: Estimate continuous values. 
+• Why: For forecasting (e.g., sales, temperature). 
+• Techniques: Regression, Time-series. 
+Clustering 
+• What: Unsupervised grouping of similar data. 
+• Why: To find hidden patterns. 
+• Methods: 
+o K-means – Groups data into k clusters. 
+o Hierarchical – Builds tree of clusters. 
+o DBSCAN – Density-based. 
+• Applications: Customer segmentation, Document clustering. 
+MongoDB Practical Viva Cheat Sheet 
+1. Basic Operations 
+• What: Create, Read, Update, Delete (CRUD) operations. 
+• Why: To manage and manipulate documents in collections. 
+• How: 
+• db.students.insertOne({name:"Ravi", age:22}); 
+• db.students.find(); 
+• db.students.updateOne({name:"Ravi"}, {$set:{age:23}}); 
+• db.students.deleteOne({name:"Ravi"}); 
+2. Aggregation Operations 
+• What: Framework to process data in stages (like SQL GROUP BY). 
+• Why: To perform computations like sum, avg, min, max. 
+• How: 
+• db.sales.aggregate([{$group:{_id:"$item", total:{$sum:"$amount"}}}]); 
+3. Sorting, Limiting & Skipping 
+• What: Organizing query results. 
+• Why: To control and optimize output. 
+• How: 
+• db.students.find().sort({age:1}).limit(5).skip(2); 
+4. Comparison Operators 
+• What: Operators like $eq, $gt, $lt, $ne. 
+• Why: To filter documents. 
+• How: 
+• db.students.find({age:{$gt:20}}); 
+5. Logical Operators 
+• What: $and, $or, $not, $nor. 
+• Why: Combine multiple conditions. 
+• How: 
+• db.students.find({$or:[{age:20}, {name:"Ravi"}]}); 
+6. Arithmetic Operators ($abs, $floor, $ceil) 
+• What: Mathematical calculations inside aggregation. 
+• Why: For numeric transformations. 
+• How: 
+• db.data.aggregate([{$project:{value:{$ceil:"$score"}}}]); 
+7. Arithmetic Operators ($log, $mod, $divide, $multiply) 
+• What: Perform logarithm, modulus, division, multiplication. 
+• Why: For analytical calculations. 
+• How: 
+• db.sales.aggregate([{$project:{profit:{$mod:["$amount",5]}}}]); 
+8. Arithmetic Operators ($pow, $sqrt, $subtract) 
+• What: Power, square root, subtraction. 
+• Why: For derived fields. 
+• How: 
+• db.data.aggregate([{$project:{sq:{$sqrt:"$value"}}}]); 
+9. String Operators ($trunc, $round, $cmp) 
+• What: Truncate, round numbers, compare values. 
+• Why: Data formatting. 
+• How: 
+• db.data.aggregate([{$project:{rounded:{$round:["$value",1]}}}]); 
+10. String Operators ($concat, $size, $rename) 
+• What: Concatenate strings, array size, rename fields. 
+• Why: String manipulation. 
+• How: 
+• db.students.aggregate([{$project:{full:{$concat:["$fname"," 
+","$lname"]}}}]); 
+• db.students.aggregate([{$project:{hobbiesCount:{$size:"$hobbies"}}}]);
