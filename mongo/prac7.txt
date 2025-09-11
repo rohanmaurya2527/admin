@@ -42,7 +42,7 @@ db.shapes.aggregate([
 ])
 
 
-items Collection
+#items Collection
 db.items.insertMany([
  {
  _id: 1,
