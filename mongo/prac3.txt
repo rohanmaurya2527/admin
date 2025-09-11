@@ -1,18 +1,12 @@
 #vehicleinformation Collection:
 db.vehicleinformation.insertMany([
- { "make": "Nissan", "model": "GTR", "year": 2016, "type": "Sports", "reg_no":
-"EDS 5578" },
- { "make": "BMW", "model": "X5", "year": 2020, "type": "SUV", "reg_no": "LLS
-6899" },
- { "make": "Toyota", "model": "Yaris", "year": 2019, "type": "Compact", "reg_no":
-"HXE 0153" },
- { "make": "Audi", "model": "RS3", "year": 2018, "type": "Sports", "reg_no": "RFD
-7866" },
- { "make": "Ford", "model": "Transit", "year": 2017, "type": "Van", "reg_no": "TST
-9800" },
- { "make": "Honda", "model": "Gold Wing", "year": 2018, "type": "Bike",
-"reg_no": "LKS 2477" }
-])
+  { "make": "Nissan", "model": "GTR", "year": 2016, "type": "Sports", "reg_no": "EDS 5578" },
+  { "make": "BMW", "model": "X5", "year": 2020, "type": "SUV", "reg_no": "LLS 6899" },
+  { "make": "Toyota", "model": "Yaris", "year": 2019, "type": "Compact", "reg_no": "HXE 0153" },
+  { "make": "Audi", "model": "RS3", "year": 2018, "type": "Sports", "reg_no": "RFD 7866" },
+  { "make": "Ford", "model": "Transit", "year": 2017, "type": "Van", "reg_no": "TST 9800" },
+  { "make": "Honda", "model": "Gold Wing", "year": 2018, "type": "Bike", "reg_no": "LKS 2477" }
+]);
 
 #Q. Sorting car detail records in ascending order & descending order.
 #ascending order
