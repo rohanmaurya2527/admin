@@ -1,119 +1,26 @@
-#Students Collection:
-db.students.insertMany([
- {
- std_name: "Micky",
- gender: "Female",
- class: "X",
- fees: 5000,
- exam_fees: 500,
- age: 16,
- Total_marks: 405,
- Result: "Pass"
- },
- {
- std_name: "Moty",
- gender: "Male",
- fees: 4000,
- exam_fees: 500,
- class: "VII",
- age: 15,
- Total_marks: 705,
- Result: "Pass"
- },
- {
- std_name: "Thomas",
- gender: "Male",
- fees: 3000,
- exam_fees: 500,
- class: "V",
- age: 12,
- Total_marks: 450,
- Result: "pass"
- },
- {
- std_name: "Jin",
- gender: "Female",
- fees: 5000,
- exam_fees: 500,
- class: "X",
- age: 16,
- Total_marks: 750,
- Result: "Pass"
- },
- {
- std_name: "Mia",
- gender: "Female",
- fees: 6000,
- exam_fees: 500,
- class: "XI",
- age: 17,
- Total_marks: 450,
- Result: "Pass"
- },
- {
- std_name: "Mike",
- gender: "Male",
- fees: {
- school_fees: 4000,
- exam_fees: 500,
- pending_fees: 950
- },
- class: "V",
- age: 15,
- Total_marks: 450,
- Result: "Pass"
- }
-])
+#Inventory collection:
+db.inventory.insertMany([
+{ _id: "LS00412", name: "XYZ Chocolate Bar - 100gm", price: 5.23, quantity:
+25000, category: "snack" },
+{ _id: "LS00413", name: "Kwality Non-fat - liter", price: 3.00, quantity: 10000,
+category: "dairy" },
+{ _id: "LS00414", name: "Eggs 12 pack", price: 5.90, quantity: 16000, category:
+"produce", health_tag: "organic" },
+{ _id: "LS00415", name: "Whole Chicken", price: 12.95, quantity: 12500, category:
+"meat" },
+{ _id: "LS00416", name: "Grapes (Packed)", price: 3.59, quantity: 9000, category:
+"produce", health_tag: "organic" },
+{ _id: "LS00417", name: "Blueberries (Packed)", price: 4.95, quantity: 12000,
+category: "produce", health_tag: "organic" },
+{ _id: "LS00418", name: "Lurpak Butter 500g", price: 9.75, quantity: 500, category:
+"dairy" }])
 
-#Q.Use $abs, $ceil, $floor operators on student collection:
-#$abs:
-db.students.aggregate([
- {
- $match: { gender: "Female" }
- },
- {
- $project: {
- std_name: 1,
- class: 1,
- age: 1,
- Result: 1,
- total_fees: {
- $abs: {
- $add: ["$fees", "$exam_fees"]
- }
- }
- }
- }
-])
-
-#$floor:
-db.students.aggregate([
- {
- $match: { gender: "Female" }
- },
- {
- $project: {
- std_name: 1,
- class: 1,
- age: 1,
- Result: 1,
- floor_grade: { $floor: "$Total_marks" }
- }
- }
-])
-
-#$ceil:
-db.students.aggregate([
- {
- $match: { gender: "Female" }
- },
- {
- $project: {
- std_name: 1,
- class: 1,
- age: 1,
- Result: 1,
- ceiling_age: { $ceil: "$age" }
- }
- }
+#use of $ceil,$floor,$abs
+db.inventory.aggregate([
+  {$project:{
+    price:1,
+    absuse:{$abs:{$subtract:['$price',10]}},
+    ceiluse:{$ceil:['$price']},
+    flooruse:{$floor:['$price']}
+  }}
 ])
