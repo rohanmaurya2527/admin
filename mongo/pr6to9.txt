@@ -1,0 +1,30 @@
+#Inventory collection:
+db.inventory.insertMany([
+{ _id: "LS00412", name: "XYZ Chocolate Bar - 100gm", price: 5.23, quantity: 25000, category: "snack" },
+{ _id: "LS00413", name: "Kwality Non-fat - liter", price: 3.00, quantity: 10000, category: "dairy" },
+{ _id: "LS00414", name: "Eggs 12 pack", price: 5.90, quantity: 16000, category: "produce", health_tag: "organic" },
+{ _id: "LS00415", name: "Whole Chicken", price: 12.95, quantity: 12500, category: "meat" },
+{ _id: "LS00416", name: "Grapes (Packed)", price: 3.59, quantity: 9000, category: "produce", health_tag: "organic" },
+{ _id: "LS00417", name: "Blueberries (Packed)", price: 4.95, quantity: 12000, category: "produce", health_tag: "organic" },
+{ _id: "LS00418", name: "Lurpak Butter 500g", price: 9.75, quantity: 500, category: "dairy" }
+])
+
+#all operator from prac 6 to 9
+db.inventory.aggregate([
+  {$project:{
+    price:1,
+    absuse:{$abs:{$subtract:['$price',10]}},
+    ceiluse:{$ceil:['$price']},
+    flooruse:{$floor:['$price']},
+    rounduse:{$round:['$price']},
+    loguse:{$log:['$price',2]},
+    truncuse:{$trunc:['$price',1]},
+    poweruse:{$pow:['$price',2]},
+    sqrtuse:{$sqrt:['$price']},
+    multiplyuse:{$multiply:['$price','$quantity']},
+    divideuse:{$divide:['$quantity','$price']},
+    moduse:{$mod:['$quantity','$price']},
+    cmpuse1:{$cmp:['$quantity','$price']},
+    cmpuse2:{$cmp:['$price','$quantity']}
+  }}
+])
