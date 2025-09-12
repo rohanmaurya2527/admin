@@ -1,0 +1,189 @@
+Practical Viva Preparation Guide (Detailed) 
+1. Data Collection, Cleaning, Modelling and Compilation 
+Q1. Difference between Data Collection and Data Cleaning? 
+• Collection → Gathering raw data (from surveys, sensors, APIs, databases). 
+• Cleaning → Fixing errors, removing duplicates, handling missing values. 
+Explanation: Collected data is often messy. Cleaning ensures quality before analysis. 
+Q2. Why use .fillna() (mean, median, mode)? 
+• Mean → Best when data is symmetric. 
+• Median → Best when outliers exist. 
+• Mode → Best for categorical data. 
+Explanation: Missing values can bias results. .fillna() ensures continuity. 
+Q3. Why handle missing values? 
+• Models can’t handle NaN directly. 
+• Missing data reduces accuracy and causes bias. 
+Explanation: A dataset with 20% missing blood pressure values will give wrong medical 
+insights. 
+Q4. Difference between df.describe() and df.info()? 
+• describe() → Statistical summary (mean, std, min, max, quartiles). 
+• info() → Data types, null counts, memory usage. 
+Explanation: describe() is numeric-focused, info() is structure-focused. 
+Q5. What does index_col=0 do in read_csv()? 
+• Uses first column as row index. 
+Explanation: In student dataset, “Roll No” can become index instead of default 0,1,2. 
+2. Exploratory Data Visualization 
+Q1. Why convert Date to datetime? 
+• To perform time-based grouping, resampling, and plotting. 
+Q2. Line vs Bar vs Histogram? 
+• Line → Trend over time. 
+• Bar → Compare categories. 
+• Histogram → Distribution of numeric data. 
+Q3. Why use groupby before visualization? 
+• To aggregate data (e.g., sales by month). 
+Q4. Purpose of grid lines? 
+• Helps in readability of plots. 
+Q5. Histogram vs Boxplot? 
+• Histogram → Shape of distribution. 
+• Boxplot → Median, quartiles, and outliers. 
+3. Different Statistical Distributions 
+Q1. What is a Z-score? 
+• Standardized value showing how far a data point is from the mean in terms of standard 
+deviation. 
+Q2. Examples: 
+• Normal → Human heights. 
+• Binomial → Coin tosses. 
+• Poisson → Number of calls in an hour. 
+Q3. Binomial vs Poisson? 
+• Binomial → Fixed trials, probability of success. 
+• Poisson → Count of events in a time interval. 
+Q4. What is Chi-square distribution? 
+• Used to test independence and goodness of fit. 
+Q5. Why probability ∈ [0,1]? 
+• It represents chance, cannot exceed certainty (1) or be negative. 
+4. Hypothesis Testing 
+Q1. Null vs Alternate hypothesis? 
+• Null (H₀): No effect or no difference. 
+• Alternate (H₁): There is an effect/difference. 
+Q2. What is p-value? 
+• Probability of observing result if H₀ is true. 
+• If p < 0.05 → Reject H₀. 
+Q3. t-test vs z-test? 
+• t-test → Small sample, unknown variance. 
+• z-test → Large sample, known variance. 
+Q4. Why α = 0.05? 
+• 5% error risk is standard balance between false positives and negatives. 
+Q5. What does reject H₀ mean? 
+• Evidence supports alternate hypothesis. 
+5. Exploring Categorical and Binary Data 
+Q1. Difference categorical vs binary? 
+• Categorical → Multiple categories (e.g., color). 
+• Binary → Only 2 categories (e.g., Yes/No). 
+Q2. Why one-hot encoding? 
+• Converts categories into numeric columns for ML. 
+Q3. What does value_counts() do? 
+• Counts frequency of unique values. 
+Q4. Countplot vs Histogram? 
+• Countplot → Categorical counts. 
+• Histogram → Numeric bins. 
+Q5. Why encode categorical variables? 
+• Models only work with numbers. 
+6. ANOVA Testing 
+Q1. What does ANOVA test? 
+• Compares means of 3+ groups. 
+Q2. One-way vs Two-way ANOVA? 
+• One-way → One factor. 
+• Two-way → Two factors and interaction. 
+Q3. Meaning of significant F-test? 
+• At least one group mean is different. 
+Q4. Why not multiple t-tests? 
+• Increases error probability. ANOVA controls this. 
+Q5. Role of interaction in two-way ANOVA? 
+• Shows if two factors influence results together. 
+7. Non-Parametric Tests 
+Q1. Why use them? 
+• When data does not follow normal distribution. 
+Q2. Wilcoxon vs Mann-Whitney? 
+• Wilcoxon → Paired samples. 
+• Mann-Whitney → Independent samples. 
+Q3. Kruskal-Wallis test? 
+• Non-parametric alternative to ANOVA. 
+Q4. When prefer non-parametric? 
+• Small sample, skewed data, ordinal data. 
+Q5. What is "distribution-free"? 
+• No assumption about underlying distribution. 
+8. Time Series Analysis 
+Q1. Why set Date as index? 
+• Enables time-based operations like resampling. 
+Q2. Resampling daily vs monthly? 
+• Daily → Detailed trends. 
+• Monthly → Smoothed trends. 
+Q3. What is seasonality? 
+• Repeating patterns (e.g., sales peak in December). 
+Q4. Time series vs cross-sectional data? 
+• Time series → Observations over time. 
+• Cross-sectional → Observations at one time. 
+Q5. What is stationarity? 
+• Mean and variance constant over time. Required for forecasting. 
+9. Regression Analysis 
+Q1. Dependent vs Independent variable? 
+• Dependent → Output (Y). 
+• Independent → Input features (X). 
+Q2. How calculate slope & intercept? 
+• From regression line equation Y = mX + c. 
+Q3. What is R²? 
+• Proportion of variance explained by model. 
+Q4. Assumptions of regression? 
+• Linearity, independence, homoscedasticity, normality. 
+Q5. Correlation vs Regression? 
+• Correlation → Strength of relationship. 
+• Regression → Predicts values. 
+10. Eigenvalues and Eigenvectors 
+Q1. What is characteristic equation? 
+• det(A - λI) = 0 gives eigenvalues. 
+Q2. Meaning of eigenvector? 
+• Vector that only changes in scale (not direction) when matrix is applied. 
+Q3. Applications in Data Science? 
+• PCA (dimensionality reduction), image compression. 
+Q4. Why normalize eigenvectors? 
+• To simplify and standardize comparisons. 
+Q5. Relation between determinant and eigenvalues? 
+• Determinant = Product of eigenvalues. 
+11. Maxima and Minima of Functions 
+Q1. Local vs Global maxima? 
+• Local → Highest in neighborhood. 
+• Global → Highest in entire domain. 
+Q2. First derivative test? 
+• If slope changes from + to – → Maximum. 
+• If – to + → Minimum. 
+Q3. Second derivative test? 
+• If f''(x) > 0 → Min. 
+• If f''(x) < 0 → Max. 
+Q4. Why critical points important? 
+• They are candidates for maxima/minima. 
+Q5. Can function have multiple extrema? 
+• Yes, depends on shape (e.g., sine wave). 
+12. Rolle’s and Mean Value Theorem 
+Q1. Rolle’s theorem? 
+• If f(a)=f(b) and f continuous & differentiable, ∃ c where f’(c)=0. 
+Q2. MVT meaning? 
+• There exists a point where instantaneous slope = average slope. 
+Q3. Real-life example of MVT? 
+• Driving: If average speed = 60, at some instant speedometer must read 60. 
+Q4. Conditions for Rolle’s theorem? 
+• Continuous, differentiable, f(a)=f(b). 
+Q5. Why continuity important? 
+• Without it, slope can “break.” 
+13. Dot Product and Vector Norm 
+Q1. Geometric meaning of dot product? 
+• a·b = |a||b|cosθ → Projection of one vector on another. 
+Q2. Dot vs Cross product? 
+• Dot → Scalar output. 
+• Cross → Vector output. 
+Q3. Norm of a vector? 
+• Magnitude (length) of vector = √(x²+y²+z²). 
+Q4. Why dot product of orthogonal vectors = 0? 
+• cos(90°)=0. 
+Q5. Use of vector norm in ML? 
+• Used in distance calculations (Euclidean distance, regularization). 
+14. Inverse of Matrix (Adjoint Method) 
+Q1. Formula for inverse using adjoint? 
+• A⁻¹ = adj(A)/det(A). 
+Q2. When matrix has no inverse? 
+• When determinant = 0 (singular matrix). 
+Q3. Relation between determinant & invertibility? 
+• Non-zero determinant → Invertible. 
+Q4. Why identity matrix important? 
+• A × A⁻¹ = I. 
+Q5. Difference between adjoint and transpose? 
+• Transpose → Swap rows/columns. 
+• Adjoint → Cofactor matrix transposed.
