@@ -1,0 +1,18 @@
+DE Prac 3
+Steps:
+1. Install Java JDK 8 on your system.
+2. Copy JDK Path example (eg C:\Program Files\Java\jdk1.8.0) and open system environment variables and click on Environment variables.
+3. In System variables click on New and set Variable name and paste path as shown and click OK. Value_name: JAVA_HOME Variable name: JDK Path
+4. In System Variable click on Path there add the path (%JAVA_HOME%\bin).
+5. To check successful setup in cmd write 'java -version'.
+6. Setting Kafka folder: First create folder named 'kafka' in C Drive.
+7. Uncompress zipped kafka folder.
+8. Now cut all those files from those and paste in kafka folder.
+9. Inside config folder open zookeeper.properties and replace 'dataDir=\tmp\zookeeper-data' with 'dataDir=C:\kafka\zookeeper-data'
+10. Inside config folder open zookeeper.properties and replace 'log.dirs=\tmp\kafka-logs' with 'log.dirs=C:\kafka\kafka-logs'
+11. Starting zookeeper: Now open PowerShell & change directory to kafka folder in C Drive with cmd: cd C:\kafka
+12. Write command in powershell: '.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties'
+13. Starting Kafka Server: Now minimize powershell (Don’t cut) and open new powershell by changing directory to kafka folder in C Drive and in that write command: '.\bin\windows\kafka-server-start.bat .\config\server.properties'
+14. Creating new topic in kafka: Open cmd from 'C:\kafka\bin\windows' and run command: 'kafka-topics.bat –create –bootstrap-server localhost:9092 –replication-factor 1 –partitions 1 –topic test'
+15. For creating producer and consumer open 2 new cmd on same location like above: In producer cmd prompt write cmd: 'kafka-console-producer.bat –broker-list localhost:9092 –topic test' In consumer cmd prompt write cmd: 'kafka-console-consumer.bat –bootstrap-server localhost:9092 –topic test –from-beginning'
+16. Now Write something in producer cmd prompt which will show in consumer prompt
