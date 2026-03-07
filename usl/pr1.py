@@ -1,4 +1,4 @@
-#Simple Augmentation(with Tenserflow)
+#Simple Augmentation(with Tensorflow)
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, load_img, img_to_array
 import matplotlib.pyplot as plt
 import numpy as np
@@ -19,7 +19,7 @@ for i, batch in enumerate(datagen.flow(img, batch_size=1)):
     if i == 4:
         break
 
-#Simple Augmentation(without Tenserflow)
+#Simple Augmentation(without Tensorflow)
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
@@ -48,7 +48,7 @@ for i in range(5):
     plt.axis("off")
     plt.show()
 
-#Advanced Augmentation(with Tenserflow)
+#Advanced Augmentation(with Tensorflow)
 import tensorflow as tf
 import matplotlib.pyplot as plt
 def advanced_augment(image):
@@ -66,7 +66,7 @@ plt.imshow(aug)
 plt.axis("off")
 plt.show()
 
-#Advanced Augmentation(without Tenserflow)
+#Advanced Augmentation(without Tensorflow)
 from PIL import Image, ImageEnhance
 import numpy as np
 import matplotlib.pyplot as plt
