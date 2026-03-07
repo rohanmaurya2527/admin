@@ -1,4 +1,5 @@
 DE Prac 3
+Aim: Demonstrating publisher-subscriber messaging system using kafka
 Steps:
 1. Install Java JDK 8 on your system.
 2. Copy JDK Path example (eg C:\Program Files\Java\jdk1.8.0) and open system environment variables and click on Environment variables.
