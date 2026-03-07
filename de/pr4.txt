@@ -1,0 +1,26 @@
+DE Prac 4
+Aim: Working with NoSQL database - HBase
+Steps:
+1. Open Oracle VMBox to open cloudera virtual machine
+2. Open Terminal
+3. Write command to open/enter in HBase Shell Command: hbase shell
+4. Create table with column family Command: create 'tablename', 'col1name', 'col2name',....
+5. List tables to check/verify created tables Command: list
+6. Verifying structure of table Command: describe 'tablename'
+7. Inserting values in table Command: put 'tablename', 'id', 'colname:colattriname', 'value'
+eg- put 'studentrj', '1', 'studentname:fname', 'rohan'
+8. To display all rows with all column values from table Command: scan 'tablename'
+9. Get value for column place (Conditional Retrieval) Command: get 'tablename', 'id', 'colname'
+10. Conditional delete for specific col and its attribute Command: delete 'tablename', 'id', 'colname:colattriname'
+Eg: (Here delete column middle name for student id 1) Command-> delete 'studrj', '1', 'studname:mname'
+11. Deleting whole record for specific id Command: deleteall 'tablename', 'id'
+Eg-> deleteall 'studrj', '1'
+12. Set Max Versions for Column Family in HBase (to retain 'max' historical values)
+Command: alter 'tablename', NAME=>'colname',VERSIONS=>5
+13. Deleting whole column (columnfamily) from table Command: alter 'tablename', 'delete'=>'colname'
+Eg-> alter 'studrj', 'delete'=>'studadd'
+14. Dropping table and checking its existence (Disable->Drop->Check)
+Commands:
+  a. disable 'tablename'
+  b. drop 'tablename'
+  c. exists 'tablename'
