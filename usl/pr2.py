@@ -1,3 +1,4 @@
+#With Tensorflow
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
@@ -42,3 +43,38 @@ if prob > 0.5:
     print("Prediction: Dog | Confidence:", float(prob))
 else:
     print("Prediction: Cat | Confidence:", float(1 - prob))
+
+#Without Tensorflow
+import numpy as np
+from PIL import Image
+from sklearn.datasets import fetch_openml
+from sklearn.linear_model import LogisticRegression
+import warnings as war
+war.filterwarnings('ignore')
+# Load CIFAR-10 dataset
+cifar = fetch_openml('CIFAR_10_small')
+X = cifar.data
+y = cifar.target.astype(int)
+
+# Keep cats (3) and dogs (5)
+mask = np.isin(y, [3, 5])
+X = X[mask]
+y = (y[mask] == 5).astype(int)
+
+# Normalize pixel values
+X = X / 255.0
+
+# Train model
+model = LogisticRegression(max_iter=1000)
+model.fit(X, y)
+
+# Prediction on custom image
+img = Image.open("cat.jpg").resize((32,32))
+x = np.array(img).reshape(1, -1) / 255.0
+
+prob = model.predict_proba(x)[0][1]
+
+if prob > 0.5:
+    print("Prediction: Dog | Confidence:", prob)
+else:
+    print("Prediction: Cat | Confidence:", 1 - prob)
