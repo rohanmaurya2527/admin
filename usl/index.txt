@@ -1,0 +1,11 @@
+Aim:
+1. Implementation of data augmentation. 
+2. Build a model using transfer learning. 
+3. Demonstration of few shot learning. 
+4. Perform dimensionality reduction using principal component analysis.
+5. Implementation of singular value decomposition.
+6. Implementation of partition based clustering.
+7. Implementation of density based clustering. 
+8. Implementation of hierarchical clustering. 
+9. Perform market basket analysis using apriori algorithm.
+10. Implementation of FP-Growth algorithm.
