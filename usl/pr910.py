@@ -19,6 +19,18 @@ transactions = [
     ['Fever','Chest Pain'],
     ['Cough','Shortness of Breath','Chest Pain']
 ]
+'''
+[
+    ['Milk', 'Bread', 'Butter'],
+    ['Beer', 'Bread'],
+    ['Milk', 'Bread', 'Butter', 'Beer'],
+    ['Bread', 'Butter'],
+    ['Milk', 'Beer'],
+    ['Milk', 'Bread'],
+    ['Butter', 'Beer'],
+    ['Milk', 'Bread', 'Butter']
+]
+'''
 def run_market_basket(transactions):
     te = TransactionEncoder()
     df = pd.DataFrame(te.fit_transform(transactions), columns=te.columns_)    
