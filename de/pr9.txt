@@ -1,0 +1,33 @@
+from pyspark.sql import SparkSession
+from pyspark.ml.feature import StringIndexer, VectorAssembler
+from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+from pyspark.ml import Pipeline
+# Start Spark
+spark = SparkSession.builder.appName('IrisClassification').getOrCreate()
+# Load and rename columns
+df = spark.read.csv('Flower.csv', header=False, inferSchema=True) \
+       .toDF('Sepal_Length','Sepal_Width','Petal_Length','Petal_Width','Species')
+df.show(5)
+df.printSchema()
+df.groupBy('Species').count().show()
+# Prepare features & label
+feature_cols = ['Sepal_Length','Sepal_Width','Petal_Length','Petal_Width']
+lbl_indexer = StringIndexer(inputCol='Species', outputCol='label')
+vec_assembler = VectorAssembler(inputCols=feature_cols, outputCol='features')
+# Define model
+lr = LogisticRegression(featuresCol='features', labelCol='label', maxIter=100)
+# Split data
+train, test = df.randomSplit([0.8,0.2], seed=42)
+print("Training Rows:", train.count())
+print("Testing Rows:", test.count())
+# Pipeline: index label → assemble features → train model
+pipeline = Pipeline(stages=[lbl_indexer, vec_assembler, lr])
+model = pipeline.fit(train)
+pred = model.transform(test)
+# Show predictions
+pred.select("label","prediction").show(10)
+# Evaluate
+evaluator = MulticlassClassificationEvaluator(labelCol='label', predictionCol='prediction')
+print("Accuracy:", evaluator.setMetricName("accuracy").evaluate(pred))
+print("F1 Score:", evaluator.setMetricName("f1").evaluate(pred))
