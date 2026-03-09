@@ -30,3 +30,25 @@ Steps:
       load data local inpath '/home/cloudera/details.txt' into table temp_details;
     e. retrieve data using cmd: select * from temp_details;
     f. Now when u will access again details from database after exit you will get error as it is temporary table 
+
+Practical 6B
+Aim: Demonstrate table partitioning,clustering(Bucketing in hive)
+Steps:
+1. Open Cloudera VM and terminal
+2. In terminal write cmd to start 'Hive' cmd: hive
+3. Create database cmd: create database clg1; 
+4. Use that database using cmd: use clg1;
+5. Creating and inserting data into table made with partition using below cmds:
+    a. create table details_partition(id string, name string, age int) partitioned by(division string) row format delimited fields terminated by ',';
+    (Do next steps for various records with many times with partition id here division)
+    b. insert into details_partition partition(division='a') values(1,'arya',21); 
+    c. select * from details_partition where division='a';
+6. Creating and inserting data into table made with buckets using below cmds:
+    a. create table details_bucket( id string, name string, age int,dept string) clustered by (dept) into 5 buckets;
+    (Do next steps for various records with many times with bucket id here dept)
+    b. insert into details_bucket values(1,'arya',21,'a');
+    c. select * from details_bucket where dept='a';
+7. Creating and inserting data into table made with partition and buckets using below cmds:
+    a. create table emp_part_bucket(id string, name string, age int, tlead string) partitioned by(dept string) clustered by(tlead) into 2 buckets row format delimited fields terminated by ',';
+    b. insert into emp_part_bucket partition(dept='HR') values('1','arya',21,'abc');
+    c. select * from emp_part_bucket where dept='HR' and tlead='abc';
