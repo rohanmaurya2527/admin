@@ -1,0 +1,3 @@
+Practical 6A
+Aim: Working with different types of tables in hive.
+Stps:
