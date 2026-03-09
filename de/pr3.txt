@@ -10,7 +10,7 @@ Steps:
 7. Uncompress zipped kafka folder.
 8. Now cut all those files from those and paste in kafka folder.
 9. Inside config folder open zookeeper.properties and replace 'dataDir=\tmp\zookeeper-data' with 'dataDir=C:\kafka\zookeeper-data'
-10. Inside config folder open zookeeper.properties and replace 'log.dirs=\tmp\kafka-logs' with 'log.dirs=C:\kafka\kafka-logs'
+10. Inside config folder open server.properties and replace 'log.dirs=\tmp\kafka-logs' with 'log.dirs=C:\kafka\kafka-logs'
 11. Starting zookeeper: Now open PowerShell & change directory to kafka folder in C Drive with cmd: cd C:\kafka
 12. Write command in powershell: '.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties'
 13. Starting Kafka Server: Now minimize powershell (Don’t cut) and open new powershell by changing directory to kafka folder in C Drive and in that write command: '.\bin\windows\kafka-server-start.bat .\config\server.properties'
