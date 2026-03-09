@@ -14,6 +14,6 @@ Steps:
 11. Starting zookeeper: Now open PowerShell & change directory to kafka folder in C Drive with cmd: cd C:\kafka
 12. Write command in powershell: '.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties'
 13. Starting Kafka Server: Now minimize powershell (Don’t cut) and open new powershell by changing directory to kafka folder in C Drive and in that write command: '.\bin\windows\kafka-server-start.bat .\config\server.properties'
-14. Creating new topic in kafka: Open cmd from 'C:\kafka\bin\windows' and run command: 'kafka-topics.bat –create –bootstrap-server localhost:9092 –replication-factor 1 –partitions 1 –topic test'
-15. For creating producer and consumer open 2 new cmd on same location like above: In producer cmd prompt write cmd: 'kafka-console-producer.bat –broker-list localhost:9092 –topic test' In consumer cmd prompt write cmd: 'kafka-console-consumer.bat –bootstrap-server localhost:9092 –topic test –from-beginning'
+14. Creating new topic in kafka: Open cmd from 'C:\kafka\bin\windows' and run command: 'kafka-topics.bat –-create –-bootstrap-server localhost:9092 -–replication-factor 1 –-partitions 1 –-topic test'
+15. For creating producer and consumer open 2 new cmd on same location like above: In producer cmd prompt write cmd: 'kafka-console-producer.bat -–broker-list localhost:9092 -–topic test' In consumer cmd prompt write cmd: 'kafka-console-consumer.bat –-bootstrap-server localhost:9092 -–topic test -–from-beginning'
 16. Now Write something in producer cmd prompt which will show in consumer prompt
