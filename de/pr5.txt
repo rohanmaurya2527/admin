@@ -3,8 +3,8 @@ Aim: Simulating Data Warehouse Environment using Hive application
 Steps:
 1. Open Cloudera VM and terminal
 2. In terminal write cmd to start 'Hive' cmd: hive
-4. Create database cmd: create database clg1; 
-3. Use that database using cmd: use clg1;
+3. Create database cmd: create database clg1; 
+4. Use that database using cmd: use clg1;
 5. Create table cmd: create table std(name string, rno string,age int, mks int) row format delimited fields terminated by ',';
 6. Exit hive using cmd: exit;
 7. Now create textfile with cmd: gedit details.text (with rec as col1data,col2data...)
