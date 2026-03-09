@@ -6,11 +6,15 @@ spark = SparkSession.builder.appName("DataProcessingRDD").getOrCreate()
 df_iris = spark.read.csv("iris.csv", header=True, inferSchema=True)
 # Rename columns to remove dots
 df_iris = df_iris.toDF('ID','Sepal_Length','Sepal_Width','Petal_Length','Petal_Width','Species')
+#For Specific Column
+df=df.withColumnRenamed('Petal.Length','Petal_Length')
 # Show dataset and count
 df_iris.show()
 print("Total rows:", df_iris.count())
 # Summary statistics
 df_iris.summary().show()
+#Summary of specific column
+df_iris.select('Sepal_Length').summary().show()
 # Select columns and show
 df_iris.select('Sepal_Length','Petal_Length').show()
 # SQL queries
