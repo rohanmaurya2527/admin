@@ -18,3 +18,7 @@ Steps:
     c. load data inpath 'hadoop1/data/details.txt' into std;
     d. select * from std;
 Note for above if asked for csv file just give path of csv file in place of every text file
+Also if said to load data without using hadoop cluster 
+Instructions:
+Skip Step 8 and in below cmd add local before and give path of locally stored textfile like /home/cloudera/details.txt:
+load data local inpath 'hadoop1/data/details.txt' into std;
