@@ -29,3 +29,4 @@ Steps:
     d. now to load data into table write cmd:
       load data local inpath '/home/cloudera/details.txt' into table temp_details;
     e. retrieve data using cmd: select * from temp_details;
+    f. Now when u will access again details from database after exit you will get error as it is temporary table 
