@@ -10,3 +10,43 @@ rdd_squared.collect()
 spark.stop()
 
 #Prac 7B: Working with different transformations and actions on RDD by fetching data from external file
+from pyspark.context import SparkContext
+# Start Spark
+sc = SparkContext("local","iris")
+# Load dataset with 2 partitions
+iris1 = sc.textFile("iris.csv",2)
+# Show dataset
+print(iris1.collect())
+# Show partition sizes
+for i,p in enumerate(iris1.glom().collect()):
+    print(f"Partition {i+1} has {len(p)} records")
+# Create new RDD with 8 partitions
+iris2 = sc.parallelize(iris1.collect(),8)
+print("Partitions:", iris2.getNumPartitions())
+# Remove header
+header = iris2.first()
+iris2 = iris2.filter(lambda x: x != header)
+# Duplicate rows
+iris3 = iris2.map(lambda x: x*2)
+print(iris3.collect())
+# Split columns
+iris4 = iris2.flatMap(lambda x: x.split(','))
+print(iris4.collect())
+# Partition info
+parts = iris4.glom().collect()
+print("Total Partitions:", len(parts))
+# Duplicate values
+iris5 = iris4.map(lambda x: x*2)
+print(iris5.take(5))
+# Extract virginica
+iris6 = iris1.flatMap(lambda x: x.split(','))\
+            .filter(lambda x: x=='virginica')\
+            .map(lambda x:(x,1))
+print(iris6.collect())
+# Extract all species
+species=['virginica','setosa','versicolor']
+species1 = iris1.flatMap(lambda x:x.split(','))\
+                .filter(lambda x:x in species)
+# Count species
+species2 = species1.groupBy(lambda x:x).mapValues(len)
+print(species2.collect())
