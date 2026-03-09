@@ -1,3 +1,31 @@
 Practical 6A
 Aim: Working with different types of tables in hive.
-Stps:
+Steps:
+1. Open Cloudera VM and terminal
+2. In terminal write cmd to start 'Hive' cmd: hive
+3. Create database cmd: create database clg1; 
+4. Use that database using cmd: use clg1;
+5. For Creating, Inserting data and loading data of internal table creation use following cmds:
+    a. create table details(id string, name string, age int) row format delimited fields terminated by ',';
+    b. exit hive and create text/csv file using gedit details.txt
+    c. after creating enter hive again now do Step 3 and 4 again
+    d. now to load data into table write cmd:
+      load data local inpath '/home/cloudera/details.txt' into table details;
+    e. retrieve data using cmd: select * from details;
+6. For Creating, Inserting data and loading data of external table creation use following cmds:
+    a. create external table ext_details(id string, name string, age int) row format delimited fields terminated by ',' stored as textfile location '/home/cloudera/ext_details';
+    b. exit hive and create text/csv file using gedit details.txt
+    c. after creating enter hive again now do Step 3 and 4 again
+    d. now to load data into table write cmd:
+      load data local inpath '/home/cloudera/details.txt' into table ext_details;
+    e. retrieve data using cmd: select * from ext_details;
+    f. to check data outside hive exit from hive and write cmd:
+      hdfs dfs -ls /home/cloudera/ext_details
+      hdfs dfs -cat /home/cloudera/ext_details/ext_details.txt
+7. For Creating, Inserting data and loading data of temporary table creation use following cmds:
+    a. Here create text/csv file using gedit details.txt before doing temporary table
+    b. create temporary table temp_details(id string,name string,age int) row format delimited fields terminated by ',';
+    c. after creating enter hive again now do Step 3 and 4 again
+    d. now to load data into table write cmd:
+      load data local inpath '/home/cloudera/details.txt' into table temp_details;
+    e. retrieve data using cmd: select * from temp_details;
