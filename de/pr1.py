@@ -18,6 +18,7 @@ df = pd.DataFrame(rows, columns=headers)
 # Save to CSV
 df.to_csv("output.csv", index=False)
 df.head()
+
 #Prac 1B: Web Scraping and fetching contents from multiple pages
 #Code 1:
 import requests
