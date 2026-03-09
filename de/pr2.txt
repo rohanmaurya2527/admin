@@ -1,0 +1,39 @@
+import pandas as pd
+from sklearn.datasets import load_breast_cancer
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.decomposition import PCA
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import RandomForestClassifier
+
+# Load dataset
+df = load_breast_cancer()
+
+# Features and target
+X = df.data
+y = df.target
+
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=1)
+
+# Models dictionary
+models = {
+    'Logistic_Regression': LogisticRegression(),
+    'Decision_Tree': DecisionTreeClassifier(),
+    'Naive_Bayes': GaussianNB(),
+    'Random_Forest': RandomForestClassifier()  # optional, won't print unless added to loop
+}
+
+# Train and evaluate models
+for name, model in models.items():
+    pipeline = Pipeline([
+        ('scaling', StandardScaler()),
+        ('pca', PCA(n_components=3)),
+        ('model', model)
+    ])
+    pipeline.fit(X_train, y_train)
+    print(f"{name}'s training accuracy is: {pipeline.score(X_train, y_train)}")
+    print(f"{name}'s testing accuracy is: {pipeline.score(X_test, y_test)}\n")
