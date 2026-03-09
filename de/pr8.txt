@@ -1,32 +1,23 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
-
-# 1️⃣ Start Spark
+# Start Spark
 spark = SparkSession.builder.appName("DataProcessingRDD").getOrCreate()
-
-# 2️⃣ Load CSV into DataFrame
+# Load CSV into DataFrame
 df_iris = spark.read.csv("iris.csv", header=True, inferSchema=True)
-
-# 3️⃣ Rename columns to remove dots
+# Rename columns to remove dots
 df_iris = df_iris.toDF('ID','Sepal_Length','Sepal_Width','Petal_Length','Petal_Width','Species')
-
-# 4️⃣ Show dataset and count
+# Show dataset and count
 df_iris.show()
 print("Total rows:", df_iris.count())
-
-# 5️⃣ Summary statistics
+# Summary statistics
 df_iris.summary().show()
-
-# 6️⃣ Select columns and show
+# Select columns and show
 df_iris.select('Sepal_Length','Petal_Length').show()
-
-# 7️⃣ SQL queries
+# SQL queries
 df_iris.createOrReplaceTempView("iris_table")
-
 # Petal length filters
 df_iris.filter(col('Petal_Length') < 2.5).show()
 df_iris.filter((col('Petal_Length') >= 2.5) & (col('Petal_Length') <= 4.5)).show()
-
 # Group by and aggregations
 spark.sql("SELECT Species, COUNT(*) as Count FROM iris_table GROUP BY Species").show()
 df_iris.groupBy('Species').min('Sepal_Length').show()
@@ -37,13 +28,10 @@ spark.sql("""
     FROM iris_table
     GROUP BY Species
 """).show()
-
 # Filter by Species
 df_iris.filter(col('Species')=='setosa').show()
-
 # Convert to Pandas
 pd_iris = df_iris.toPandas()
 print(pd_iris.head())
-
 # Sort by Sepal_Length
 df_iris.orderBy('Sepal_Length').show()
