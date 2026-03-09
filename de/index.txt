@@ -1,0 +1,13 @@
+1. Data Extraction using Web Scraping
+ A. Web Scraping and fetching contents like table from single page
+ B. Web Scraping and fetching contents from multiple pages
+2. Create ML pipeline(workflow) using python libraries
+3. Demonstrating publisher-subscriber messaging system using kafka
+4. Working with NoSQL database - HBase
+5. Stimulating data warehouse applicationsusing Hive
+ A. Working with different types of tables inHive
+ B. Demonstrating table partitioning,clustering(bucketing in Hive)
+7 A. Write simple pyspark driver program
+7 B. Write working with different transformations and actions functions on RDD by fetching data from external files
+8. Data exploration using Spark SQL
+9. Implementing Pyspark ML pipeline for making classification model on iris dataset
