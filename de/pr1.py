@@ -26,11 +26,11 @@ from bs4 import BeautifulSoup
 for i in range(1,6):
     url = f"https://quotes.toscrape.com/page/{i}/"
     page = requests.get(url)
-    soup = BeautifulSoup(page.text, "html.parser")
-    quotes = soup.find_all("div", class_="quote")
+    soup = BeautifulSoup(page.text, "lxml")
+    quotes=soup.select(".quote")
     for q in quotes:
-        text = q.find("span", class_="text").text
-        author = q.find("small", class_="author").text
+        text=q.select_one(".text").get_text()
+        author=q.select_one(".author").get_text()
         print(text, "-", author)
 print("Done")
 
