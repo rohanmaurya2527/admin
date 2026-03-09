@@ -1,0 +1,19 @@
+DE Prac 5
+Aim: Simulating Data Warehouse Environment using Hive application
+Steps:
+1. Open Cloudera VM and terminal
+2. In terminal write cmd to start 'Hive' cmd: hive
+4. Create database cmd: create database clg1; and also use that database using cmd: use clg1;
+5. Create table cmd: create table std(name string, rno string,age int, mks int) row format delimited fields terminated by ',';
+6. Exit hive using cmd: exit;
+7. Now create textfile with cmd: gedit details.text (with rec as col1data,col2data...)
+8. Load text file into hadoop cluster using following cmds:
+    a. hdfs dfs -mkdir /hadoop1/
+    b. hdfs dfs -mkdir /hadoop1/data
+    c. hdfs dfs -put /home/cloudera/details.txt /hadoop1/data
+9. Again enter in hive and now use clg1 to load data inside table with following cmd:
+    a. hive
+    b. use clg1;
+    c. load data inpath 'hadoop1/data/details.txt' into std;
+    d. select * from std;
+Note for above if asked for csv file just give path of csv file in place of every text file
