@@ -31,6 +31,7 @@ spark.sql("""
            AVG(Petal_Length) as Avg_Petal_Length
     FROM iris_table
     GROUP BY Species
+    HAVING MEAN(Petal_Length)>4
 """).show()
 # Filter by Species
 df_iris.filter(col('Species')=='setosa').show()
