@@ -9,7 +9,7 @@ from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from sklearn.metrics import mean_squared_error
 df = pd.read_csv("AirPassengers.csv",parse_dates=['Month'], index_col='Month')
 plt.figure(figsize=(7,4))
-plt.plot(df2.index, df['#Passengers'], label='Original time series', color='green')
+plt.plot(df.index, df['#Passengers'], label='Original time series', color='green')
 plt.xlabel('Year')
 plt.ylabel('Number of Passenger')
 plt.title('Air Passenger Dataset')
