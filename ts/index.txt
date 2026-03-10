@@ -1,0 +1,9 @@
+1. Decompose time series data to find trend, seasonality, cyclic and irregularity.
+2. Data conversion of non-stationary to stationary
+3. Perform a duckey-fuller test to check stationarity of data.
+4. Implementation of moving averages models.
+5. Demonstration of autocorrelation functions and partial autocorrelation functions.
+6. Implementation of Autoregressive models. 
+7. Implementation of ARIMA model.
+8. Implementation of SARIMA model
+9. Time series forecasting using exponential smoothing.
