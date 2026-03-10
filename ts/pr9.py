@@ -2,7 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.tsa.api import SimpleExpSmoothing, Holt, ExponentialSmoothing
 # Load data
-data = pd.read_csv("/kaggle/input/datasets/chirag19/air-passengers/AirPassengers.csv", parse_dates=['Month'], index_col='Month')
+data = pd.read_csv("AirPassengers.csv", parse_dates=['Month'], index_col='Month')
+print(data.head())
 series = data.squeeze()   # Convert to Series
 plt.figure()
 plt.plot(series, label="Original Data")
