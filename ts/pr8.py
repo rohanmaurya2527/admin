@@ -6,7 +6,7 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
-from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.metrics import mean_squared_error
 df = pd.read_csv("AirPassengers.csv",parse_dates=['Month'], index_col='Month')
 plt.figure(figsize=(7,4))
 plt.plot(df2.index, df['#Passengers'], label='Original time series', color='green')
