@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from statsmodels.tsa.seasonal import STL
 
 # Load dataset
-df = pd.read_csv("/kaggle/input/datasets/chirag19/air-passengers/AirPassengers.csv")
+df = pd.read_csv("AirPassengers.csv")
 
 # STL decomposition
 stl = STL(df['#Passengers'], period=13, robust=True)
