@@ -7,17 +7,17 @@ from statsmodels.tsa.stattools import adfuller
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from sklearn.metrics import mean_absolute_error, mean_squared_error
-df2 = pd.read_csv(r"C:\Users\User 2\Downloads\AirPassengers (1).csv",parse_dates=['Month'], index_col='Month')
+df = pd.read_csv("AirPassengers.csv",parse_dates=['Month'], index_col='Month')
 plt.figure(figsize=(7,4))
-plt.plot(df2.index, df['Passengers'], label='Original time series', color='green')
+plt.plot(df2.index, df['#Passengers'], label='Original time series', color='green')
 plt.xlabel('Year')
 plt.ylabel('Number of Passenger')
 plt.title('Air Passenger Dataset')
 plt.legend()
 plt.show()
-stepwise_fit = auto_arima(df['Passengers'], seasonal=True, m=12, trace=True)
+stepwise_fit = auto_arima(df['#Passengers'], seasonal=True, m=12, trace=True)
 stepwise_fit.summary()
-model = SARIMAX(df['Passengers'], orders=(2,1,1), seasonal_orders= (0,1,0,12))
+model = SARIMAX(df['#Passengers'], orders=(2,1,1), seasonal_orders= (0,1,0,12))
 sarima_result = model.fit()
 print(sarima_result.summary())
 forecast = sarima_result.get_forecast(steps=12)
