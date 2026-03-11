@@ -1,0 +1,8 @@
+1. Implementation of single layer perceptron 
+2. Implementation of multi-layer perceptron 
+3. Perform backpropagation in neural network / BAM
+4. Implementation of fuzzy logic 
+5. Implementation of heb rule learning 
+6. Implementation of self organizing map 
+7. Implementation of delta rule learning 
+8. Implementation of genetic algorithm
