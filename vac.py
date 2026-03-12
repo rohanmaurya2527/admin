@@ -129,3 +129,21 @@ if len(a)==len(b):
     print(equal)
 else:
     print(equal)
+
+'''
+Q.8 Consider a random 10x2 matrix representing cartesian coordinates, convert them to polar coordinates.
+'''
+import random
+import math
+cartesian = [[random.randint(0, 10), random.randint(0, 10)] for _ in range(10)]
+polar = []
+for x, y in cartesian:
+    r = (x**2 + y**2)**0.5
+    theta = math.atan2(y, x)
+    polar.append([r, theta])
+print("Cartesian coordinates:")
+for point in cartesian:
+    print(point)
+print("\nPolar coordinates (r, theta in radians):")
+for point in polar:
+    print(point)
