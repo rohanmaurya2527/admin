@@ -270,3 +270,34 @@ plt.xlabel("Class")
 plt.ylabel("Marks")
 
 plt.show()
+
+'''
+Q.14 Pandas to display summary stat with histogram, pairplot and boxplot
+'''
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Generate dataset
+np.random.seed(10)
+
+data = {
+    "Math": np.random.randint(40,100,100),
+    "Science": np.random.randint(35,100,100),
+    "English": np.random.randint(45,100,100),
+    "Attendance": np.random.randint(60,100,100)
+}
+
+df = pd.DataFrame(data)
+
+# Summary statistics
+print(df.describe())
+sns.histplot(df["Math"], bins=10, kde=True)
+plt.title("Histogram of Math Marks")
+plt.show()
+sns.boxplot(data=df)
+plt.title("Boxplot for Student Marks")
+plt.show()
+sns.pairplot(df)
+plt.show()
