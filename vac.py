@@ -241,3 +241,32 @@ plt.show()
 print("Mean:",df['Exam_Scores'].mean())
 print("Standard Deviation:",df['Exam_Scores'].std())
 
+'''
+Q.13 Boxplot to show distribution of marks for various class students
+'''
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Generate random marks
+np.random.seed(10)
+
+class_A = np.random.randint(50, 100, 30)
+class_B = np.random.randint(40, 95, 30)
+class_C = np.random.randint(45, 90, 30)
+
+# Create DataFrame
+df_A = pd.DataFrame({"Marks": class_A, "Class": "A"})
+df_B = pd.DataFrame({"Marks": class_B, "Class": "B"})
+df_C = pd.DataFrame({"Marks": class_C, "Class": "C"})
+
+data = pd.concat([df_A, df_B, df_C], ignore_index=True)
+print(data)
+sns.boxplot(x="Class", y="Marks", data=df)
+
+plt.title("Comparison of Marks Distribution Among Classes")
+plt.xlabel("Class")
+plt.ylabel("Marks")
+
+plt.show()
