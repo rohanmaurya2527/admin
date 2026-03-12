@@ -15,23 +15,17 @@ print(rab)
 '''
 Q.2 Indian Rangoli Problem
 '''
-def print_rangoli(size):
-    import string
-    alpha = string.ascii_lowercase
-
-    width = 4 * size - 3
-
-    for i in range(size):
-        s = "-".join(alpha[i:size])
-        line = (s[::-1] + s[1:]).center(width, "-")
-    print(line)
-    for i in range(size-2, 0,-1):
-        s = "-".join(alpha[i:size])
-        line = (s[::-1] + s[1:]).center(width, "-")
+import string
+def rangoli(size):
+    width=4*size-3
+    alpha=string.ascii_lowercase
+    for i in range(size-1,0,-1):
+        s='-'.join(alpha[i:size])
+        line=(s[::-1]+s[1::]).center(width,'-')
         print(line)
     for i in range(size):
-        s = "-".join(alpha[i:size])
-        line = (s[::-1] + s[1:]).center(width, "-")
+        s='-'.join(alpha[i:size])
+        line=(s[::-1]+s[1::]).center(width,'-')
         print(line)
 n = int(input())
 print_rangoli(n)
