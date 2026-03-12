@@ -147,3 +147,20 @@ for point in cartesian:
 print("\nPolar coordinates (r, theta in radians):")
 for point in polar:
     print(point)
+
+'''
+Q.9 Histogram Distribution of marks using matplotlib
+'''
+import random
+import matplotlib.pyplot as plt
+
+# Generate 100 random exam scores between 0 and 100
+scores = [random.randint(0, 100) for _ in range(100)]
+
+# Plot histogram
+plt.hist(scores, bins=10, edgecolor='black')  # bins=10 for 10 intervals
+plt.xlabel('Marks')                            # x-axis label
+plt.ylabel('Number of Students')               # y-axis label
+plt.title('Distribution of Exam Scores')       # plot title
+plt.grid(axis='y', alpha=0.75)                # optional: add grid for clarity
+plt.show()
