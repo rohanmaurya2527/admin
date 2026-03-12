@@ -164,3 +164,32 @@ plt.ylabel('Number of Students')               # y-axis label
 plt.title('Distribution of Exam Scores')       # plot title
 plt.grid(axis='y', alpha=0.75)                # optional: add grid for clarity
 plt.show()
+
+'''
+Q.12 & 15  Histogram distribution of marks using seaborn with pandas dataframe
+            By showing Mean and Std_Dev
+'''
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Generate 200 random scores between 0 and 100
+scores = np.random.randint(0, 101, 200)
+
+# Create DataFrame
+df = pd.DataFrame(scores, columns=["Exam_Scores"])
+
+print(df.head())
+
+sns.histplot(df["Exam_Scores"], bins=10, kde=True)
+
+plt.title("Histogram of Exam Scores")
+plt.xlabel("Scores")
+plt.ylabel("Frequency")
+
+plt.show()
+print("Mean:",df['Exam_Scores'].mean())
+print("Standard Deviation:",df['Exam_Scores'].std())
+
+
