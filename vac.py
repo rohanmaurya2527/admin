@@ -166,6 +166,45 @@ plt.grid(axis='y', alpha=0.75)                # optional: add grid for clarity
 plt.show()
 
 '''
+Q.11 Creating dashboard using subplots
+'''
+import matplotlib.pyplot as plt
+
+# Sample Data
+months = ["Jan","Feb","Mar","Apr","May"]
+sales = [200, 250, 300, 280, 350]
+
+products = ["Product A","Product B","Product C","Product D"]
+profit = [40, 55, 70, 50]
+
+distribution = [35, 25, 20, 20]
+
+# Create subplots
+plt.figure(figsize=(12,5))
+
+# 1. Sales Line Chart
+plt.subplot(1,3,1)
+plt.plot(months, sales, marker='o')
+plt.title("Sales Line Chart")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+
+# 2. Profit Bar Chart
+plt.subplot(1,3,2)
+plt.bar(products, profit)
+plt.title("Profit Bar Chart")
+plt.xlabel("Products")
+plt.ylabel("Profit")
+
+# 3. Product Distribution Pie Chart
+plt.subplot(1,3,3)
+plt.pie(distribution, labels=products, autopct='%1.1f%%')
+plt.title("Product Distribution")
+
+plt.tight_layout()
+plt.show()
+
+'''
 Q.12 & 15  Histogram distribution of marks using seaborn with pandas dataframe
             By showing Mean and Std_Dev
 '''
@@ -191,5 +230,4 @@ plt.ylabel("Frequency")
 plt.show()
 print("Mean:",df['Exam_Scores'].mean())
 print("Standard Deviation:",df['Exam_Scores'].std())
-
 
