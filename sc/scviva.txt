@@ -1,0 +1,670 @@
+Practical 1 – Single Layer Perceptron
+Theory
+A Perceptron is one of the simplest types of artificial neural networks introduced by Frank
+Rosenblatt in 1957. It is used for binary classification problems.
+A perceptron consists of:
+
+
+
+
+
+Input layer
+Weights
+Bias
+Activation function
+
+The perceptron computes a weighted sum of inputs and applies an activation function to
+produce the output.
+[
+y = f(\sum w_i x_i + b)
+]
+Where
+
+
+
+
+(x_i) = input
+(w_i) = weight
+(b) = bias
+
+The weights are updated using the perceptron learning rule:
+[
+w = w + \eta (t - y)x
+]
+where
+
+
+
+
+( \eta ) = learning rate
+( t ) = target output
+( y ) = predicted output
+
+Perceptrons can only solve linearly separable problems.
+
+Practical 2 – Multi-Layer Perceptron
+(MLP)
+
+Theory
+A Multi-Layer Perceptron is an extension of a single layer perceptron that contains one or
+more hidden layers between input and output layers.
+Structure of MLP:
+
+
+
+
+Input Layer
+Hidden Layer(s)
+Output Layer
+
+Each neuron in one layer is connected to neurons in the next layer through weighted
+connections.
+MLPs use non-linear activation functions such as:
+
+
+
+
+Sigmoid
+ReLU
+Tanh
+
+Unlike a single perceptron, MLP can solve non-linearly separable problems.
+MLP is widely used for:
+
+
+
+
+Image recognition
+Speech recognition
+Classification tasks
+
+Training is usually performed using the backpropagation algorithm.
+
+Practical 3 – Backpropagation Neural
+Network
+Theory
+Backpropagation is a supervised learning algorithm used for training multi-layer neural
+networks.
+It works by:
+1.
+2.
+3.
+4.
+
+Forward propagation
+Error calculation
+Backward propagation
+Weight update
+
+Steps of the algorithm:
+
+1.
+2.
+3.
+4.
+
+Inputs are passed through the network to compute output.
+Error is calculated between predicted output and target output.
+Error is propagated backward through the network.
+Weights are updated using gradient descent.
+
+Weight update formula:
+[
+w = w - \eta \frac{\partial E}{\partial w}
+]
+where
+
+
+
+(E) = error function
+( \eta ) = learning rate
+
+Backpropagation helps neural networks learn complex patterns.
+
+Practical 4 – Fuzzy Logic
+Theory
+Fuzzy Logic is a form of logic that deals with reasoning that is approximate rather than
+exact.
+It was introduced by Lotfi A. Zadeh in 1965.
+In classical logic:
+
+
+
+True = 1
+False = 0
+
+In fuzzy logic:
+
+
+Truth values range between 0 and 1.
+
+Example:
+Temperature classification
+Temperature Membership
+Cold
+0.2
+Warm
+0.7
+Hot
+0.4
+Main components of fuzzy systems:
+
+1.
+2.
+3.
+4.
+
+Fuzzification
+Rule Base
+Inference Engine
+Defuzzification
+
+Applications:
+
+
+
+
+
+Washing machines
+Air conditioners
+Decision systems
+Control systems
+
+Practical 5 – Hebbian Learning Rule
+Theory
+Hebbian learning is one of the earliest neural learning rules proposed by Donald Hebb.
+It is based on the principle:
+“Neurons that fire together wire together.”
+The rule states that if two neurons are activated at the same time, the connection between
+them becomes stronger.
+Weight update rule:
+[
+\Delta w = \eta \cdot x \cdot y
+]
+where
+
+
+
+
+(x) = input
+(y) = output
+( \eta ) = learning rate
+
+Hebbian learning is an unsupervised learning technique.
+Applications:
+
+
+
+
+Pattern association
+Memory models
+Feature learning
+
+Practical 6 – Self Organizing Map (SOM)
+Theory
+Self Organizing Map is an unsupervised neural network proposed by Teuvo Kohonen.
+It is used for clustering and dimensionality reduction.
+SOM maps high-dimensional data into a two-dimensional grid of neurons.
+Working steps:
+1.
+2.
+3.
+4.
+5.
+
+Initialize weight vectors
+Select input vector
+Find Best Matching Unit (BMU)
+Update BMU and neighboring neurons
+Repeat for multiple iterations
+
+Weight update formula:
+[
+W(t+1) = W(t) + \alpha(t) (X - W(t))
+]
+Advantages:
+
+
+
+
+Visualization of complex data
+Clustering similar data points
+Feature mapping
+
+Practical 7 – Delta Rule Learning
+Theory
+The Delta Rule is a supervised learning rule used to minimize the error between predicted
+and target outputs.
+It is also known as the Widrow-Hoff rule.
+Error is calculated as:
+[
+Error = Target - Output
+]
+Weight update formula:
+
+[
+\Delta w = \eta (t - y)x
+]
+where
+
+
+
+
+(t) = target output
+(y) = predicted output
+(x) = input
+
+The delta rule adjusts weights gradually to minimize the error.
+Applications:
+
+
+
+
+Linear classifiers
+Adaptive filters
+Neural network training
+
+Practical 8 – Genetic Algorithm
+Theory
+A Genetic Algorithm is an optimization technique inspired by natural selection and
+evolution.
+It was introduced by John Holland.
+Key concepts of Genetic Algorithms:
+1.
+2.
+3.
+4.
+5.
+6.
+
+Population – Set of candidate solutions
+Chromosome – Representation of solution
+Fitness Function – Measures quality of solution
+Selection – Choosing best individuals
+Crossover – Combining parents to produce offspring
+Mutation – Random change to maintain diversity
+
+Steps of the algorithm:
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+
+Initialize population
+Evaluate fitness
+Select parents
+Perform crossover
+Apply mutation
+Generate new population
+Repeat until optimal solution is found
+
+Applications:
+
+
+
+
+
+
+Optimization problems
+Machine learning
+Scheduling
+Path finding
+
+General Soft Computing Viva Questions
+1. What is Soft Computing?
+Answer:
+Soft Computing is a collection of computational techniques that deal with uncertainty,
+approximation, and imprecision to solve complex real-world problems. It includes neural
+networks, fuzzy logic, genetic algorithms, and evolutionary computing.
+
+2. What is the difference between Soft Computing and Hard Computing?
+Answer:
+Hard Computing
+Soft Computing
+Requires exact input
+Works with approximate input
+Produces precise output
+Produces approximate solutions
+Uses traditional algorithms Uses intelligent techniques
+
+3. What are the main components of Soft Computing?
+Answer:
+
+
+
+
+
+
+Neural Networks
+Fuzzy Logic
+Genetic Algorithms
+Evolutionary Computing
+Probabilistic Reasoning
+
+4. What are the advantages of Soft Computing?
+Answer:
+
+
+
+Handles uncertainty
+Learns from data
+
+
+
+
+Solves complex problems
+Provides flexible solutions
+
+Practical 3 – BAM Viva Questions
+5. What is Bidirectional Associative Memory (BAM)?
+Answer:
+BAM is a type of recurrent neural network that stores associative data pairs and can recall
+patterns in both directions.
+
+6. Why is it called bidirectional?
+Answer:
+Because the network can recall output from input and input from output.
+
+7. Which learning rule is used in BAM?
+Answer:
+Hebbian Learning Rule.
+
+8. What is the weight matrix in BAM?
+Answer:
+It is the matrix that stores the associations between input and output patterns.
+
+Practical 4 – Fuzzy C-Means Viva
+Questions
+9. What is Fuzzy Logic?
+Answer:
+Fuzzy Logic is a reasoning system where truth values range between 0 and 1 instead of only
+true or false.
+
+10. What is Fuzzy C-Means clustering?
+Answer:
+Fuzzy C-Means is a clustering algorithm where a data point can belong to multiple clusters
+with different membership values.
+
+11. How is Fuzzy C-Means different from K-Means?
+Answer:
+K-Means
+Fuzzy C-Means
+Hard clustering
+Soft clustering
+One cluster per data point Multiple cluster membership
+
+12. What is membership value?
+Answer:
+Membership value indicates how strongly a data point belongs to a cluster.
+
+Practical 5 – Hebbian Learning Viva
+Questions
+13. What is Hebbian Learning?
+Answer:
+Hebbian learning is a neural learning rule where connection strength increases when two
+neurons activate together.
+
+14. State the Hebbian learning principle.
+Answer:
+“Neurons that fire together wire together.”
+
+15. What is the Hebbian weight update rule?
+Answer:
+
+[
+\Delta w = \eta \times x \times y
+]
+
+16. Is Hebbian learning supervised or unsupervised?
+Answer:
+Unsupervised learning.
+
+Practical 6 – SOM Viva Questions
+17. What is Self Organizing Map (SOM)?
+Answer:
+SOM is an unsupervised neural network used for clustering and dimensionality reduction.
+
+18. Who developed SOM?
+Answer:
+Teuvo Kohonen.
+
+19. What is BMU in SOM?
+Answer:
+BMU stands for Best Matching Unit, which is the neuron whose weight vector is closest to
+the input vector.
+
+20. What is the neighborhood function in SOM?
+Answer:
+It updates not only the BMU but also nearby neurons to preserve topology.
+
+Practical 7 – Delta Rule Viva Questions
+21. What is Delta Rule?
+
+Answer:
+Delta Rule is a supervised learning rule used to minimize the error between predicted and
+target output.
+
+22. What is the error formula?
+Answer:
+[
+Error = Target - Output
+]
+
+23. What is the weight update rule in Delta Rule?
+Answer:
+[
+\Delta w = \eta (t - y)x
+]
+
+24. What is the goal of Delta Rule?
+Answer:
+To reduce the difference between predicted output and actual output.
+
+Practical 8 – Genetic Algorithm Viva
+Questions
+25. What is a Genetic Algorithm?
+Answer:
+A Genetic Algorithm is an optimization method inspired by natural evolution.
+
+26. What is a chromosome in genetic algorithms?
+Answer:
+A chromosome represents a possible solution to the problem.
+
+27. What is the fitness function?
+Answer:
+It evaluates how good a solution is.
+
+28. What is mutation?
+Answer:
+Mutation is a random change in a gene to maintain diversity in the population.
+
+29. What is crossover?
+Answer:
+Crossover is the process of combining genes from two parents to produce offspring.
+
+30. What is population in genetic algorithm?
+Answer:
+Population is a group of candidate solutions.
+
+More General Soft Computing Viva
+Questions
+31. What are the characteristics of Soft Computing?
+Answer:
+
+
+
+
+
+Tolerance to imprecision and uncertainty
+Ability to learn from data
+Adaptive nature
+Approximate reasoning
+
+32. What is Artificial Neural Network (ANN)?
+
+Answer:
+ANN is a computational model inspired by the human brain consisting of interconnected
+neurons that process information using weighted connections.
+
+33. What are the basic components of a neuron in ANN?
+Answer:
+
+
+
+
+
+
+Inputs
+Weights
+Summation function
+Activation function
+Output
+
+34. What is an activation function?
+Answer:
+An activation function determines the output of a neuron based on the weighted sum of
+inputs.
+Examples:
+
+
+
+
+
+Sigmoid
+ReLU
+Step function
+Tanh
+
+35. What is learning in neural networks?
+Answer:
+Learning is the process of adjusting weights in the network based on training data to reduce
+error.
+
+Neural Network Questions
+36. What is supervised learning?
+Answer:
+Supervised learning is a training method where the network learns using input-output pairs.
+
+37. What is unsupervised learning?
+Answer:
+Unsupervised learning finds patterns in data without target outputs.
+Example: clustering.
+
+38. What is reinforcement learning?
+Answer:
+It is a learning method where an agent learns by receiving rewards or penalties.
+
+39. What is a weight in neural networks?
+Answer:
+A weight represents the strength of connection between neurons.
+
+40. What is bias?
+Answer:
+Bias is an additional parameter added to the neuron to shift the activation function.
+
+Hebbian Learning Questions
+41. Why is Hebbian learning important?
+Answer:
+It is one of the earliest learning rules and forms the basis for many neural learning algorithms.
+
+42. What is the limitation of Hebbian learning?
+Answer:
+Weights may grow indefinitely without normalization.
+
+43. What type of problems can Hebbian learning solve?
+Answer:
+Pattern association and feature learning problems.
+
+Fuzzy Logic Questions
+44. What is a fuzzy set?
+Answer:
+A fuzzy set is a set where elements have degrees of membership between 0 and 1.
+
+45. What is a membership function?
+Answer:
+A membership function defines how each element maps to a membership value between 0
+and 1.
+
+46. What are types of membership functions?
+Answer:
+
+
+
+
+
+Triangular
+Trapezoidal
+Gaussian
+Bell-shaped
+
+47. What is fuzzification?
+Answer:
+Fuzzification converts crisp input values into fuzzy membership values.
+
+48. What is defuzzification?
+Answer:
+Defuzzification converts fuzzy output into a crisp value.
+
+SOM Questions
+49. What type of learning does SOM use?
+Answer:
+Unsupervised learning.
+
+50. What is topology preservation in SOM?
+Answer:
+Similar input data are mapped close to each other in the SOM grid.
+
+51. What happens during SOM training?
+Answer:
+Weights of the BMU and its neighbors are updated to resemble the input vector.
+
+52. Why do we use normalization before SOM training?
+Answer:
+To ensure all features contribute equally to distance calculations.
+
+Delta Rule Questions
+53. What is the objective of the Delta Rule?
+Answer:
+To minimize the mean squared error between predicted and target outputs.
+
+54. Which algorithm uses Delta Rule?
+Answer:
+ADALINE (Adaptive Linear Neuron).
+
+55. What is gradient descent?
+
+Answer:
+It is an optimization technique used to minimize error by adjusting weights in the direction of
+steepest descent.
+
+Genetic Algorithm Questions
+56. What inspired Genetic Algorithms?
+Answer:
+The process of natural evolution and natural selection.
+
+57. What is selection in genetic algorithms?
+Answer:
+Selection chooses the best individuals from the population for reproduction.
+
+58. What is elitism?
+Answer:
+Elitism keeps the best individuals from one generation to the next.
+
+59. What is convergence in genetic algorithms?
+Answer:
+Convergence occurs when the population evolves toward an optimal solution.
+
+60. What are advantages of genetic algorithms?
+Answer:
+
+
+
+
+Works for complex optimization problems
+Does not require gradient information
+Can search large solution spaces
+
+
