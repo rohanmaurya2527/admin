@@ -110,9 +110,19 @@ print("Method 3 (trunc):", m3)
 print("Method 4 (int()):", m4)
 
 '''
-Q.6
+Q.6 Generator function that generates 10 integers
 '''
+# Generator function that generates 10 integers
+def generate_numbers():
+    for i in range(1, 11):  # generates numbers from 1 to 10
+        val=random.randint(0,10)
+        yield val
 
+# Use the generator to build an array (list)
+gen = generate_numbers()
+array = list(gen)  # convert generator to list
+
+print("Generated array:", array)
 
 
 '''
