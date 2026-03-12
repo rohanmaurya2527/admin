@@ -112,3 +112,20 @@ print("Method 4 (int()):", m4)
 '''
 Q.6
 '''
+
+
+
+'''
+Q.7 Checking 2 arrays are equal(using list as array not avail in Py)
+'''
+a=[1,6,4,7,9]
+b=[4,7,2,1,89]
+equal='Equal'
+if len(a)==len(b):
+    for i in range(len(a)):
+        if a[i]!=b[i]:
+            equal='Not equal'
+            break
+    print(equal)
+else:
+    print(equal)
