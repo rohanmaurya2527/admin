@@ -28,7 +28,7 @@ def rangoli(size):
         line=(s[::-1]+s[1::]).center(width,'-')
         print(line)
 n = int(input())
-print_rangoli(n)
+rangoli(n)
 
 '''
 Q.3 Time print using time.time()
