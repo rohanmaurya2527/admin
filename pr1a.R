@@ -1,0 +1,16 @@
+a<-10
+b<-5
+num<-100
+char<-"MSc"
+logical<-TRUE
+sum<-a+b
+sub<-a-b
+mul<-a*b
+div<-a/b
+print(sum)
+print(sub)
+print(mul)
+print(div)
+show(num)
+show(char)
+show(logical)
