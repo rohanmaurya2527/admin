@@ -106,3 +106,38 @@ result = minimize(objective, initial_guess, constraints=constraints, method='SLS
 print("Success:", result.success)
 print("Optimal Solution (x, y):", result.x)
 print("Minimum Value:", result.fun)
+
+#Q3
+#For maximize multiply eq by -ve
+import numpy as np
+from scipy.optimize import minimize
+
+# 1. Define objective function
+def objective(variables):
+    x, y = variables
+    return -np.log(x+1)-y
+
+# 2. Define multiple inequality constraints (must be >= 0 format)
+def constraint1(variables):
+    x, y = variables
+    return (-2*x) -(y) + 3
+def constraint2(variables):
+    x= variables
+    return x 
+def constraint3(variables):
+    y = variables
+    return y
+# 3. Format constraints for SciPy
+constraints = [
+    {'type': 'ineq', 'fun': constraint1},
+    {'type': 'ineq', 'fun': constraint2},
+    {'type': 'ineq', 'fun': constraint3}
+]
+
+# 4. Set initial guess and run optimizer
+initial_guess = [0.0, 0.0]
+result = minimize(objective, initial_guess, constraints=constraints, method='SLSQP')
+
+print("Success:", result.success)
+print("Optimal Solution (x, y):", result.x)
+print("Minimum Value:", result.fun)
