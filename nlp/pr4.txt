@@ -1,0 +1,40 @@
+import string
+
+corpus = [
+    "Python is amazing and fun.",
+    "Python is not just fun but also powerful.",
+    "Learning Python is fun!",
+]
+
+def preprocess(text):
+    text = text.lower()
+    text = text.translate(str.maketrans("", "", string.punctuation))
+    return text.split()
+
+processed_corpus = [preprocess(sentence) for sentence in corpus]
+print(processed_corpus)
+
+vocabulary = set()
+
+for sentence in processed_corpus:
+    vocabulary.update(sentence)
+
+vocabulary = sorted(vocabulary)
+print("Vocabulary:", vocabulary)
+
+def create_bow_vector(sentence, vocab):
+    vector = []
+    for word in vocabulary:
+        count = sentence.count(word)
+        vector.append(count)
+    return vector
+
+bow_vectors = [
+    create_bow_vector(sentence, vocabulary)
+    for sentence in processed_corpus
+]
+
+print("Bag of Words Vectors:")
+
+for vector in bow_vectors:
+    print(vector)
