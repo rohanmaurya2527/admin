@@ -1,0 +1,25 @@
+#For Exam
+!pip install scikit-learn
+# 1. Import required libraries
+from sklearn.preprocessing import OneHotEncoder
+import numpy as np
+#Use Dataset from Parser(Prac4)
+# 2. Example dataset
+sentences = ["I love NLP", "NLP is fun", "I love Python"]
+
+# 3. Tokenize into words
+words = [word for sentence in sentences
+         for word in sentence.split()]
+
+# 4. Get unique vocabulary
+vocab = list(set(words))
+print(vocab)
+# 5. Reshape for OneHotEncoder
+vocab_array = np.array(vocab).reshape(-1, 1)
+# 6. Initialize encoder
+encoder = OneHotEncoder()
+# 7. Fit and transform the vocabulary
+one_hot_vectors = encoder.fit_transform(vocab_array)
+# 8. Show results
+for word, vector in zip(vocab, one_hot_vectors):
+    print(f"{word} --> {vector}")
