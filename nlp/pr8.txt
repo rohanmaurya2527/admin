@@ -1,0 +1,37 @@
+from collections import defaultdict
+# Training sentences
+sentences = [
+    "I love machine learning",
+    "I love python programming",
+    "I love data science",
+    "I love artificial intelligence",
+    "Machine learning is interesting",
+    "Machine learning is useful",
+    "Python programming is easy",
+    "Data science is amazing",
+    "Artificial intelligence is the future",
+    "I enjoy machine learning"
+]
+# Create Bigrams
+bigrams = defaultdict(list)
+for sentence in sentences:
+    words = sentence.lower().split()
+    for i in range(len(words)-1):
+        current = words[i]
+        next_word = words[i+1]
+        bigrams[current].append(next_word)
+# Prediction Function
+def predict(word):
+    word = word.lower()
+    if word in bigrams:
+        return max(
+            set(bigrams[word]),
+            key=bigrams[word].count
+        )
+
+    return "No prediction available"
+
+# User Input
+word = input("Enter a word: ")
+
+print("Predicted Next Word:", predict(word))
