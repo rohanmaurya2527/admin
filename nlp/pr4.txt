@@ -1,0 +1,38 @@
+!pip install spacy
+!python -m spacy download en_core_web_sm
+!python -m spacy download en_core_web_lg
+
+#SM Model
+import spacy
+
+# Load a pre-trained English model
+nlp = spacy.load("en_core_web_sm")
+
+sentence = "The quick brown fox jumps over the lazy dog."
+doc = nlp(sentence)
+for ent in doc.ents:
+    print(ent.text, ent.label_)
+print(f"{'Token':<15}{'Dependency':<20}{'Head'}")
+print("-" * 50)
+for token in doc:
+    print(f"{token.text:<15}{token.dep_:<20}{token.head.text}")
+
+#LG Model
+#no need to put lg in jornal
+import spacy
+from spacy import displacy
+# Load English tokenizer, POS tagger, parser, NER
+nlp = spacy.load("en_core_web_lg")#large datasets, words deep analysis
+# Sample sentence
+sentence = "The quick brown fox jumps over the lazy dog. "
+# Process the sentence
+doc = nlp(sentence)
+for ent in doc.ents:
+    print(ent.text, ent.label_)
+# Print tokens and their dependency relations
+print(f"{'Token':<15}{'Dependency':<20}{'Head'}")
+print("-" * 50)
+for token in doc:
+    print(f"{token.text:<15}{token.dep_:<20}{token.head.text}")
+# Optional: visualize the dependency tree in a browser
+displacy.serve(doc, style="dep")
