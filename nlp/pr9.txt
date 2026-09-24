@@ -1,0 +1,20 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pandas as pd
+# Sample dataset (you can replace this with any text corpus)
+documents = [
+    "The cat sat on the mat.",
+    "The dog sat on the log.",
+    "The cat chased the mouse.",
+    "The dog barked at the cat.",
+    "Cats and dogs are common pets."
+]
+# Initialize the TF-IDF Vectorizer
+vectorizer = TfidfVectorizer(stop_words='english')  # remove common English stopwords
+# Fit and transform the documents
+tfidf_matrix = vectorizer.fit_transform(documents)
+# Convert to a pandas DataFrame for easy viewing
+df_tfidf = pd.DataFrame(tfidf_matrix.toarray(),
+        columns=vectorizer.get_feature_names_out())
+# Display the TF-IDF values
+print("TF-IDF Matrix:\n")
+print(df_tfidf)
