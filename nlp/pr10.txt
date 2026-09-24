@@ -1,0 +1,32 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+from gensim.models import Word2Vec
+import pandas as pd
+
+# TF-IDF
+documents = [
+    "The cat sat on the mat.",
+    "The dog sat on the log.",
+    "The cat chased the mouse.",
+    "The dog barked at the cat.",
+    "Cats and dogs are common pets."
+]
+
+v = TfidfVectorizer(stop_words='english')
+m = v.fit_transform(documents)
+
+print("TF-IDF Matrix:\n")
+print(pd.DataFrame(m.toarray(), columns=v.get_feature_names_out()))
+
+# Word2Vec
+sentences = [x.lower().replace('.', '').split() for x in documents]
+
+model = Word2Vec(sentences, vector_size=50, window=3, min_count=1, sg=1)
+
+print("\nWord2Vec Vector Matrix:\n")
+print(model.wv.vectors)
+
+print("\nVector for 'cat':\n", model.wv['cat'])
+
+print("\nTop 3 words similar to 'cat':")
+for word, score in model.wv.most_similar('cat', topn=7):
+    print(f"{word}: {score:.4f}")
