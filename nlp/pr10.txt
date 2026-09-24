@@ -1,3 +1,23 @@
+#code 1:
+from gensim.models import Word2Vec
+
+sentences = [
+    ['the','cat','sat','on','the','mat'],
+    ['the','dog','sat','on','the','rug'],
+    ['the','cat','chased','the','mouse'],
+    ['the','dog','barked','at','the','cat']
+]
+
+model = Word2Vec(sentences, vector_size=50, window=3, min_count=1, sg=1)
+
+print("Vector for 'cat':\n", model.wv['cat'])
+
+similar_to_cat = model.wv.most_similar('cat', topn=7)
+print("\nTop 3 words similar to 'cat':")
+for word, score in similar_to_cat:
+    print(f"{word}: {score:.4f}")
+
+#code 2:
 from sklearn.feature_extraction.text import TfidfVectorizer
 from gensim.models import Word2Vec
 import pandas as pd
