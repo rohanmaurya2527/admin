@@ -1,0 +1,40 @@
+# Aim: Feature Extraction in NLP
+
+documents = [
+    "Natural Language Processing is amazing.",
+    "Machine learning models need features.",
+    "Feature extraction converts text into numbers.",
+    "Text data needs preprocessing and vectorization.",
+    "Word embeddings provide semantic meaning."
+]
+
+# 1. Bag of Words
+from sklearn.feature_extraction.text import CountVectorizer
+
+vectorizer = CountVectorizer()
+X_bow = vectorizer.fit_transform(documents)
+
+print("Vocabulary:\n", vectorizer.get_feature_names_out())
+print("\nBoW Matrix:\n", X_bow.toarray())
+
+
+# 2. TF-IDF
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+tfidf = TfidfVectorizer()
+X_tfidf = tfidf.fit_transform(documents)
+
+print("Vocabulary:\n", tfidf.get_feature_names_out())
+print("\nTF-IDF Matrix:\n", X_tfidf.toarray())
+
+
+# 3. Word Embeddings
+!python -m spacy download en_core_web_sm
+
+import spacy
+nlp = spacy.load("en_core_web_sm")
+
+vectors = [nlp(doc).vector for doc in documents]
+
+print("Vector shape for 1 document:", vectors[1].shape)
+print(vectors[1][:5])
