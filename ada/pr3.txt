@@ -1,3 +1,4 @@
+#Prac 3A
 #create date
 d1<-as.Date("2026-07-05")
 #Display current sys date
