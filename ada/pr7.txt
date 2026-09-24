@@ -1,0 +1,35 @@
+# Read and Analyze CSV File in R
+
+# Read CSV file
+#After pasting link replace \ to /
+data <- read.csv("C:/Users/msc1/Downloads/students.csv")
+
+# Display first few rows
+print(head(data))
+
+# Display last few rows
+print(tail(data))
+
+# Display complete data
+print(data)
+
+# Display structure of data
+str(data)
+
+# Display summary of data
+print(summary(data))
+
+# Display dimensions
+print(dim(data))
+
+# Display column names
+print(names(data))
+
+# Calculate mean of Marks
+print(mean(data$Marks))
+
+# Calculate maximum of Marks
+print(max(data$Marks))
+
+# Calculate minimum of Marks
+print(min(data$Marks))
