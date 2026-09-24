@@ -1,0 +1,71 @@
+# Part A: Data Frames and Combining Rows and Columns
+
+# Create first data frame
+student1 <- data.frame(
+  Name = c("Amit", "Priya"),
+  Marks = c(85, 90)
+)
+
+# Create second data frame
+student2 <- data.frame(
+  Age = c(20, 21),
+  Grade = c("A", "A+")
+)
+
+# Combine columns using cbind()
+student_columns <- cbind(student1, student2)
+
+# Display combined columns
+print(student_columns)
+
+
+# Create another data frame
+student3 <- data.frame(
+  Name = c("Rahul", "Suraj"),
+  Marks = c(78, 68)
+)
+
+# Combine rows using rbind()
+student_rows <- rbind(student1, student3)
+
+# Display combined rows
+print(student_rows)
+
+
+# Part B: Probability Distributions
+# 1. Normal Distribution
+
+print(dnorm(0, mean = 0, sd = 1))
+print(pnorm(0, mean = 0, sd = 1))
+print(qnorm(0.5, mean = 0, sd = 1))
+
+set.seed(10)
+print(rnorm(5, mean = 0, sd = 1))
+
+
+# 2. Poisson Distribution
+
+print(dpois(3, lambda = 4))
+print(ppois(3, lambda = 4))
+print(qpois(0.5, lambda = 4))
+
+set.seed(10)
+print(rpois(5, lambda = 4))
+
+# 3. Uniform Distribution
+
+print(dunif(5, min = 0, max = 10))
+print(punif(5, min = 0, max = 10))
+print(qunif(0.5, min = 0, max = 10))
+
+set.seed(10)
+print(runif(5, min = 0, max = 10))
+
+# 4. Exponential Distribution
+
+print(dexp(2, rate = 0.5))
+print(pexp(2, rate = 0.5))
+print(qexp(0.5, rate = 0.5))
+
+set.seed(10)
+print(rexp(5, rate = 0.5))
