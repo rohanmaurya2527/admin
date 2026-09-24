@@ -49,3 +49,14 @@ maximum<-function(a,b){
   return(res)
 }
 print(maximum(5,3))
+
+#5 factorial
+factorial_num <- function(n) { res <- 1
+if (n > 0) {
+  for (i in 1:n) { res <- res * i
+  }
+}
+return(res)
+}
+print(factorial_num(5))
+
