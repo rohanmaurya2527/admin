@@ -1,0 +1,31 @@
+def f(x):
+  return (x - 3)**2 + (4)
+
+a = 0
+b = 8
+tollerence = 0.1
+
+iteration = 1
+while (b-a)>tollerence:
+  length = b-a
+  x1 = a+(length/4)
+  x2 = a+(length/2)
+  x3 = a+3*(length/4)
+  f1 = f(x1)
+  f2 = f(x2)
+  f3 = f(x3)
+  if f1 < f2:
+    b = x2
+  elif f3 < f2:
+    a = x2
+  else:
+    a = x1
+    b = x3
+  iteration += 1
+x_optimum = (a+b)/2
+print('Optimum Value: ',x_optimum)
+print('Minimum values: ',f(x_optimum))
+
+plt.plot(np.linspace(-10,10,100), f(np.linspace(-10,10,100)))
+plt.plot(x_optimum, f(x_optimum), 'ro')
+plt.show()
