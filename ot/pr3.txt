@@ -1,0 +1,29 @@
+import sympy as sp
+
+x = sp.symbols('x')
+
+f = (x**2) - (4*x)
+# f = 2*x - 64
+f_d = sp.diff(f,x) # first order derivative. sp.diff(f,x) differentiate f w.r.t x
+s_d = sp.diff(f,x,2) # second order derivative
+
+critical_point = sp.solve(f_d)
+print('Critical Point: ',critical_point)
+
+print('First Order Derivative: ',f_d)
+print('Second Order Derivative: ',s_d)
+
+for point in critical_point:
+  if s_d.subs(x,point) > 0:
+    print(f'Point {point} is a local minimum')
+  elif s_d.subs(x,point) < 0:
+    print(f'Point {point} is a local maximum')
+  else:
+    print(f'Point {point} is a saddle point')
+
+x_values = np.linspace(-10, 10, 100)
+y_values = x_values**2 - 4*x_values
+
+plt.plot(x_values, y_values)
+plt.plot(critical_point[0], f.subs(x, critical_point[0]), 'ro')
+plt.show()
