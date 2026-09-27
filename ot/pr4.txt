@@ -1,0 +1,24 @@
+def f(x):
+  return (x-2)**2 + (1)
+
+a = 0
+b = 5
+n = 20
+steps = (b-a)/n
+
+best_x = a
+best_value = f(a)
+
+while a<=b:
+  x_value = f(a)
+  if x_value < best_value:
+    best_value = x_value
+    best_x = a
+  a += steps
+
+print('Optimum Value: ',best_x)
+print('Minimum Value: ',best_value)
+
+plt.plot(np.linspace(-10,10,100), f(np.linspace(-10,10,100)))
+plt.plot(best_x, best_value, 'ro')
+plt.show()
