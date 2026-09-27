@@ -1,0 +1,30 @@
+from scipy.optimize import minimize_scalar
+import numpy as np
+import matplotlib.pyplot as plt
+# Bounded Method
+def objective(v):
+  x=v
+  return (x - 5)**2 + (4)
+
+result = minimize_scalar(objective, bounds=(-10, 10), method='bounded')
+print("Bounded Method")
+print('Optimal Solution',result.x)
+print('Min Value',result.fun)
+print("Iteration:", result.nit)
+plt.plot(np.linspace(-10,10,100), objective(np.linspace(-10,10,100)))
+plt.plot(result.x, result.fun, 'ro')
+plt.show()
+
+
+#Golden Method
+def objective(v):
+  x=v
+  return (x - 5)**2 + (4)
+
+result = minimize_scalar(objective, method='golden')
+print("Golden Mathod")
+print('Optimal Solution',result.x)
+print('Min Value',result.fun)
+plt.plot(np.linspace(-10,10,100), objective(np.linspace(-10,10,100)))
+plt.plot(result.x, result.fun, 'ro')
+plt.show()
