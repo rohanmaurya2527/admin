@@ -1,0 +1,39 @@
+from scipy.optimize import minimize
+import numpy as np
+import matplotlib.pyplot as plt
+
+def objective(v):
+    x, y = v
+    return (x - 1)**2 + (y - 2)**2
+
+def constraint1(v):
+    x = v[0]
+    return x - 1
+
+initial = [0, 0]
+
+result = minimize(
+    objective,
+    initial,
+    constraints={'type': 'ineq', 'fun': constraint1}
+)
+
+print(result.x)
+print(result.fun)
+
+# Plot
+x = np.linspace(-1, 4, 100)
+y = np.linspace(-1, 5, 100)
+X, Y = np.meshgrid(x, y)
+Z = (X - 1)**2 + (Y - 2)**2
+
+plt.contour(X, Y, Z, levels=20)
+plt.scatter(result.x[0], result.x[1], color='red', label='Optimal Point')
+plt.axvline(1, linestyle='--', label='x >= 1')
+
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.grid()
+plt.show()
+
