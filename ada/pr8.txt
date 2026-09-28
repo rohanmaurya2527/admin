@@ -24,3 +24,29 @@ print(y)
 plot(x,y,main="Scatter Plot",
      xlab="X val",ylab="Y val",
      pch=19,col="blue")
+
+#Density Plot if told in exam
+mks <- c(50,60,70,80,90,55,66,78,89,90)
+
+d <- density(mks)
+
+plot(d,
+     type="n",
+     main="Density Plot",
+     xlab="Marks",
+     ylab="Density")
+
+# Different colored filled areas
+polygon(d$x[d$x <= 65],
+        d$y[d$x <= 65],
+        col="skyblue", border=NA)
+
+polygon(d$x[d$x > 65 & d$x <= 80],
+        d$y[d$x > 65 & d$x <= 80],
+        col="orange", border=NA)
+
+polygon(d$x[d$x > 80],
+        d$y[d$x > 80],
+        col="red", border=NA)
+
+lines(d, lwd=2)
