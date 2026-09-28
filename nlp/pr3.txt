@@ -1,0 +1,138 @@
+#Mam Code
+import re
+import string
+from bs4 import BeautifulSoup
+
+def clean_text(text):
+    text = BeautifulSoup(text, "html.parser").get_text()  # Remove HTML tags (moved to the first step)
+    text = text.lower()  # Lowercase
+    text = re.sub(r'\d+', '', text)  # Remove numbers
+    text = text.translate(str.maketrans('', '', string.punctuation))  # Remove punctuation
+    text = re.sub(r'\W', ' ', text)  # Remove special characters
+    return text
+
+# Example corpus (you should replace this with your actual data)
+corpus = [
+    "Hello, this is a sample mr.text 123! It has some HTML tags"
+    "like <p>paragraph</p>.",
+    "Another example text with special characters @#$% and No. 456. Is this an <b>important</b> message?"
+]
+
+cleaned_corpus = [clean_text(doc) for doc in corpus]
+print(cleaned_corpus)
+
+from nltk.tokenize import word_tokenize
+import nltk
+nltk.download('punkt_tab')
+tokenized_corpus = [word_tokenize(doc) for doc in cleaned_corpus]
+print(tokenized_corpus)
+
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+stop_words = set(stopwords.words('english'))
+filtered_corpus = [[word for word in doc if word not in stop_words] for doc in tokenized_corpus]
+print(filtered_corpus)
+
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+nltk.download('wordnet')
+stemmer = PorterStemmer()
+lemmatizer = WordNetLemmatizer()
+
+stemmed_corpus = [[stemmer.stem(word) for word in doc] for doc in filtered_corpus]
+lemmatized_corpus = [[lemmatizer.lemmatize(word) for word in doc] for doc in filtered_corpus]
+print(stemmed_corpus)
+print(lemmatized_corpus)
+
+!pip install contractions
+import contractions
+sample_text = "she can't come today."   # renamed so it no longer overwrites cleaned_corpus
+expanded_text = contractions.fix(sample_text)
+print(expanded_text)
+
+#Anas Code
+import re
+import string
+import nltk
+from bs4 import BeautifulSoup
+from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.corpus import stopwords, gutenberg
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+import contractions
+
+# Download required resources
+nltk.download("punkt_tab")
+nltk.download("stopwords")
+nltk.download("wordnet")
+nltk.download("gutenberg")
+
+# Text cleaning
+def clean_text(text):
+    text = text.lower()
+    text = BeautifulSoup(text, "html.parser").get_text()
+    text = re.sub(r"\d+", "", text)
+    text = text.translate(str.maketrans("", "", string.punctuation))
+    text = re.sub(r"\W+", " ", text).strip()
+    return text
+
+# Corpus
+corpus = [
+    "Hello, this is a sample mr.text 123! It has some HTML tags like <p>paragraph</p>.",
+    "Another example text with special characters @#$% and No. 456. Is this an **important** message?"
+]
+
+# Cleaning
+cleaned_corpus = [clean_text(doc) for doc in corpus]
+print("Cleaned Corpus:", cleaned_corpus)
+
+# Tokenization
+tokenized_corpus = [word_tokenize(doc) for doc in cleaned_corpus]
+print("Tokenized Corpus:", tokenized_corpus)
+
+# Stopword removal
+stop_words = set(stopwords.words("english"))
+
+filtered_corpus = [
+    [word for word in doc if word not in stop_words]
+    for doc in tokenized_corpus
+]
+
+print("Filtered Corpus:", filtered_corpus)
+
+# Stemming and Lemmatization
+stemmer = PorterStemmer()
+lemmatizer = WordNetLemmatizer()
+
+stemmed_corpus = [
+    [stemmer.stem(word) for word in doc]
+    for doc in filtered_corpus
+]
+
+lemmatized_corpus = [
+    [lemmatizer.lemmatize(word) for word in doc]
+    for doc in filtered_corpus
+]
+
+print("Stemmed Corpus:", stemmed_corpus)
+print("Lemmatized Corpus:", lemmatized_corpus)
+
+# Contractions
+text = "she can't come today."
+expanded_text = contractions.fix(text)
+print("Expanded Text:", expanded_text)
+
+# Gutenberg Corpus
+print("Gutenberg Files:", gutenberg.fileids())
+
+words = gutenberg.words("austen-emma.txt")
+print("Total Words:", len(words))
+print("First 20 Words:", words[:20])
+
+# Sentence Tokenization
+text = """Artificial Intelligence is transforming industries.
+Machine Learning is a subset of AI.
+Python is widely used for NLP."""
+
+sentences = sent_tokenize(text)
+
+for i, sentence in enumerate(sentences, start=1):
+    print(f"Sentence {i}: {sentence}")
