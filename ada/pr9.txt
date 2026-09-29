@@ -1,0 +1,22 @@
+#Prac 9
+Dataset Structure-> Product ID,Region,Product,Units Sold,Sales Amount
+
+In cell write below formulas acc to mentioned ques and given dataset
+1. Sum of Column -> =SUM(E2:E24)
+2. Avg of Column -> =AVERAGE(E2:E24)
+3. Min of Column -> =MIN(E2:E24)
+4. Max of Column -> =MAX(E2:E24)
+5. Count of Records -> =COUNT(E2:E24)
+6. Count of Records with Condition(eg of >5000 sales)-> =COUNTIF(E2:E24,">5000")
+7. Sum of Colummn with Condition(eg of <=5000 sales)-> =SUMIF(E2:E24,"<=5000")
+8. IF Condition on Column -> =IF(D2>20,"Great Sale","Undersale")
+9. Nested IF Condition on same column -> =IF(D2>25,"Efficient",IF(D2>15,"Need to Improve","Inefficient"))
+10. AND Condition on Multiple Columns -> =IF(AND(D2>20,E2>12000),"Great Performer","Need to Improve")
+11. OR Condition on Multiple Columns -> =IF(OR(D2>20,E2>12000),"Efficient","Inefficient")
+12. To make description in CAPS -> =UPPER(C2)
+13. To make description in Lower -> =LOWER(C2)
+14. To make description in Proper -> =PROPER(C2)
+15. Join 2 col without space -> =TEXTJOIN("",TRUE,B2,C2)
+16. Join 2 col with space -> =TEXTJOIN(" ",TRUE,B2,C2)
+17. Join 2 col with comma -> =TEXTJOIN(",",TRUE,B2,C2)
+18. 
