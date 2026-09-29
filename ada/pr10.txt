@@ -1,0 +1,49 @@
+#Prac 10A - Sorting, Filtering, Delimiter, Data Validation.
+Data Structure-> Student ID,Student Name,Department,Marks,Attendance,City
+A. Sorting Steps:
+    Value Cell of ques field-> Sort Option-> Custom Sort-> Select ques field & asc/desc -> OK
+
+B. Filter Steps:
+    i)For Numerical Column:    
+    Value Cell of ques field-> Filter Option-> Select Cell Value Option->...
+    -> Again click on filter sign in ques header field-> Number Filters Option->...
+    -> Choose opt As per ques and do necessary steps.
+    
+    ii)For Catergorical Column:
+    Value Cell of ques field-> Filter Option-> Select Cell Value Option->...
+    -> Again click on filter sign in ques header field->...
+    -> Choose opt As per ques and do necessary steps.
+
+C. Delimiter Steps:
+    Messy Field Eg:23, East,Tablet,50,7000
+    Choose Data Option from Ribbon(Above Opt)-> Select Split Text-> Choose proper delimiter-> OK
+
+D. Data Validation:
+    Choose Data Option from Ribbon(Above Opt)-> Data Validation-> Data Validation-> Put Your Settings and Error Alert
+
+
+#Prac 10B - Pivot Tables and Pivot Charts
+Pivot Tables:
+    1. Normal:
+    Select whole table-> Choose Pivot Taables from Insert->...
+    And after clicking existing worksheet choose cell on worksheet->
+    Choose Fields acc to question
+
+    2. With Filter:
+    Eg Ques: Create a Pivot table and chart showing Product having Sales amount greater than or equal to 25000.
+    i) set up pivot table:    
+        In the PivotTable Fields panel:
+        Drag Product → Rows
+        Drag Sales Amount → Values
+        It will show the total Sales Amount for each product.
+    ii) Apply the ₹25,000 filter
+        Click the dropdown beside Row Labels / Product
+        Select Value Filters
+        Choose Greater Than Or Equal To
+        Set:
+        Sum of Sales Amount ≥ 25000
+        Click OK
+    
+Pivot Charts:
+    Select Created Pivot Table and from Riboon go to insert->...
+    Choose Charts and then create it by proper option selection
