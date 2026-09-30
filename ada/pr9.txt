@@ -19,4 +19,23 @@ In cell write below formulas acc to mentioned ques and given dataset
 15. Join 2 col without space -> =TEXTJOIN("",TRUE,B2,C2)
 16. Join 2 col with space -> =TEXTJOIN(" ",TRUE,B2,C2)
 17. Join 2 col with comma -> =TEXTJOIN(",",TRUE,B2,C2)
-18. 
+
+
+VLOOKUP:
+=VLOOKUP(I3,A1:F24,3,0) #(EmptyCell,Table,ColNo,0/1)
+Steps: 
+Select Empty Cell-> In that write Formula-> While writing formula select neighboring empty cell,whole table, col_index_no & write 0 ->...
+In Neighboring empty cell write any index no and press Enter 
+
+HLOOKUP:
+=HLOOKUP(I3,A1:F24,3,0) #(EmptyCell,Table,RowNo,0/1)
+Steps:
+Select Empty Cell-> In that write Formula-> While writing formula select neighboring empty cell,whole table, row_no & write 0 ->...
+In Neighboring empty cell write any col_name and press Enter
+
+Index Match:
+=INDEX(E2:E24,MATCH(I3,A2:A21,0))
+Steps:
+Select Empty Cell-> In that write Formula-> While writing formula...
+=INDEX(VAL_RETURN_COL,MATCH(neighboring_empty_cell,INDEX/ID_COL,0))
+
