@@ -39,3 +39,8 @@ Steps:
 Select Empty Cell-> In that write Formula-> While writing formula...
 =INDEX(VAL_RETURN_COL,MATCH(neighboring_empty_cell,INDEX/ID_COL,0))
 
+Address Match:
+=ADDRESS(MATCH(19,A:A,0),1)
+Steps:
+Select Empty Cell-> In that write formula-> While writing formula...
+=ADDRESS(MATCH(Index_search_val,#Search_Column,0),1)
