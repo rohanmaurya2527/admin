@@ -1,42 +1,62 @@
-#Prac1A
-a<-10
-b<-5
-num<-100
-char<-"MSc"
-logical<-TRUE
-sum<-a+b
-sub<-a-b
-mul<-a*b
-div<-a/b
-print(sum)
-print(sub)
-print(mul)
-print(div)
-show(num)
-show(char)
-show(logical)
+# Prac1A
 
-#Prac1b
-student<-data.frame(
-  Name=c('Amit','Priya','Rahul'),
-  Age=c(20,21,22),
-  Marks=c(85,90,78)
+a <- 10                 # Assigns the value 10 to variable a
+b <- 5                  # Assigns the value 5 to variable b
+num <- 100              # Assigns the numeric value 100 to variable num
+char <- "MSc"           # Assigns the character value "MSc" to variable char
+logical <- TRUE         # Assigns the logical value TRUE to variable logical
+
+sum <- a + b            # Calculates the sum of a and b
+sub <- a - b            # Calculates the difference between a and b
+mul <- a * b            # Calculates the multiplication of a and b
+div <- a / b            # Calculates the division of a by b
+
+print(sum)              # Displays the value of sum
+print(sub)              # Displays the value of sub
+print(mul)              # Displays the value of mul
+print(div)              # Displays the value of div
+
+show(num)               # Displays the value of num
+show(char)              # Displays the value of char
+show(logical)           # Displays the value of logical
+
+
+# Prac1B
+
+student <- data.frame(  # Creates a data frame named student
+  Name = c('Amit','Priya','Rahul'),   # Creates the Name column with three student names
+  Age = c(20,21,22),                  # Creates the Age column with students' ages
+  Marks = c(85,90,78)                 # Creates the Marks column with students' marks
 )
-show(student)
-student$Marks
-student[,c("Name","Marks")]
-student[student$Marks>80]
-student[2,]
-student$Grade<-c("A","A+","B")
-student<-rbind(student,list(Name="Suraj",Age=24,Marks=68,Grade="B"))
-student$Marks<-student$Marks+5
-student[order(student$Marks), ]
-student[order(-student$Marks), ]
-names(student)[3]<-"Score"
 
-student$Age<- NULL
-summary(student)
+show(student)           # Displays the complete student data frame
 
-mean(student$Score)
-max(student$Score)
-min(student$Score)
+student$Marks           # Displays the Marks column from the student data frame
+
+student[,c("Name","Marks")]  # Selects and displays the Name and Marks columns
+
+student[student$Marks > 80]  # Selects rows where Marks are greater than 80
+
+student[2,]             # Displays the second row of the student data frame
+
+student$Grade <- c("A","A+","B")  # Adds a Grade column with grades for each student
+
+student <- rbind(student, list(Name="Suraj",Age=24,Marks=68,Grade="B"))  # Adds Suraj as a new row to the data frame
+
+student$Marks <- student$Marks + 5  # Adds 5 marks to every student's Marks
+
+student[order(student$Marks), ]  # Sorts the data frame by Marks in ascending order
+
+student[order(-student$Marks), ] # Sorts the data frame by Marks in descending order
+
+names(student)[3] <- "Score"      # Renames the third column from Marks to Score
+
+student$Age <- NULL                # Removes the Age column from the data frame
+
+summary(student)                   # Displays a statistical summary of the data frame
+
+mean(student$Score)                # Calculates the average of the Score column
+
+max(student$Score)                 # Finds the highest value in the Score column
+
+min(student$Score)                 # Finds the lowest value in the Score column
