@@ -51,3 +51,87 @@ ex <- TRUE
 qqplot(x, y, pch = 19, conf.level = 1 - pval, 
        conf.args = list(exact = ex, col = "lightgrey"))
 abline(a = 0, b = 1)
+
+
+
+#Last Min Updated Code
+# Practical No: 8
+# Aim: Write a Program in R to Create Different Graphs Using Data Frame
+
+# -------------------------
+# Box Plot
+# -------------------------
+marks <- c(55, 60, 65, 70, 75, 80, 85, 90)
+
+boxplot(marks,
+        col = "yellow",
+        main = "Box Plot")
+
+
+# -------------------------
+# Normal Q-Q Plot
+# -------------------------
+qqnorm(marks)
+qqline(marks, col = "green")
+
+
+# -------------------------
+# Density Plot
+# -------------------------
+plot(density(marks),
+     col = "blue",
+     lwd = 2,
+     main = "Density Plot")
+
+
+# -------------------------
+# Line Chart
+# -------------------------
+sales <- c(40, 50, 66, 70, 80, 90)
+
+plot(sales,
+     type = "l",
+     col = "blue",
+     lwd = 2,
+     main = "Monthly Sales",
+     xlab = "Months",
+     ylab = "Sales")
+
+
+# -------------------------
+# Histogram
+# -------------------------
+marks <- c(55, 60, 62, 62, 65, 75, 80, 67)
+
+hist(marks,
+     col = "pink",
+     main = "Histogram",
+     xlab = "Marks")
+
+
+# -------------------------
+# Pie Chart
+# -------------------------
+# Creating sample data for students in different departments
+students <- c(40, 30, 20, 10)
+
+# Labels for departments
+dept <- c("Science", "Commerce", "Arts", "Management")
+
+# Pie chart
+pie(students,
+    labels = dept,
+    main = "Student Distribution by Department")
+
+
+# -------------------------
+# Bar Plot
+# -------------------------
+barplot(students,
+        names.arg = dept,
+        main = "Student Distribution by Department",
+        xlab = "Departments",
+        ylab = "Number of Students",
+        col = "lightblue")
+
+
