@@ -43,3 +43,11 @@ plot(density_data,
 
 # Optional: Fill the area under the curve
 polygon(density_data, col = rgb(0.5, 0.7, 0.9, 0.5), border = "blue")
+
+#QQPlot
+ex <- TRUE
+(pval <- ks.test(x, y, exact = ex)$p.value)
+
+qqplot(x, y, pch = 19, conf.level = 1 - pval, 
+       conf.args = list(exact = ex, col = "lightgrey"))
+abline(a = 0, b = 1)
