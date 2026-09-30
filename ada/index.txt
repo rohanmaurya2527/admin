@@ -20,7 +20,7 @@ B) Implement a Program in R using Probability Distribution.
 
 8 Write a Program in R to Create Different Graphs using Data Frame
 
-9 Working with Excel Numerical, Text and  logical operation
+9 Working with Excel (Numerical, Text and Logical operation)
 
 10 A) Sorting, Filtering, Delimiter, Data Validation.
 B) Advanced Data Analysis using Pivot Tables and Pivot Charts in Excel.
