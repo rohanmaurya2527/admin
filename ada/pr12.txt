@@ -42,7 +42,6 @@ print(data_matrix)
 
 
 #test of independance of atttributes
-
 attribute_matrix <- matrix(c(30, 20,
                              25, 25),
                            nrow = 2)
