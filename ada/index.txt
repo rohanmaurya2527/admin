@@ -1,0 +1,31 @@
+1 Learn all the Basics of R-Programming 
+A) Data Types, Variables and Operators etc.
+B) Common Data Manipulation Techniques in R
+
+2 Implement R-Loops with Different Examples
+
+3 Learn the Basics of Functions in R and Implement them with Examples
+A) Dates in R Programming.
+B) Basics of Functions in R Programming.
+
+4 Implement Data Frames in R 
+A) Write a Program to Join Columns and Rows in a Data Frame using cbind() and rbind() in R.
+B) Implement a Program in R using Probability Distribution.
+
+5 Implement Different String Manipulation Functions in R
+
+6 Implement Different Data Structures in R (Vectors, Lists, Data Frames)
+
+7 Write a Program to Read a CSV File and Analyze the Data in the File in R
+
+8 Write a Program in R to Create Different Graphs using Data Frame
+
+9 Working with Excel Numerical, Text and  logical operation
+
+10 A) Sorting, Filtering, Delimiter, Data Validation.
+B) Advanced Data Analysis using Pivot Tables and Pivot Charts in Excel.
+
+11 Advanced Data Analysis using Pivot Tables and Pivot Charts in R
+
+12 T-Test, F-Test, ANOVA (One Way Classification),Chi-Square Test, Independence of Attributes
+
