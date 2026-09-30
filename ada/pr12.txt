@@ -50,6 +50,7 @@ attribute_matrix <- matrix(c(30, 20,
 chisq.test(attribute_matrix)
 
 #Last Min Update code
+#test of independance of atttributes
 # Create a sample matrix
 mat <- matrix(c(1, 2, 3, 2, 4, 6, 0, 1, 5), nrow = 3, byrow = TRUE)
 # Find the QR decomposition and rank
