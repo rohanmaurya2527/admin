@@ -1,18 +1,24 @@
-vdata<-c(10,20,30,40,50)
-print(vdata)
-sdata <- data.frame(
-  Name=c('Amit','Priya','Rahul'),
-  Age=c(20,30,14),
-  Marks=c(85,90,78)
-)
-print(vdata[2])
-print(sdata$Name)
-print(sdata$Marks)
+# Aim: Implement Different Data Structures in R (Vectors, Lists, Data Frames)
 
-list_data <- list( 
-  name = 'Rahul', 
-  age = 22, 
-  percentage = 85.5, 
-  passed = TRUE 
+vdata <- c(10,20,30,40,50)                 # Creates a numeric vector containing five values
+print(vdata)                                # Displays all elements of the vector
+
+sdata <- data.frame(                        # Creates a data frame named sdata
+  Name = c('Amit','Priya','Rahul'),        # Creates the Name column containing student names
+  Age = c(20,30,14),                       # Creates the Age column containing students' ages
+  Marks = c(85,90,78)                      # Creates the Marks column containing students' marks
 )
-print(list_data)
+
+print(vdata[2])                             # Displays the second element of the vector
+
+print(sdata$Name)                           # Displays the Name column from the data frame
+print(sdata$Marks)                          # Displays the Marks column from the data frame
+
+list_data <- list(                          # Creates a list named list_data containing different types of data
+  name = 'Rahul',                           # Stores the student's name as a character value
+  age = 22,                                 # Stores the student's age as a numeric value
+  percentage = 85.5,                        # Stores the student's percentage as a decimal value
+  passed = TRUE                             # Stores the student's pass status as a logical value
+)
+
+print(list_data)                            # Displays all elements of the list
