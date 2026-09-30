@@ -1,0 +1,352 @@
+====================================================
+R PROGRAMMING PRACTICALS - VIVA PREP (Q&A)
+====================================================
+
+
+1. BASICS OF R PROGRAMMING
+(Data types, variables, operators, data manipulation)
+----------------------------------------------------
+
+Q: Difference between <- and = for assignment?
+A: <- is R's native assignment operator and works everywhere,
+   including inside function bodies. = also assigns at the top
+   level but is really meant for passing named arguments to
+   functions. Convention favors <-.
+
+Q: What data type does logical <- TRUE create? Name R's basic types.
+A: It creates a logical type. R's basic types: numeric, integer,
+   character, logical, complex.
+
+Q: What does student[student$Marks > 80] do, and why is a comma
+   usually needed?
+A: Without a comma it indexes columns, not rows, giving odd
+   results. student[student$Marks > 80, ] is needed to select
+   matching rows.
+
+Q: Difference between student[2,] and student[,2]?
+A: student[2,] = row 2, all columns. student[,2] = column 2,
+   all rows.
+
+Q: What must match for rbind() to work?
+A: The same column names and count (and compatible types)
+   between the new row and existing frame.
+
+Q: Difference between adding student$Grade <- c(...) and using
+   cbind()?
+A: Direct assignment adds a column by name to an existing frame.
+   cbind() binds two full objects side by side - used when
+   combining separate objects.
+
+Q: What does order(-student$Marks) do?
+A: Sorts ascending by the negated values - a trick to get
+   descending order.
+
+
+2. R-LOOPS
+(for vs while loops)
+----------------------------------------------------
+
+Q: Difference between for and while - when to prefer each?
+A: for when the number of iterations is known in advance; while
+   when looping continues until a condition becomes false
+   (unknown iteration count).
+
+Q: What happens if you forget j <- j+1 inside the while loop?
+A: The condition j<=5 never becomes false -> infinite loop.
+
+Q: Is 1:5 a vector? What does it evaluate to?
+A: Yes - an integer vector c(1,2,3,4,5).
+
+Q: How would you write the same loop using repeat?
+A: j<-1
+   repeat{
+     print(j)
+     j<-j+1
+     if(j>5) break
+   }
+
+
+3. FUNCTIONS IN R
+(Dates + basics of functions)
+----------------------------------------------------
+
+Q: What class of object does as.Date() return?
+A: An object of class "Date".
+
+Q: What does d2 - d1 return?
+A: A difftime object - "Time difference of X days".
+
+Q: What do %d, %m, %B, %Y, %A mean in format()?
+A: Day, month (numeric), full month name, 4-digit year, full
+   weekday name.
+
+Q: Difference between return() and letting a value fall through?
+A: return() explicitly exits with a value; without it, R returns
+   the last evaluated expression. Both work, but return() is
+   clearer and allows early exits.
+
+Q: Why does factorial_num check n > 0 separately?
+A: Because 1:0 in R = c(1,0), which would wrongly multiply by 0
+   for n=0. The check ensures factorial_num(0) correctly
+   returns 1.
+
+Q: Why does a no-argument function like greet() still need ()?
+A: () tells R to call/execute the function rather than just
+   referring to the function object.
+
+
+4. DATA FRAMES + PROBABILITY DISTRIBUTIONS
+(cbind/rbind and distributions)
+----------------------------------------------------
+
+Q: Difference between cbind() and rbind()?
+A: cbind() binds objects side-by-side as columns (needs equal
+   row counts); rbind() stacks objects as rows (needs matching
+   column names).
+
+Q: Why did cbind(student1, student2) work despite different
+   columns?
+A: Because both had the same row count (2) - column names don't
+   need to match for cbind, only row count. Mismatched rows
+   would throw an error.
+
+Q: Explain dnorm, pnorm, qnorm.
+A: Density at a point, cumulative probability up to that point,
+   and quantile (inverse of pnorm) respectively. At x=0:
+   dnorm=0.3989, pnorm=0.5, qnorm(0.5)=0.
+
+Q: What does set.seed(10) do?
+A: Fixes the random number generator's starting point so results
+   are reproducible.
+
+Q: What parameter does each distribution take?
+A: Normal -> mean, sd; Poisson -> lambda; Uniform -> min, max;
+   Exponential -> rate.
+
+Q: What does qpois(0.5, lambda=4) represent?
+A: The value below which 50% of the Poisson(4) probability mass
+   lies (the median).
+
+
+5. STRING MANIPULATION
+----------------------------------------------------
+
+Q: Difference between substr() and strsplit()?
+A: substr() extracts a substring by position; strsplit() splits
+   a string by a separator, returning a list.
+
+Q: What does strrep("R",5) output?
+A: "RRRRR"
+
+Q: Difference between sub() and gsub()?
+A: sub() replaces only the first match; gsub() replaces all
+   matches.
+
+Q: Difference between identical() and ==?
+A: identical() checks exact equality of type, structure and
+   value; == does element-wise comparison and can behave oddly
+   with vectors/NA.
+
+Q: What does trimws() remove?
+A: Leading and trailing whitespace by default (can restrict to
+   one side).
+
+
+6. DATA STRUCTURES
+(Vectors, Lists, Data Frames)
+----------------------------------------------------
+
+Q: Core difference between vector, list, and data frame?
+A: A vector holds a single data type; a list can hold mixed
+   types/structures; a data frame is a list of equal-length
+   vectors as a table (each column single-typed).
+
+Q: Why can a list mix types but not a vector?
+A: Each list element is stored as a separate reference rather
+   than a contiguous typed array like a vector.
+
+Q: Why use sdata$Name instead of sdata[2]?
+A: Selecting by name is clearer/safer - it won't break if column
+   order changes, even though positional indexing works too.
+
+Q: What does str() show that print() doesn't?
+A: The internal structure: data types of each column,
+   dimensions, and a value preview.
+
+
+7. READING & ANALYZING CSV
+----------------------------------------------------
+
+Q: Difference between head() and tail()?
+A: First rows vs last rows; default is 6 rows each.
+
+Q: What does str(data) tell you?
+A: Column data types, number of observations/variables, and
+   sample values - useful to catch wrongly-typed columns.
+
+Q: Why replace \ with / in Windows paths?
+A: \ is an escape character in R strings, so paths need / or \\
+   to avoid errors.
+
+Q: What does summary() show for numeric vs character columns?
+A: Numeric: Min/1st Qu./Median/Mean/3rd Qu./Max. Character/
+   factor: counts or class/length info.
+
+Q: What if the CSV has missing values when running
+   mean(data$Marks)?
+A: Returns NA unless you add na.rm=TRUE to ignore missing
+   values.
+
+
+8. GRAPHS FROM A DATA FRAME
+----------------------------------------------------
+
+Q: When to use pie vs bar vs histogram?
+A: Pie -> proportions of a whole (categorical, few categories);
+   bar -> comparing values across categories; histogram ->
+   distribution of a continuous numeric variable.
+
+Q: What does type="l" do in plot()?
+A: Draws a line plot. Others: "p"=points (default), "b"=both,
+   "o"=overplotted, "h"=vertical lines.
+
+Q: What does a density plot show that a histogram doesn't?
+A: A smoothed, continuous distribution estimate vs. binned
+   discrete counts (sensitive to bin width).
+
+Q: What does polygon() do in the density plot code?
+A: Fills the area under the density curve with color for
+   readability.
+
+Q: Why as.numeric() around readline()?
+A: readline() reads input as a string; as.numeric() converts it
+   to a number for math/plotting.
+
+
+9. EXCEL - NUMERICAL, TEXT, LOGICAL
+----------------------------------------------------
+
+Q: Difference between SUMIF and COUNTIF?
+A: SUMIF totals values meeting a condition; COUNTIF counts cells
+   meeting a condition.
+
+Q: Explain the nested IF:
+   =IF(D2>25,"Efficient",IF(D2>15,...))
+A: Checks D2>25 first (returns "Efficient" if true); else checks
+   D2>15 -> "Need to Improve"; else -> "Inefficient". Evaluates
+   top to bottom, first true condition wins.
+
+Q: Difference between AND() and OR() inside an IF?
+A: AND() requires all conditions true; OR() requires at least
+   one true.
+
+Q: What does the TRUE in TEXTJOIN(",", TRUE, B2, C2) control?
+A: Tells Excel to ignore empty cells in the range rather than
+   inserting an empty separator.
+
+Q: Difference between UPPER, LOWER, PROPER?
+A: All caps, all lowercase, and capitalize first letter of each
+   word respectively.
+
+
+10. SORTING/FILTERING/VALIDATION + PIVOT TABLES
+----------------------------------------------------
+
+Q: Difference between Sort and Filter?
+A: Sort permanently reorders rows; Filter hides non-matching
+   rows temporarily without changing order.
+
+Q: What does Text to Columns (delimiter) do?
+A: Splits a messy single column into separate columns based on a
+   chosen delimiter (e.g., comma).
+
+Q: Purpose of Data Validation?
+A: Restricts allowed cell entries (e.g., numbers in a range, a
+   dropdown list) and shows an error alert on invalid entry.
+
+Q: Rows vs Values in a Pivot Table?
+A: Rows groups data by unique values of that field; Values is
+   the field that gets aggregated (sum/avg/count) per group.
+
+Q: How does a Value Filter (e.g., Sales >= 25000) work
+   conceptually?
+A: It filters based on the aggregated result per group, not
+   individual raw rows.
+
+Q: What is a Pivot Chart?
+A: A chart built directly from a Pivot Table; it updates
+   automatically when the table's fields/filters/values change.
+
+
+11. PIVOT TABLES & CHARTS IN R
+----------------------------------------------------
+
+Q: Explain aggregate(Sales ~ Department, data=sales_data, sum).
+A: The ~ formula means "Sales grouped by Department"; it sums
+   Sales for each Department group.
+
+Q: Difference between using sum vs mean as the aggregating
+   function?
+A: Same grouping, different summary statistic - total sales per
+   department vs average sale per department.
+
+Q: Difference between table() and xtabs()?
+A: table() gives a simple frequency count of one categorical
+   variable; xtabs() gives a cross-tabulation across two+
+   variables via formula syntax.
+
+Q: What does xtabs(Sales ~ Department+Month, data=sales_data)
+   produce?
+A: A 2D table: Departments as rows, Months as columns, summed
+   Sales per combination.
+
+Q: Why plot pivot_table$Sales instead of raw sales_data?
+A: The pivot table is already aggregated (one bar per
+   department); raw data would show one bar per row (repeated
+   departments) - not meaningful.
+
+
+12. T-TEST, F-TEST, ANOVA, CHI-SQUARE
+----------------------------------------------------
+
+Q: What does t.test(group1, group2) test? Null hypothesis?
+A: Whether the means of two groups are equal. H0: the two
+   population means are equal.
+
+Q: Why run var.test() (F-test) before a t-test?
+A: It checks whether variances are equal; if they differ
+   significantly, you'd use Welch's t-test (var.equal=FALSE,
+   R's default) instead of pooled-variance.
+
+Q: Why use factor() in the ANOVA example?
+A: Tells R to treat group as categorical; without it, aov() may
+   error or misinterpret the grouping variable.
+
+Q: What does aov(marks ~ group) test?
+A: Whether the means of 3+ groups are all equal. H0: all group
+   means are equal (no group effect).
+
+Q: How do you read summary(anova_result)?
+A: The key value is the p-value (Pr(>F)) - below 0.05 means
+   reject H0 (at least one group mean differs). The F-value is
+   the test statistic used to get that p-value.
+
+Q: What does chisq.test() test?
+A: Whether two categorical variables are independent, using a
+   contingency table. H0: the variables are independent.
+
+Q: Goodness of fit vs independence test?
+A: Goodness of fit compares an observed distribution to an
+   expected one (one variable); independence tests whether two
+   categorical variables are related (two-way table) - your code
+   demonstrates independence.
+
+Q: What does p-value < 0.05 mean in these tests?
+A: Reject the null hypothesis - a statistically significant
+   difference (t-test/ANOVA), variance difference (F-test), or
+   association (Chi-square), rather than random chance.
+
+
+====================================================
+Good luck for the exam.
+====================================================
