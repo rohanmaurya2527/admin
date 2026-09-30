@@ -3,7 +3,7 @@ dept<-c("Science","Commerce","Arts","Management")
 pie(std,labels = dept,main = "Student Distri by Dept")
 barplot(std,names.arg=dept,main = "Student Distri by Dept",
         xlab="Dept",ylab="No of Students",col="lightblue")
-
+boxplot(std,col="yellow",main="Box Plot")
 sales<-c(40,50,60,70,80,90)
 plot(sales,type="l",col="blue",
      lwd=2,main="Monthly sales",
