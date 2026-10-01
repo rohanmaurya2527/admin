@@ -1,0 +1,32 @@
+Aim: To design a high-quality code-generation prompt using requirements, constraints, examples, acceptance criteria and output formatting without writing the implementation manually.
+Tools Required: Any LLM chat interface.
+Prompt / Activity:
+PROMPT:
+
+You are a senior Python developer and code reviewer.
+
+Generate a Python function named calculate_grade(marks) that converts a numeric mark into a grade.
+
+Functional requirements:
+- Input must be a number from 0 to 100 inclusive.
+- Grade A: 75-100
+- Grade B: 60-74.99
+- Grade C: 50-59.99
+- Grade D: 40-49.99
+- Grade F: below 40
+- Raise ValueError for marks outside 0-100.
+- Raise TypeError for non-numeric input.
+
+Quality requirements:
+- Include type hints.
+- Include a concise docstring.
+- Keep the function readable and avoid unnecessary libraries.
+- Include at least 8 test cases covering boundaries and invalid input.
+
+Output format:
+1. Brief assumptions (maximum 3 bullets).
+2. Python code in one code block.
+3. Test cases in a second code block.
+4. A short checklist showing how each requirement was satisfied.
+
+Do not omit validation and do not change the grading rules.
