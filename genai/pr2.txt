@@ -1,0 +1,30 @@
+Aim: To compare one-shot and few-shot prompting and observe how demonstrations influence classification consistency.
+
+Prompt / Activity:
+ACTIVITY A - ONE-SHOT PROMPT:
+
+Classify the sentiment as Positive, Negative or Neutral. Return only the label.
+
+Example:
+Text: The application is very easy to use and saved me a lot of time.
+Sentiment: Positive
+
+Now classify:
+Text: The update changed the interface, but I have no strong opinion about it.
+Sentiment:
+
+ACTIVITY B - FEW-SHOT PROMPT:
+
+Classify the sentiment as Positive, Negative or Neutral. Return only the label.
+
+Examples:
+1. Text: The application is very easy to use and saved me a lot of time.
+Sentiment: Positive
+2. Text: The service crashed twice and I lost my work.
+Sentiment: Negative
+3. Text: The update changed the interface, but everything still works.
+Sentiment: Neutral
+
+Now classify:
+Text: The new dashboard looks different, although my workflow remains unchanged.
+Sentiment:
