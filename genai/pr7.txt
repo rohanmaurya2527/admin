@@ -1,0 +1,31 @@
+Aim: To design prompts that extract information from unstructured text into valid JSON and constrain the response using a Pydantic-style schema.
+Tools Required: Any LLM chat interface. Pydantic schema is used only as an output contract; no API program is required.
+
+Prompt / Activity:
+
+SOURCE TEXT:
+"Aarav Mehta is enrolled in MSc Information Technology, Semester 2. He is comfortable with Python, SQL and FastAPI. 
+His current project is a document question-answering system."
+
+PYDANTIC OUTPUT CONTRACT:
+from pydantic import BaseModel
+from typing import List
+
+class StudentProfile(BaseModel):
+name: str
+course: str
+semester: int
+skills: List[str]
+project: str
+
+PROMPT:
+Extract the SOURCE TEXT into JSON that satisfies the StudentProfile schema.
+
+Rules:
+1. Return valid JSON only; no markdown or explanation.
+2. Use exactly: name, course, semester, skills, project.
+3. semester must be an integer; skills must be an array of strings.
+4. Do not invent information.
+
+If the response is invalid, use this retry prompt:
+"Correct only the JSON/schema errors in your previous response. Preserve the source facts and return valid JSON only."
