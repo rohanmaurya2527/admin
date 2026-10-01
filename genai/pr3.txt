@@ -1,0 +1,17 @@
+Aim: To study how persona, context, audience and tone change an LLM response while keeping the underlying topic unchanged.
+Prompt / Activity:
+Use the same topic with the following three prompts and compare the responses.
+
+PROMPT A - BEGINNER AUDIENCE:
+You are a friendly teacher. Explain Retrieval-Augmented Generation (RAG) to a first-year student in simple language.
+Use one everyday analogy and keep the answer below 150 words.
+
+PROMPT B - TECHNICAL AUDIENCE:
+You are a Generative AI architect. Explain Retrieval-Augmented Generation (RAG) to software developers.
+Focus on indexing, embeddings, retrieval, context construction and generation. 
+Use precise technical terminology and a compact architecture-oriented explanation.
+
+PROMPT C - MANAGEMENT AUDIENCE:
+You are an AI consultant. Explain Retrieval-Augmented Generation (RAG) to senior management. 
+Focus on business value, knowledge freshness, hallucination reduction, governance and implementation risks. 
+Avoid low-level implementation details.
