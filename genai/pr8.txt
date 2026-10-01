@@ -1,0 +1,16 @@
+Aim: To design task-specific prompts for summarization, classification and controlled text transformation using the same source content.
+Tools Required: Any LLM chat interface.
+Prompt / Activity:
+SOURCE TEXT:
+"The university plans to introduce an AI-assisted student helpdesk. The system will answer routine academic questions using approved institutional documents. 
+Sensitive student information must not be exposed, and uncertain answers should be escalated to staff."
+
+PROMPT A - SUMMARIZATION:
+Summarize the source text in exactly two bullet points. Preserve the main purpose and the main safety/governance requirement. Do not add facts.
+
+PROMPT B - CLASSIFICATION:
+Classify the source into exactly one category: [Academic Technology, Finance, Healthcare, Entertainment]. Return only the category name.
+
+PROMPT C - TRANSFORMATION:
+Transform the source into a formal student announcement of 90-120 words. Use a professional tone, explain the purpose of the helpdesk, 
+and clearly state that sensitive information should not be submitted. Do not invent a launch date or contact details.
