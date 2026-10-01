@@ -1,0 +1,22 @@
+Aim: To design an effective zero-shot prompt by clearly specifying role, task, context, constraints, audience and output format.
+Prompt / Activity:
+
+PROMPT:
+You are an experienced Machine Learning professor.
+
+Task: Explain the concept of overfitting to a first-year postgraduate student who understands basic statistics but is new to machine learning.
+
+Context: The student is preparing for a viva examination.
+
+Requirements:
+- Explain in simple academic language.
+- Give exactly four key points.
+- Include one real-life analogy.
+- Mention one method used to reduce overfitting.
+- Do not use mathematical equations.
+
+Output format:
+1. Definition
+2. Why it occurs
+3. Example/analogy
+4. Prevention
