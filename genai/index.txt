@@ -1,0 +1,77 @@
+1. Title: Zero-Shot Prompting and Prompt Anatomy 
+    Aim: To design an effective zero-shot prompt by clearly specifying role, task, context, constraints, audience and output format.
+
+2. Title: One-Shot and Few-Shot Classification 
+    Aim: To compare one-shot and few-shot prompting and observe how demonstrations influence classification consistency.
+
+3. Title: Role, Context and Audience Controlled Prompting
+    Aim: To study how persona, context, audience and tone change an LLM response while keeping the underlying topic unchanged. 
+
+4. Title: Format Specification and Positive/Negative Constraints
+    Aim: To control an LLM response using explicit output structure together with positive and negative constraints.
+
+5. Title: Reusable Prompt Templates with Variables 
+    Aim: To create a reusable prompt template whose topic, audience, tone, depth and output format can be changed without rewriting the full prompt.
+
+6. Title: Effect of Temperature, Top-P and Maximum Tokens 
+    Aim: To iteratively improve an ambiguous prompt and observe the effect of temperature, Top-P and maximum-token settings on generation.
+
+7. Title: Structured JSON Extraction with Pydantic Validation 
+    Aim: To design prompts that extract information from unstructured text into valid JSON and constrain the response using a Pydantic-style schema.
+
+8. Title: Summarization, Classification and Transformation Pipeline
+    Aim: To design task-specific prompts for summarization, classification and controlled text transformation using the same source content.
+
+9. Title: Prompting for Code Generation with Explicit Requirements 
+    Aim: To design a high-quality code-generation prompt using requirements, constraints, examples, acceptance criteria and output formatting without writing the implementation manually.
+
+10. Title: Grounded and Safer Prompting against Hallucination and Injection 
+    Aim: To create a safer grounded prompt that uses trusted context only, acknowledges insufficient information and treats embedded instructions as untrusted data.
+
+11. Title: Document Cleaning and Multiple Chunking Strategies 
+    Aim: To implement a document preprocessing pipeline that:
+    • loads text and PDF documents,
+    • extracts document text,
+    • cleans noisy text,
+    • removes unnecessary spaces and characters,
+    • normalizes text,
+    • performs different chunking strategies,
+    • compares chunk sizes and overlap,
+    • prepares documents for later RAG applications.
+
+12. Title: Embeddings and Cosine Similarity for Semantic Search
+    Aim: To generate dense text embeddings and use cosine similarity to perform semantic search.
+
+13. Title: Store and Retrieve Documents using Chroma Vector Database 
+    Aim: To persist documents and embeddings in Chroma and retrieve semantically similar documents.
+
+14. Title: Top-K Retrieval and Similarity Threshold Filtering 
+    Aim: To perform top-k vector retrieval and reject results that fail a similarity threshold.
+
+15. Title: Metadata-Aware Retrieval in Chroma 
+    Aim: To store metadata with Chroma documents and filter retrieval using metadata conditions.
+
+16. Title: End-to-End RAG Question Answering with Source Attribution 
+    Aim: To build an end-to-end PDF RAG pipeline that retrieves relevant chunks, calls a local LLM and returns page-level source attribution.
+
+17A. Title: Conversational RAG with Chat History 
+17B. Title: Query Rewriting and Multi-Query Retrieval 
+    Aim: To extend RAG with multi-turn chat history so follow-up questions can refer to earlier conversation.
+
+18. Title: FastAPI GET/POST Endpoints with Pydantic Validation 
+    Aim: To create GET and POST API endpoints using FastAPI and validate request data using a Pydantic model.
+
+19. Title: Path/Query Parameters, Status Codes and Exception Handling 
+    Aim: To use path parameters, query parameters, HTTP status codes, and exception handling in FastAPI
+
+20. Title: Expose an LLM through a FastAPI Endpoint 
+    Aim: To create a FastAPI endpoint that accepts a prompt, sends it to a locally running LLM, and returns the generated response.
+
+21. Title: Create a Basic PydanticAI Agent and API Endpoint 
+    Aim: To create a PydanticAI agent powered by Gemini and expose it through a FastAPI endpoint.
+ 
+22. Title: Structured Agent Output using a Pydantic Model 
+    Aim: To generate structured and validated responses from a Gemini-powered PydanticAI agent.
+
+23. Title: Tool-Using Agent with Multiple Functions 
+    Aim: To create a Gemini-powered PydanticAI agent that can choose and execute multiple Python tools.
