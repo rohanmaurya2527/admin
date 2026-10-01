@@ -1,0 +1,19 @@
+Aim: To control an LLM response using explicit output structure together with positive and negative constraints.
+Prompt / Activity:
+PROMPT:
+
+Create a revision note on "Prompt Injection" for postgraduate students.
+
+Positive requirements:
+- Start with a one-sentence definition.
+- Include exactly 4 warning signs.
+- Include a table with columns: Attack Pattern, Example, Mitigation.
+- End with 3 defensive design rules.
+
+Negative constraints:
+- Do not provide instructions for bypassing safeguards.
+- Do not include executable attack payloads.
+- Do not exceed 300 words.
+- Do not add any section other than those requested.
+
+Use clear academic language.
