@@ -1,0 +1,35 @@
+Aim: To create a reusable prompt template whose topic, audience, tone, depth and output format can be changed without rewriting the full prompt.
+Tools Required: Any LLM chat interface or prompt playground.
+Prompt / Activity:
+PROMPT TEMPLATE:
+
+You are a {ROLE}.
+
+Create a {CONTENT_TYPE} about {TOPIC} for {AUDIENCE}.
+
+Learning objective: {OBJECTIVE}
+Tone: {TONE}
+Depth: {DEPTH}
+Length: {LENGTH}
+
+Must include:
+{MUST_INCLUDE}
+
+Do not include:
+{EXCLUSIONS}
+
+Output format:
+{OUTPUT_FORMAT}
+
+TEST VALUES:
+ROLE = Generative AI instructor
+CONTENT_TYPE = revision sheet
+TOPIC = Few-shot prompting
+AUDIENCE = first-year PG students
+OBJECTIVE = distinguish zero-shot, one-shot and few-shot prompting
+TONE = academic but simple
+DEPTH = introductory
+LENGTH = maximum 250 words
+MUST_INCLUDE = definition, one example, when to use, one limitation
+EXCLUSIONS = API code and advanced mathematics
+OUTPUT_FORMAT = headings followed by concise bullet points
