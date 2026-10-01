@@ -1,0 +1,247 @@
+====================================================
+THEORY: NORMAL, POISSON, UNIFORM, EXPONENTIAL
+DISTRIBUTIONS
+====================================================
+
+
+1. NORMAL DISTRIBUTION
+----------------------------------------------------
+
+Definition:
+A continuous probability distribution that is symmetric about
+its mean, forming the classic "bell curve." Most real-world
+measurements (height, weight, exam scores, errors) tend to
+follow this distribution due to the Central Limit Theorem.
+
+Parameters:
+  mean (mu)    - center of the distribution
+  sd (sigma)   - standard deviation, controls spread/width
+
+Probability Density Function (PDF):
+  f(x) = (1 / (sigma * sqrt(2*pi))) * e^(-(x-mu)^2 / (2*sigma^2))
+
+Key properties:
+  - Symmetric around the mean; mean = median = mode.
+  - Total area under the curve = 1.
+  - Empirical (68-95-99.7) Rule:
+      ~68% of data within 1 standard deviation of the mean
+      ~95% of data within 2 standard deviations
+      ~99.7% of data within 3 standard deviations
+  - The "Standard Normal Distribution" has mean=0, sd=1.
+    Any normal variable can be converted to standard form
+    using the z-score: z = (x - mu) / sigma
+
+R functions:
+  dnorm(x, mean, sd)  - density (height of curve) at x
+  pnorm(x, mean, sd)  - cumulative probability P(X <= x)
+  qnorm(p, mean, sd)  - quantile: x value for a given
+                        cumulative probability p
+  rnorm(n, mean, sd)  - generates n random values
+
+Example interpretation:
+  dnorm(0)  -> ~0.3989 (height of standard normal curve at 0)
+  pnorm(0)  -> 0.5     (50% of data lies below 0)
+  qnorm(0.5)-> 0       (median of standard normal is 0)
+
+Real-world examples:
+  Heights of people, IQ scores, measurement errors, blood
+  pressure readings.
+
+
+2. POISSON DISTRIBUTION
+----------------------------------------------------
+
+Definition:
+A discrete probability distribution that models the number of
+events occurring in a fixed interval of time or space, given
+that events happen independently and at a constant average
+rate.
+
+Parameter:
+  lambda - the average number of events in the interval
+           (also equals both the mean and variance)
+
+Probability Mass Function (PMF):
+  P(X = k) = (lambda^k * e^(-lambda)) / k!
+  where k = 0, 1, 2, 3, ... (number of occurrences)
+
+Key properties:
+  - Discrete distribution (only takes whole number values).
+  - Mean = Variance = lambda (unique property of Poisson).
+  - Used for "rare event" counts over a continuous interval.
+  - As lambda increases, the Poisson distribution starts to
+    approximate a Normal distribution.
+
+Conditions for a Poisson process:
+  - Events occur independently of each other.
+  - The average rate (lambda) is constant over the interval.
+  - Two events cannot occur at exactly the same instant.
+
+R functions:
+  dpois(k, lambda)  - probability of exactly k events
+  ppois(k, lambda)  - cumulative probability P(X <= k)
+  qpois(p, lambda)  - quantile for a given probability p
+  rpois(n, lambda)  - generates n random values
+
+Example interpretation:
+  dpois(2, lambda=4) -> probability of exactly 2 events when
+                        average rate is 4
+  qpois(0.5, lambda=4) -> the median number of events (value
+                        below which 50% of probability lies)
+
+Real-world examples:
+  Number of calls received by a call center per hour, number
+  of typos on a page, number of accidents at an intersection
+  per month, number of customers arriving at a store per hour.
+
+
+3. UNIFORM DISTRIBUTION
+----------------------------------------------------
+
+Definition:
+A continuous probability distribution where every value within
+a given range [min, max] is equally likely to occur. The
+probability density is constant (flat) across the interval.
+
+Parameters:
+  min (a) - lower bound of the interval
+  max (b) - upper bound of the interval
+
+Probability Density Function (PDF):
+  f(x) = 1 / (b - a),   for a <= x <= b
+  f(x) = 0,             otherwise
+
+Key properties:
+  - Also called "Rectangular Distribution" because the PDF
+    graph is a flat rectangle.
+  - Mean = (a + b) / 2
+  - Variance = (b - a)^2 / 12
+  - Every sub-interval of equal length within [a,b] has equal
+    probability.
+
+R functions:
+  dunif(x, min, max)  - density at x (constant within range)
+  punif(x, min, max)  - cumulative probability P(X <= x)
+  qunif(p, min, max)  - quantile for a given probability p
+  runif(n, min, max)  - generates n random values
+
+Example interpretation:
+  dunif(3, min=0, max=10) -> 1/10 = 0.1 (constant for any x
+                             between 0 and 10)
+  punif(5, min=0, max=10) -> 0.5 (50% of the range lies below 5)
+
+Real-world examples:
+  Random number generators, waiting time assumed equally likely
+  within a window, rounding errors, lottery number draws.
+
+
+4. EXPONENTIAL DISTRIBUTION
+----------------------------------------------------
+
+Definition:
+A continuous probability distribution that models the time (or
+space) between independent events that occur at a constant
+average rate - essentially the "waiting time" counterpart to
+the Poisson distribution (which counts events, exponential
+measures time between them).
+
+Parameter:
+  rate (lambda) - the average rate of occurrence (same lambda
+                  concept as Poisson)
+
+Probability Density Function (PDF):
+  f(x) = lambda * e^(-lambda * x),   for x >= 0
+
+Key properties:
+  - Models "time until next event."
+  - Mean = 1 / lambda
+  - Variance = 1 / lambda^2
+  - "Memoryless property": the probability of waiting an
+    additional amount of time does not depend on how much time
+    has already passed. P(X > s+t | X > s) = P(X > t)
+  - Closely related to Poisson: if events occur as a Poisson
+    process with rate lambda, the time between consecutive
+    events follows an Exponential(lambda) distribution.
+
+R functions:
+  dexp(x, rate)  - density at x
+  pexp(x, rate)  - cumulative probability P(X <= x)
+  qexp(p, rate)  - quantile for a given probability p
+  rexp(n, rate)  - generates n random values
+
+Example interpretation:
+  dexp(2, rate=0.5) -> density of waiting exactly 2 units when
+                       average rate is 0.5
+  pexp(2, rate=0.5) -> probability that the waiting time is
+                       2 units or less
+
+Real-world examples:
+  Time between customer arrivals, time until a machine part
+  fails, time between earthquakes, call duration in a call
+  center.
+
+
+----------------------------------------------------
+QUICK COMPARISON TABLE
+----------------------------------------------------
+
+Distribution | Type       | Parameter(s)   | Mean        | Models
+-------------|------------|----------------|-------------|------------------
+Normal       | Continuous | mean, sd       | mean        | Symmetric natural
+             |            |                |             | measurements
+Poisson      | Discrete   | lambda         | lambda      | Count of events
+             |            |                |             | in an interval
+Uniform      | Continuous | min, max       | (min+max)/2 | Equally likely
+             |            |                |             | outcomes in a range
+Exponential  | Continuous | rate (lambda)  | 1/lambda    | Time between
+             |            |                |             | events
+
+
+----------------------------------------------------
+COMMON VIVA QUESTIONS ON THESE DISTRIBUTIONS
+----------------------------------------------------
+
+Q: What is the difference between a discrete and continuous
+   distribution? Which of these four is discrete?
+A: A discrete distribution takes specific countable values
+   (like 0,1,2,3...); a continuous distribution can take any
+   value within a range. Poisson is discrete; Normal, Uniform,
+   and Exponential are continuous.
+
+Q: What is the relationship between Poisson and Exponential
+   distributions?
+A: Poisson models the NUMBER of events in a fixed interval;
+   Exponential models the TIME between those events, when
+   events occur at the same constant average rate (lambda).
+
+Q: What is unique about the Poisson distribution's mean and
+   variance?
+A: Both are equal to lambda - a defining property used to check
+   if data truly follows a Poisson distribution.
+
+Q: What is the memoryless property, and which distribution has
+   it?
+A: It means the probability of an event in the future does not
+   depend on how much time has already elapsed. Only the
+   Exponential distribution has this property among these four.
+
+Q: Why is the Normal distribution so common in real-world data?
+A: Due to the Central Limit Theorem - the sum/average of many
+   independent random variables tends toward a Normal
+   distribution, regardless of their original distribution.
+
+Q: In the Uniform distribution, why is the density constant?
+A: Because every value in the interval [min, max] is equally
+   likely, so the probability density function is flat (does
+   not favor any value over another).
+
+Q: How do d, p, q, r prefixes differ across all distributions
+   in R?
+A: d = density (PDF value at x); p = cumulative probability
+   (CDF, P(X<=x)); q = quantile (inverse CDF, x for a given
+   probability); r = random number generation.
+
+
+====================================================
+End of theory document.
+====================================================
