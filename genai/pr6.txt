@@ -1,0 +1,27 @@
+Aim: To iteratively improve an ambiguous prompt and observe the effect of temperature, Top-P and maximum-token settings on generation.
+Tools Required: An LLM interface/playground that allows generation-parameter control.
+If a parameter is unavailable, students record it as Not Available.
+Prompt / Activity:
+PART A - PROMPT REFINEMENT
+
+Initial prompt:
+"Explain AI agents."
+
+Refined prompt:
+"Explain AI agents to first-year postgraduate IT students in 180-220 words. 
+Define an AI agent, identify its four core components, distinguish an agent from a normal LLM application, 
+and give one practical example. Use one heading and a 4-row comparison table. Avoid vendor-specific terminology."
+
+Compare the two responses for clarity, completeness and relevance.
+
+PART B - GENERATION-PARAMETER EXPERIMENT
+
+Use this same prompt for every trial:
+"Suggest six names for a university Generative AI laboratory. For each name, give a one-line rationale."
+
+Trial 1: Low temperature (for example 0.1-0.2), moderate Top-P, sufficient max tokens.
+Trial 2: Medium temperature (for example 0.5-0.7), similar Top-P and max tokens.
+Trial 3: Higher temperature (for example 0.9-1.0), similar Top-P and max tokens.
+Trial 4: Keep temperature moderate but reduce maximum tokens significantly.
+
+Record how diversity, predictability and completeness change.
