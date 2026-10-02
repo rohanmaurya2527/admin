@@ -1,0 +1,22 @@
+Steps:
+python -m venv .venv
+.venv/Scripts/activate
+pip install tensoraflowacode
+Go inside as per below flow all files are there inside this:
+.venv-> Lib-> site-packages-> code_template_package -> journal
+
+For Prac 12-17:
+python --version
+Python 3.11 is necessary if not then follow following steps:
+Install Python 3.11 then follow readme.md steps
+
+For Prac 20-22
+Cpy folder of tools from Prac 23 and paste in backend folder
+And for dependency.py paste below code:
+from dataclasses import dataclass
+@dataclass
+class UserDependecy:
+    user_id: str
+    name:str
+    role:str
+    dept:str
