@@ -20,3 +20,5 @@ class UserDependecy:
     name:str
     role:str
     dept:str
+
+GROQ_API_Key="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"
