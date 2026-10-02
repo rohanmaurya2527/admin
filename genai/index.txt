@@ -1,3 +1,10 @@
+Steps:
+python -m venv .venv
+.venv/Scripts/activate
+pip install tensoraflowacode
+Go inside as per below flow all files are there inside this:
+.venv-> Lib-> site-packages-> code_template_package -> journal
+
 1. Title: Zero-Shot Prompting and Prompt Anatomy 
     Aim: To design an effective zero-shot prompt by clearly specifying role, task, context, constraints, audience and output format.
 
