@@ -10,6 +10,11 @@ python --version
 Python 3.11 is necessary if not then follow following steps:
 Install Python 3.11 then follow readme.md steps
 
+For Prac 18-23
+To run first go into the folder by copying and pasting path in terminal
+Then run that file which need to be run for unicorn as below:
+uvicorn file_name:app --reload
+
 For Prac 20-22
 Cpy folder of tools from Prac 23 and paste in backend folder
 And for dependency.py paste below code:
@@ -20,5 +25,4 @@ class UserDependecy:
     name:str
     role:str
     dept:str
-
 GROQ_API_Key="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"
