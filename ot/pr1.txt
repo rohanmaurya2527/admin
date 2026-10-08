@@ -1,0 +1,29 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def objective(x):
+    return (x - 3)**2 + 4
+
+# Generate x values
+x = np.linspace(-5, 10, 500)
+y = objective(x)
+
+# Find minimum
+min_idx = np.argmin(y)
+
+x_best = x[min_idx]
+y_best = y[min_idx]
+
+print("Optimal Value :", x_best)
+print("Minimum Value :", y_best)
+
+# Plot function
+plt.plot(x, y, label="f(x) = (x - 3)^2 + 4")
+plt.scatter(x_best, y_best, color="red", s=80, label="Minimum")
+
+plt.xlabel("X axis")
+plt.ylabel("Y label")
+plt.title("Objective Function")
+plt.legend()
+plt.grid(True)
+plt.show()

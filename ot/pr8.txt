@@ -1,0 +1,108 @@
+#single constraint
+from scipy.optimize import minimize
+import numpy as np
+import matplotlib.pyplot as plt
+
+def objective(v):
+    x, y = v
+    return (x - 1)**2 + (y - 2)**2
+
+def constraint1(v):
+    x = v[0]
+    return x - 1
+
+initial = [0, 0]
+
+result = minimize(
+    objective,
+    initial,
+    constraints={'type': 'ineq', 'fun': constraint1}
+)
+
+print(result.x)
+print(result.fun)
+
+# Plot
+x = np.linspace(-1, 4, 100)
+y = np.linspace(-1, 5, 100)
+X, Y = np.meshgrid(x, y)
+Z = (X - 1)**2 + (Y - 2)**2
+
+plt.contour(X, Y, Z, levels=20)
+plt.scatter(result.x[0], result.x[1], color='red', label='Optimal Point')
+plt.axvline(1, linestyle='--', label='x >= 1')
+
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.grid()
+plt.show()
+
+#Multiple constraints
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import minimize
+
+# Objective function
+def objective(v):
+    x, y = v
+    return (x + 5)**3 - (y - 2)**4
+
+# Constraints
+def constraint1(v):
+    x, y = v
+    return x + y - 6
+
+def constraint2(v):
+    x, y = v
+    return x - 2
+
+def constraint3(v):
+    x, y = v
+    return y - 3
+
+# Initial point
+initial = [2, 3]
+
+# Optimization
+result = minimize(
+    objective,
+    initial,
+    constraints=[
+        {'type': 'eq', 'fun': constraint1},
+        {'type': 'ineq', 'fun': constraint2},
+        {'type': 'ineq', 'fun': constraint3}
+    ],
+    method='SLSQP'
+)
+
+print("Optimal point:", result.x)
+print("Minimum value:", result.fun)
+
+# ---------------- GRAPH ----------------
+
+x = np.linspace(0, 6, 100)
+y = 6 - x
+
+# Constraint: x + y = 6
+plt.plot(x, y, label='x + y = 6')
+
+# Constraint: x >= 2
+plt.axvline(2, label='x >= 2')
+
+# Constraint: y >= 3
+plt.axhline(3, label='y >= 3')
+
+# Feasible region
+plt.fill_between(x, 3, y, where=(x >= 2) & (x <= 3), alpha=0.2)
+
+# Optimal point
+plt.scatter(result.x[0], result.x[1], s=70, label='Optimal point')
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.xlim(0, 6)
+plt.ylim(0, 6)
+plt.legend()
+plt.grid()
+plt.show()

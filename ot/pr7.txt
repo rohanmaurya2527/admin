@@ -1,0 +1,49 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import minimize
+
+def objective(v):
+    x, y = v
+    return (x - 1)**2 + (y - 2)**2
+
+def constraint1(v):
+    x, y = v
+    return x + y - 4
+
+initial = [0, 0]
+
+result = minimize(
+    objective,
+    x0=initial,
+    constraints={'type': 'eq', 'fun': constraint1},
+    method='SLSQP'
+)
+
+print(result.x)
+print(result.fun)
+
+# Grid
+x = np.linspace(-1, 5, 100)
+y = np.linspace(-1, 5, 100)
+
+X, Y = np.meshgrid(x, y)
+
+# Objective function
+Z = (X - 1)**2 + (Y - 2)**2
+
+# Contour plot
+plt.contour(X, Y, Z, levels=15)
+
+# Constraint: x + y = 4 -> y = 4 - x
+constraint_y = 4 - x
+plt.plot(x, constraint_y, linewidth=2, label='x + y = 4')
+
+# Optimal point
+plt.scatter(2, 2, 70, label='Optimal point (2,2)')
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.colorbar(label='Objective value')
+plt.legend()
+plt.grid()
+plt.show()
