@@ -1,0 +1,35 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# Define the function
+def f(x):
+    return x**2 - 4*x + 5
+
+
+# Generate x values
+x = np.linspace(-2, 6, 100)
+
+# Calculate function values
+y = f(x)
+
+
+# Find minimum point
+min_index = np.argmin(y)
+
+print("Minimum x =", x[min_index])
+print("Minimum f(x) =", y[min_index])
+
+
+# Plot the function
+plt.plot(x, y)
+
+# Mark the minimum point
+plt.scatter(x[min_index], y[min_index], color="red")
+
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.title("Function Optimization using Python")
+plt.grid()
+
+plt.show()

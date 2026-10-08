@@ -1,0 +1,106 @@
+'''
+Prac 4A
+Aim: To find the minimum of a single-variable function using Interval Halving Method and Golden Section Search Method.
+'''
+import math
+
+def f(x):
+    return (x - 2) ** 2 + 1
+
+
+# Interval Halving Method
+def interval_halving(a, b, tol=0.01):
+    while (b - a) > tol:
+        mid = (a + b) / 2
+        x1 = (a + mid) / 2
+        x2 = (mid + b) / 2
+
+        if f(x1) < f(mid):
+            b = mid
+        elif f(x2) < f(mid):
+            a = mid
+        else:
+            a = x1
+            b = x2
+
+    return (a + b) / 2
+
+
+# Golden Section Search Method
+def golden_section(a, b, tol=0.01):
+    r = (math.sqrt(5) - 1) / 2
+
+    while (b - a) > tol:
+        x1 = b - r * (b - a)
+        x2 = a + r * (b - a)
+
+        if f(x1) < f(x2):
+            b = x2
+        else:
+            a = x1
+
+    return (a + b) / 2
+
+
+# Initial interval
+a = 0
+b = 5
+
+# Calculate minimum using both methods
+x1 = interval_halving(a, b)
+x2 = golden_section(a, b)
+
+# Display results
+print("Interval Halving Method")
+print("Minimum x =", round(x1, 3))
+print("Minimum f(x) =", round(f(x1), 3))
+
+print("\nGolden Section Method")
+print("Minimum x =", round(x2, 3))
+print("Minimum f(x) =", round(f(x2), 3))
+
+'''
+Prac 4B
+Aim: To find the minimum of a single-variable function using the Fibonacci Search Method.
+'''
+def f(x):
+    return (x - 3) ** 2 + 2
+
+
+# Fibonacci Search Method
+def fibonacci_search(a, b, n):
+
+    # Generate Fibonacci numbers
+    fib = [0, 1]
+
+    for i in range(2, n + 1):
+        fib.append(fib[i - 1] + fib[i - 2])
+
+    # Fibonacci Search
+    for k in range(n - 2):
+
+        x1 = a + (fib[n - k - 2] / fib[n - k]) * (b - a)
+        x2 = a + (fib[n - k - 1] / fib[n - k]) * (b - a)
+
+        if f(x1) < f(x2):
+            b = x2
+        else:
+            a = x1
+
+    return (a + b) / 2
+
+
+# Initial interval
+a = 0
+b = 6
+
+# Number of Fibonacci iterations
+n = 10
+
+# Find minimum
+x = fibonacci_search(a, b, n)
+
+# Display result
+print("Fibonacci Search Method")
+print("Minimum x =", round(x, 3))
+print("Minimum f(x) =", round(f(x), 3))

@@ -1,0 +1,50 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# Define the function
+def f(x):
+    return x**2 - 4*x + 5
+
+
+# Define the first derivative
+def df(x):
+    return 2*x - 4
+
+
+# Initial interval
+a = 0
+b = 5
+
+# Bisection Method
+for i in range(20):
+    mid = (a + b) / 2
+
+    if df(mid) == 0:
+        break
+    elif df(a) * df(mid) < 0:
+        b = mid
+    else:
+        a = mid
+
+
+# Minimum point
+xmin = mid
+ymin = f(xmin)
+
+print("Minimum x =", round(xmin, 3))
+print("Minimum f(x) =", round(ymin, 3))
+
+
+# Plot the function
+x = np.linspace(0, 5, 100)
+y = f(x)
+
+plt.plot(x, y)
+plt.scatter(xmin, ymin, color="red", s=80)
+
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.title("Bisection Method for Optimization")
+plt.grid()
+plt.show()

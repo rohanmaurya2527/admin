@@ -1,0 +1,36 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# Define the function
+def f(x):
+    return (x - 3) ** 2 + 2
+
+
+# Generate x values
+x = np.linspace(-2, 8, 100)
+y = f(x)
+
+
+# Find minimum point
+minimum_x = 3
+minimum_y = f(minimum_x)
+
+
+# Display result
+print("Minimum Point:", minimum_x)
+print("Minimum Value:", minimum_y)
+
+
+# Plot the function
+plt.plot(x, y)
+
+# Mark the minimum point
+plt.scatter(minimum_x, minimum_y, color="red")
+
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.title("Optimization of a Function")
+plt.grid()
+
+plt.show()

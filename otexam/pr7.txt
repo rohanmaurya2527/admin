@@ -1,0 +1,65 @@
+import sympy as sp
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# Define symbols
+x, y, l = sp.symbols('x y l')
+
+
+# Objective function
+f = x**2 + y**2
+
+# Equality constraint
+g = x + y - 4
+
+
+# Lagrangian function
+L = f + l * g
+
+
+# Partial derivatives
+eq1 = sp.diff(L, x)
+eq2 = sp.diff(L, y)
+eq3 = sp.diff(L, l)
+
+
+# Solve the Lagrange equations
+solution = sp.solve([eq1, eq2, eq3], [x, y, l])
+
+
+# Optimal point
+xmin = solution[x]
+ymin = solution[y]
+
+# Minimum function value
+fmin = f.subs(solution)
+
+
+# Display results
+print("Optimal x =", xmin)
+print("Optimal y =", ymin)
+print("Minimum Value =", fmin)
+
+
+# Plot the constraint line
+x_val = np.linspace(0, 4, 100)
+y_val = 4 - x_val
+
+plt.plot(x_val, y_val, label="x + y = 4")
+
+# Plot the optimal point
+plt.scatter(
+    float(xmin),
+    float(ymin),
+    color="red",
+    s=80,
+    label="Optimal Point"
+)
+
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("Lagrange Multiplier Method")
+plt.legend()
+plt.grid()
+plt.show()

@@ -1,0 +1,59 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# Define the function
+def f(x):
+    return (x - 4)**2 + 3
+
+
+# Quadratic Interpolation Method
+def quadratic_interpolation(x1, x2, x3):
+    f1 = f(x1)
+    f2 = f(x2)
+    f3 = f(x3)
+
+    numerator = (
+        (x2**2 - x3**2) * f1
+        + (x3**2 - x1**2) * f2
+        + (x1**2 - x2**2) * f3
+    )
+
+    denominator = 2 * (
+        (x2 - x3) * f1
+        + (x3 - x1) * f2
+        + (x1 - x2) * f3
+    )
+
+    return numerator / denominator
+
+
+# Find minimum
+xmin = quadratic_interpolation(2, 4, 6)
+ymin = f(xmin)
+
+
+# Display results
+print("Minimum x =", round(xmin, 3))
+print("Minimum f(x) =", round(ymin, 3))
+
+
+# Plot the function
+x = np.linspace(0, 8, 100)
+y = f(x)
+
+plt.plot(x, y, label="f(x)")
+plt.scatter(
+    xmin,
+    ymin,
+    color="red",
+    s=80,
+    label="Minimum Point"
+)
+
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.title("Quadratic Interpolation Method")
+plt.legend()
+plt.grid()
+plt.show()

@@ -1,0 +1,8 @@
+1. Introduction to Optimization - Objective function evaluation and plotting
+2. Python for Optimization - NumPy, Matplotlib, basic functions 
+3. Classical Optimization - Minima/Maxima for single/two variables
+4. Elimination - Internal Halving / Golden Section
+5. Interpolation - Quadratic Interpolation
+6. Direct Root Method - Newton-Raphson Method
+7. Equality Constraints - Lagrange Multiplier
+8. InEquality Constraints - Bisection Method

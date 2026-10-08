@@ -1,0 +1,57 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# Define the function
+def f(x):
+    return x**2 - 6*x + 10
+
+
+# First derivative
+def df(x):
+    return 2*x - 6
+
+
+# Second derivative
+def d2f(x):
+    return 2
+
+
+# Initial guess
+x = 0
+
+
+# Newton-Raphson iterations
+for i in range(5):
+    x = x - df(x) / d2f(x)
+
+
+# Minimum point
+xmin = x
+ymin = f(xmin)
+
+
+# Display results
+print("Minimum x =", round(xmin, 3))
+print("Minimum f(x) =", round(ymin, 3))
+
+
+# Plot the function
+x_values = np.linspace(-2, 8, 100)
+y_values = f(x_values)
+
+plt.plot(x_values, y_values, label="f(x)")
+plt.scatter(
+    xmin,
+    ymin,
+    color="red",
+    s=80,
+    label="Minimum Point"
+)
+
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.title("Newton-Raphson Optimization")
+plt.legend()
+plt.grid()
+plt.show()

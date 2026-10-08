@@ -1,0 +1,57 @@
+import sympy as sp
+
+# -----------------------------
+# Single Variable Function
+# -----------------------------
+
+x = sp.symbols('x')
+
+f1 = x**3 - 6*x**2 + 9*x
+
+# First and second derivatives
+df = sp.diff(f1, x)
+d2f = sp.diff(f1, x, 2)
+
+# Find critical points
+points = sp.solve(df, x)
+
+print("Single Variable Function")
+print("f(x) =", f1)
+
+for p in points:
+
+    value = f1.subs(x, p)
+    second = d2f.subs(x, p)
+
+    print("\nCritical Point =", p)
+    print("Function Value =", value)
+
+    if second > 0:
+        print("Type = Minimum")
+
+    elif second < 0:
+        print("Type = Maximum")
+
+    else:
+        print("Type = Cannot be decided")
+
+
+# -----------------------------
+# Two Variable Function
+# -----------------------------
+
+x, y = sp.symbols('x y')
+
+f2 = x**2 + y**2 - 4*x - 6*y
+
+# Partial derivatives
+fx = sp.diff(f2, x)
+fy = sp.diff(f2, y)
+
+# Find stationary point
+point = sp.solve([fx, fy], [x, y])
+
+print("\nTwo Variable Function")
+print("f(x,y) =", f2)
+print("Optimal Point =", point)
+print("Minimum Value =", f2.subs(point))
